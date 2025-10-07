@@ -1,9 +1,10 @@
 // icons
 import { useMemo } from 'react';
+// locales
+import { paths } from '@/routes';
 
 import Iconify from '@/components/iconify';
 import SvgColor from '@/components/svg-color';
-// locales
 import { useLocales } from '@/theme/locales';
 
 // ----------------------------------------------------------------------
@@ -49,7 +50,7 @@ export function useNavData() {
         items: [
           {
             title: t('salas'),
-            path: '#disabled',
+            path: paths.dashboard.sala.list,
             icon: ICONS.fiscal,
             roles: ['admin', 'gerente', 'supervisor'],
           },

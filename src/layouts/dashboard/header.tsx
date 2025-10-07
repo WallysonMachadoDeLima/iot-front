@@ -12,7 +12,7 @@ import { useOffSetTop } from '@/hooks/use-off-set-top';
 // theme
 import { bgBlur } from '@/theme/css';
 
-import { AccountPopover, SettingsButton } from '../_common';
+import { AccountPopover } from '../_common';
 import { HEADER, NAV } from '../config-layout';
 
 // ----------------------------------------------------------------------
@@ -38,7 +38,7 @@ export default function Header({ onOpenNav }: Props) {
 
   const renderContent = (
     <>
-      {lgUp && isNavHorizontal && <Logo sx={{ mr: 2.5 }} />}
+      {lgUp && isNavHorizontal && <Logo sx={{ mr: 2.5 }} height={60} width={60} />}
 
       {!lgUp && (
         <IconButton onClick={onOpenNav}>
@@ -53,8 +53,6 @@ export default function Header({ onOpenNav }: Props) {
         justifyContent="flex-end"
         spacing={{ xs: 0.5, sm: 1 }}
       >
-        <SettingsButton />
-
         <AccountPopover />
       </Stack>
     </>

@@ -13,6 +13,7 @@ if (typeof window !== 'undefined') {
 }
 
 export const HOST_API = process.env.NEXT_PUBLIC_HOST_API;
+export const LOCAL_API = process.env.NEXT_PUBLIC_LOCAL_API;
 
 export const HOST_API_LOCAL = isDevelopment
   ? process.env.NEXT_PUBLIC_DEV_API
@@ -22,53 +23,14 @@ export const HOST_API_LOCAL = isDevelopment
 
 const api = {
   auth: axios.create({
-    baseURL: `${HOST_API}`,
-  }),
-  cashway: axios.create({
-    baseURL: `${HOST_API}/cashway`,
-  }),
-  banners: axios.create({
-    baseURL: `${HOST_API}/banners`,
-  }),
-  bonbonniere: axios.create({
-    baseURL: `${HOST_API}/bonbonniere`,
-  }),
-  business: axios.create({
-    baseURL: `${HOST_API}/business`,
-  }),
-  locus: axios.create({
-    baseURL: `${HOST_API}/locus`,
-  }),
-  movies: axios.create({
-    baseURL: `${HOST_API}/movies`,
-  }),
-  people: axios.create({
-    baseURL: `${HOST_API}/people`,
-  }),
-  suppliers: axios.create({
-    baseURL: `${HOST_API}/suppliers`,
-  }),
-  specta: axios.create({
-    baseURL: `${HOST_API}/specta`,
+    baseURL: `${HOST_API}/`,
   }),
   user: axios.create({
     baseURL: `${HOST_API}/users`,
   }),
-};
-
-const apiUnits = {
-  fiscal: axios.create({
-    baseURL: `${HOST_API_LOCAL}/fiscal`,
-  }),
-  views: axios.create({
-    baseURL: `${HOST_API_LOCAL}/views`,
-  }),
-  warehouse: axios.create({
-    baseURL: `${HOST_API_LOCAL}/warehouse`,
-  }),
-  scb: axios.create({
-    baseURL: `${HOST_API_LOCAL}/scb`,
+  next: axios.create({
+    baseURL: `${LOCAL_API}/api`,
   }),
 };
 
-export { api, apiUnits };
+export { api };

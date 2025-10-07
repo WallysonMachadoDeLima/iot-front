@@ -1,13 +1,13 @@
 'use Cliente';
 
-import { IPaginatedResponseDto } from '@/domain/dtos';
+import { IPaginatedResponse } from '@/models';
 import { useEffect, useMemo, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 // ----------------------------------------------------------------------
 
-export interface IUseTableApiDto<T, IExtra> {
-  response?: IPaginatedResponseDto<any>;
+export interface IUseTableApi<T, IExtra> {
+  response?: IPaginatedResponse<any>;
   confirm?: boolean;
   currentRow?: T;
   dataTable?: T[];
@@ -24,7 +24,7 @@ export interface IUseTableApiDto<T, IExtra> {
   extra?: IExtra;
 }
 
-export function useTableApi<T, IExtra = {}>(defultValue = {} as IUseTableApiDto<T, IExtra>) {
+export function useTableApi<T, IExtra = {}>(defultValue = {} as IUseTableApi<T, IExtra>) {
   const defaultValues = useMemo(
     () => ({
       response: defultValue.response || null,

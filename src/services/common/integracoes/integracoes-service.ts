@@ -1,6 +1,6 @@
 'use client';
 
-import { IIntegracoesFinancaDto, IIntegracoesPessoaDto } from '@/domain/dtos';
+import { IIntegracoesFinanca, IIntegracoesPessoa } from '@/models';
 import { getSessionItem, setSessionItem } from '@/utils';
 
 import { api } from '@/services/config-service';
@@ -19,7 +19,7 @@ async function bonbonniereContext(): Promise<any> {
   return response.data;
 }
 
-async function financaContext(): Promise<IIntegracoesFinancaDto> {
+async function financaContext(): Promise<IIntegracoesFinanca> {
   const sessionData = getSessionItem('context-integracoes-financa');
   if (sessionData) return sessionData;
 
@@ -29,7 +29,7 @@ async function financaContext(): Promise<IIntegracoesFinancaDto> {
   return response.data;
 }
 
-async function pessoaContext(): Promise<IIntegracoesPessoaDto> {
+async function pessoaContext(): Promise<IIntegracoesPessoa> {
   const sessionData = getSessionItem('context-integracoes-pessoa');
   if (sessionData) return sessionData;
 
