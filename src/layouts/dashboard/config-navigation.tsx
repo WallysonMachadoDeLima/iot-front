@@ -23,18 +23,13 @@ export function useNavData() {
   const data = useMemo(
     () => [
       {
-        subheader: t('Gestão'),
+        subheader: t('infraestrutura'),
 
         items: [
           {
             title: t('salas'),
             path: paths.dashboard.sala.list,
             icon: ICONS.sala,
-          },
-          {
-            title: t('itens'),
-            path: '#disabled',
-            icon: ICONS.mercadorias,
           },
         ],
       },

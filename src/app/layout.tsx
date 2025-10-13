@@ -71,7 +71,7 @@ export default function RootLayout({ children }: Props) {
                 themeMode: 'light',
                 themeDirection: 'ltr',
                 themeContrast: 'default',
-                themeLayout: 'horizontal',
+                themeLayout: 'vertical',
                 themeColorPresets: 'default',
                 themeStretch: true,
               }}
