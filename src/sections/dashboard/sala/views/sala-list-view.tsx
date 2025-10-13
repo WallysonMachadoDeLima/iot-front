@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useError } from '@/hooks';
 import { ISalaFindAll } from '@/models';
 import { paths, useRouter } from '@/routes';
+import { salaService } from '@/services';
 import {
   Card,
   Container,
@@ -27,7 +28,6 @@ import {
   TablePagination,
   useTableLocal,
 } from '@/components/table';
-import { salaService } from '@/services/dashboard';
 
 import { SALA_ENUM } from '../enums';
 

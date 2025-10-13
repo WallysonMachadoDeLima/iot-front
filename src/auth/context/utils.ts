@@ -1,5 +1,4 @@
 import { paths } from '@/routes/paths';
-import { api } from '@/services/config-service';
 
 // ----------------------------------------------------------------------
 
@@ -55,17 +54,8 @@ export const tokenExpired = (exp: number) => {
 export const setSession = (accessToken: string | null) => {
   if (accessToken) {
     sessionStorage.setItem('accessToken', accessToken);
-
-    const { exp } = jwtDecode(accessToken);
-    tokenExpired(exp);
   } else {
     sessionStorage.removeItem('accessToken');
   }
-
-  Object.values(api).forEach((item) => {
-    item.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-    item.defaults.headers.common['x-api-key'] = process.env.NEXT_PUBLIC_API_KEY;
-  });
-
 
 };

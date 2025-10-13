@@ -1,40 +1,15 @@
-// i18n
-import 'src/theme/locales/i18n';
-// scrollbar
-import 'simplebar-react/dist/simplebar.min.css';
-// lightbox
-import 'yet-another-react-lightbox/plugins/captions.css';
-import 'yet-another-react-lightbox/plugins/thumbnails.css';
-import 'yet-another-react-lightbox/styles.css';
-// map
-import 'mapbox-gl/dist/mapbox-gl.css';
-// editor
-import 'react-quill/dist/quill.snow.css';
-// carousel
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
-// image
-import 'react-lazy-load-image-component/src/effects/blur.css';
-
-// theme
-
+import localFont from 'next/font/local';
 import ThemeProvider from '@/theme';
 
-// ----------------------------------------------------------------------
-
-// locales
-import { LocalizationProvider } from '@/theme/locales';
-
-import 'src/theme/css.css';
-
-import localFont from 'next/font/local';
-
-// auth
-import { AuthConsumer, AuthProvider } from '@/auth/context/jwt';
+import { AuthConsumer, AuthProvider } from '@/auth/context';
 import MotionLazy from '@/components/animate/motion-lazy';
 import ProgressBar from '@/components/progress-bar';
 import { SettingsDrawer, SettingsProvider } from '@/components/settings';
 import SnackbarProvider from '@/components/snackbar/snackbar-provider';
+import { LocalizationProvider } from '@/theme/locales';
+
+import 'src/theme/css';
+import 'src/theme/locales/i18n';
 
 // ----------------------------------------------------------------------
 
@@ -93,11 +68,11 @@ export default function RootLayout({ children }: Props) {
           <LocalizationProvider>
             <SettingsProvider
               defaultSettings={{
-                themeMode: 'light', // 'light' | 'v'
-                themeDirection: 'ltr', //  'rtl' | 'ltr'
-                themeContrast: 'default', // 'default' | 'bold'
-                themeLayout: 'vertical', // 'vertical' | 'horizontal' | 'mini'
-                themeColorPresets: 'default', // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
+                themeMode: 'light',
+                themeDirection: 'ltr',
+                themeContrast: 'default',
+                themeLayout: 'horizontal',
+                themeColorPresets: 'default',
                 themeStretch: true,
               }}
             >

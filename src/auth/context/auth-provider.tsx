@@ -1,16 +1,13 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
-import { LoginService, UserService } from '@/services';
-import jwtDecode from 'jwt-decode';
+import { MOCK } from '@/mock';
 
-import { useRouter } from '@/routes/hooks';
-import { paths } from '@/routes/paths';
 import { setLocalItem } from '@/utils/storage';
 
-import { ActionMapType, AuthStateType, AuthUserType } from '../../types';
+import { ActionMapType, AuthStateType, AuthUserType } from '../types';
 import { AuthContext } from './auth-context';
-import { isValidToken, setSession } from './utils';
+import { setSession } from './utils';
 
 // ----------------------------------------------------------------------
 
@@ -80,22 +77,16 @@ type Props = {
 };
 
 export function AuthProvider({ children }: Props) {
-  const router = useRouter();
-
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const initialize = useCallback(async () => {
     try {
       const accessToken = sessionStorage.getItem(STORAGE_KEY);
 
-      if (accessToken && isValidToken(accessToken)) {
-        setSession(accessToken);
-        /*
-        const response = { data: { accessToken: '', user: {} } };
-        const { user } = response.data;
-        */
+      if (accessToken) {
+        setSession(MOCK.JWT);
 
-        const user = {};
+        const user = MOCK.USER;
 
         dispatch({
           type: Types.INITIAL,
@@ -128,16 +119,17 @@ export function AuthProvider({ children }: Props) {
 
   // LOGIN
   const login = useCallback(async (email: string, password: string) => {
-    const accessToken = await LoginService.create({
-      username: email,
-      password,
-    }).then((response: Record<string, any>) => response.access_token);
-    setSession(accessToken);
-    setLocalItem('authorization', accessToken);
+    if (email !== 'iot@gmail.com' || password !== 'iot2025') {
+      throw {
+        error: 'Não encontrado',
+        message: 'Usuário ou Senha inválidos',
+      };
+    }
 
-    const user = await UserService.show().then((response: Record<string, any>) => response);
-    setLocalItem('user', { ...user, ...jwtDecode(accessToken) });
-    if (user?.updatePassword == true) router.push(paths.auth.jwt.forgotPassword);
+    const user = MOCK.USER;
+    setSession(MOCK.JWT);
+    setLocalItem('user', user);
+
     dispatch({
       type: Types.LOGIN,
       payload: {

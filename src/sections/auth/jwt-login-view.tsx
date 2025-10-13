@@ -63,7 +63,7 @@ export default function JwtLoginView() {
       console.error(error);
       console.log(error);
       reset();
-      setErrorMsg(typeof error === 'string' ? error : error?.response?.data?.message);
+      setErrorMsg(error?.message);
     }
   });
 

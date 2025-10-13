@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { useError } from '@/hooks';
 import { ISalaCreateEdit } from '@/models';
 import { paths, useRouter } from '@/routes';
+import { salaService } from '@/services';
 import { useSnackbar } from 'notistack';
-
-import { salaService } from '@/services/dashboard';
 
 import { SalaEditTabs } from './sala-create-edit-tabs';
 

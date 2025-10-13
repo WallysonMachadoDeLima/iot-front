@@ -5,12 +5,12 @@ import { useParams } from 'next/navigation';
 import { useError } from '@/hooks';
 import { ISalaCreateEdit } from '@/models';
 import { paths } from '@/routes';
+import { salaService } from '@/services';
 import { Container } from '@mui/system';
 
 import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
 import { useSettingsContext } from '@/components/settings';
 import { useRouter } from '@/routes/hooks';
-import { salaService } from '@/services/dashboard';
 
 import { SalaCreateEditForm } from '../sala-create-edit-form';
 

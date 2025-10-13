@@ -1,4 +1,4 @@
-import { JwtLoginView } from '@/sections/auth/jwt';
+import { JwtLoginView } from '@/sections/auth';
 
 // ----------------------------------------------------------------------
 

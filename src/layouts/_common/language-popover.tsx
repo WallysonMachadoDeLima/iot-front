@@ -6,7 +6,6 @@ import { m } from 'framer-motion';
 import { varHover } from '@/components/animate';
 import CustomPopover, { usePopover } from '@/components/custom-popover';
 import Iconify from '@/components/iconify';
-// locales
 import { useLocales } from '@/theme/locales';
 
 // ----------------------------------------------------------------------

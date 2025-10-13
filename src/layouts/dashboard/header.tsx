@@ -79,7 +79,7 @@ export default function Header({ onOpenNav }: Props) {
             width: 1,
             bgcolor: 'background.default',
             height: HEADER.H_DESKTOP_OFFSET,
-            borderBottom: `dashed 1px ${theme.palette.divider}`,
+            borderBottom: `solid 1px ${theme.palette.divider}`,
           }),
           ...(isNavMini && {
             width: `calc(100% - ${NAV.W_MINI + 1}px)`,

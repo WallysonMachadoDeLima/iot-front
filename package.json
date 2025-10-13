@@ -5,7 +5,7 @@
   "description": "Next & TypeScript",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "next dev -p 8085",
+    "dev": "next dev -p 8100",
     "start": "next start",
     "build": "next build",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",

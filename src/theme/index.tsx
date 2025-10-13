@@ -6,7 +6,6 @@ import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@m
 import merge from 'lodash/merge';
 
 import { useSettingsContext } from '@/components/settings';
-// locales
 import { useLocales } from '@/theme/locales';
 
 // system
