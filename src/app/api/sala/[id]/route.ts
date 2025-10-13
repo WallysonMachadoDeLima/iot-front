@@ -1,4 +1,4 @@
-import { atualizarSala, excluirSala, obterSala } from '@/data/sala-sql';
+import { atualizarSala, excluirSala, obterSala } from '@/db/sql/sala-sql';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';

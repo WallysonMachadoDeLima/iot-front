@@ -1,4 +1,4 @@
-import { criarSala, listarSalas } from '@/data/sala-sql';
+import { criarSala, listarSalas } from '@/db/sql';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';

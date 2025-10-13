@@ -1,6 +1,9 @@
 // src/lib/db.ts
 import mysql from 'mysql2/promise';
 
+
+// ----------------------------------------------------------------------
+
 type DB = {
     pool: mysql.Pool;
 };

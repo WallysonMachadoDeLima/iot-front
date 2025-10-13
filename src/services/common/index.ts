@@ -1,3 +1,1 @@
-export * from './integracoes';
-export * from './locus';
-export * from './ncm';
+export * from './locus-service';

@@ -1,5 +1,5 @@
 import { paths } from '@/routes/paths';
-import { api, apiUnits } from '@/services/config-service';
+import { api } from '@/services/config-service';
 
 // ----------------------------------------------------------------------
 
@@ -67,8 +67,5 @@ export const setSession = (accessToken: string | null) => {
     item.defaults.headers.common['x-api-key'] = process.env.NEXT_PUBLIC_API_KEY;
   });
 
-  Object.values(apiUnits).forEach((item) => {
-    item.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-    item.defaults.headers.common['x-api-key'] = process.env.NEXT_PUBLIC_API_KEY;
-  });
+
 };
