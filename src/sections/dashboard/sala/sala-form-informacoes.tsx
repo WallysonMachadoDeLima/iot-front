@@ -21,7 +21,7 @@ export function SalaFormInformacoes({ isView }: Props) {
 
             <Grid xs={12}>
               <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-                <RHFTextField name="nome" label="Nome" readOnly={isView} />
+                <RHFTextField name="nome" label="Nome" />
               </Stack>
             </Grid>
 

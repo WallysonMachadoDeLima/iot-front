@@ -47,11 +47,11 @@ export function SalaListView() {
   const fetchData = () => localFilteringPaging('ativo');
 
   const handleEdit = (item: ISalaFindAll) => {
-    router.push(paths.dashboard.sala.edit(item.id));
+    router.push(paths.dashboard.infraestrutura.sala.edit(item.id));
   };
 
   const handleView = (item: ISalaFindAll) => {
-    router.push(paths.dashboard.sala.view(item.id));
+    router.push(paths.dashboard.infraestrutura.sala.view(item.id));
   };
 
   useEffect(() => {
@@ -74,13 +74,13 @@ export function SalaListView() {
             { name: 'Painel', href: paths.dashboard.root },
             {
               name: 'Salas',
-              href: paths.dashboard.sala.list,
+              href: paths.dashboard.infraestrutura.sala.list,
             },
             { name: 'Lista' },
           ]}
           actionRouter={{
             type: 'create',
-            route: paths.dashboard.sala.create,
+            route: paths.dashboard.infraestrutura.sala.create,
             label: 'Nova Sala',
           }}
         />

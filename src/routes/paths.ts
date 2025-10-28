@@ -27,12 +27,15 @@ export const paths = {
     general: {
       app: `${ROOTS.DASHBOARD}/app`,
     },
-    sala: {
-      create: `${ROOTS.DASHBOARD}/sala/create`,
-      list: `${ROOTS.DASHBOARD}/sala/list`,
-      edit: (id: string | number) => `${ROOTS.DASHBOARD}/sala/${id}/edit`,
-      view: (id: string | number) => `${ROOTS.DASHBOARD}/sala/${id}/view`,
+    infraestrutura: {
+      sala: {
+        create: `${ROOTS.DASHBOARD}/sala/create`,
+        list: `${ROOTS.DASHBOARD}/sala/list`,
+        edit: (id: string | number) => `${ROOTS.DASHBOARD}/sala/${id}/edit`,
+        view: (id: string | number) => `${ROOTS.DASHBOARD}/sala/${id}/view`,
 
+      }
     }
+
   },
 };

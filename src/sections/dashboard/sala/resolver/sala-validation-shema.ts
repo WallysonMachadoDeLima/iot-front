@@ -4,7 +4,7 @@ import { Yup } from '@/utils';
 
 export const informacoesValidationShema = Yup.object().shape({
   id: Yup.number().optional(),
-  nome: Yup.string().required('Nome'),
+  nome: Yup.string().cpf('Nome'),
   descricao: Yup.string().required('Descrição'),
 });
 

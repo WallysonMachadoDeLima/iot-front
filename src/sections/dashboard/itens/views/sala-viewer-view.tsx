@@ -31,7 +31,7 @@ export function SalaViewerView() {
       .then((response) => setCurrentData({ ...response, id: Number(id) }))
       .catch((error) => {
         handleErrors(error, 'Erro ao consultar Sala');
-        router.push(paths.dashboard.sala.list);
+        router.push(paths.dashboard.infraestrutura.sala.list);
       });
   }, []);
 
@@ -46,7 +46,7 @@ export function SalaViewerView() {
           },
           {
             name: 'Sala',
-            href: paths.dashboard.sala.list,
+            href: paths.dashboard.infraestrutura.sala.list,
           },
           { name: currentData?.descricao },
         ]}

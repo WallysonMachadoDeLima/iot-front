@@ -31,7 +31,7 @@ export function SalaCreateEditForm({ currentData, isView }: Props) {
       .create(data)
       .then((response) => {
         enqueueSnackbar('Criado com sucesso!');
-        router.push(paths.dashboard.sala.list);
+        router.push(paths.dashboard.infraestrutura.sala.list);
       })
       .catch((error) => handleErrors(error, 'Erro na criação!'))
       .finally(() => setFinalizeForm(false));
@@ -42,7 +42,7 @@ export function SalaCreateEditForm({ currentData, isView }: Props) {
       .update(Number(currentData?.id), { ...data, id: Number(currentData?.id) })
       .then(() => {
         enqueueSnackbar('Atualizado com sucesso!');
-        router.push(paths.dashboard.sala.list);
+        router.push(paths.dashboard.infraestrutura.sala.list);
       })
       .catch((error) => handleErrors(error, 'Erro na atualização!'))
       .finally(() => setFinalizeForm(false));

@@ -28,7 +28,7 @@ export function useNavData() {
         items: [
           {
             title: t('salas'),
-            path: paths.dashboard.sala.list,
+            path: paths.dashboard.infraestrutura.sala.list,
             icon: ICONS.sala,
           },
         ],

@@ -24,7 +24,7 @@ export function SalaActions({ finalizeForm }: Props) {
           <Button
             variant="outlined"
             color="inherit"
-            onClick={() => router.push(paths.dashboard.sala.list)}
+            onClick={() => router.push(paths.dashboard.infraestrutura.sala.list)}
           >
             Voltar
           </Button>

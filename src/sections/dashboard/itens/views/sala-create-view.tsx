@@ -24,7 +24,7 @@ export function SalaCreateView() {
           },
           {
             name: 'Salas',
-            href: paths.dashboard.sala.list,
+            href: paths.dashboard.infraestrutura.sala.list,
           },
           { name: 'Nova Sala' },
         ]}
