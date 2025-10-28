@@ -1,32 +1,30 @@
-import { ITipoLocalCreateEdit } from '@/models';
+import { ILocalizacaoCreateEdit } from '@/models';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { RHFFormProvider } from '@/components/hook-form';
 
-import { TipoLocalActions } from './components';
-import { TipoLocalFormInformacoes } from './localizacao-form-informacoes';
-import { TipoLocalResolver } from './resolver';
+import { LocalizacaoActions } from './components';
+import { LocalizacaoFormInformacoes } from './localizacao-form-informacoes';
+import { LocalizacaoResolver } from './resolver';
 
 
 
 type Props = {
-  currentData?: ITipoLocalCreateEdit;
-  setValues: (value: ITipoLocalCreateEdit) => void;
+  currentData?: ILocalizacaoCreateEdit;
+  setValues: (value: ILocalizacaoCreateEdit) => void;
   finalizeForm: boolean;
   setFinalizeForm: (value: boolean) => void;
-  isView?: boolean;
 };
 
-export function TipoLocalEditTabs({
+export function LocalizacaoEditTabs({
   currentData,
   setValues,
   finalizeForm,
   setFinalizeForm,
-  isView,
 }: Props) {
-  const methods = TipoLocalResolver(currentData);
+  const methods = LocalizacaoResolver(currentData);
 
-  const onSubmit = (data: ITipoLocalCreateEdit) => {
+  const onSubmit = (data: ILocalizacaoCreateEdit) => {
     setValues(data);
     setFinalizeForm(true);
   };
@@ -34,9 +32,9 @@ export function TipoLocalEditTabs({
   return (
     <RHFFormProvider methods={methods} onSubmit={onSubmit}>
       <Grid container spacing={3}>
-        <TipoLocalFormInformacoes isView={isView} />
+        <LocalizacaoFormInformacoes />
 
-        {!isView && <TipoLocalActions finalizeForm={finalizeForm} />}
+        <LocalizacaoActions finalizeForm={finalizeForm} />
       </Grid>
     </RHFFormProvider>
   );

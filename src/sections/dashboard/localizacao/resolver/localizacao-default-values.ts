@@ -1,10 +1,10 @@
-import { ITipoLocalCreateEdit } from "@/models";
+import { ILocalizacaoCreateEdit } from '@/models';
 
 
-
-export const TipoLocalDefaultValues = (currentData?: ITipoLocalCreateEdit) => {
+export const LocalizacaoDefaultValues = (currentData?: ILocalizacaoCreateEdit) => {
   return {
-    id_tipolocal: currentData?.id_tipolocal || 0,
-    descricao: currentData?.descricao || '',
+    fk_id_tipolocal: currentData?.fk_id_tipolocal ?? '',
+    nome: currentData?.nome || '',
+    ativo: currentData?.ativo ?? true,
   };
 };

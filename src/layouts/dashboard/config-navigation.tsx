@@ -1,21 +1,14 @@
 import { paths } from '@/routes';
 import { useMemo } from 'react';
+import { FaMapLocation } from "react-icons/fa6";
+import { MdLocalOffer } from "react-icons/md";
 
-import SvgColor from '@/components/svg-color';
 import { useLocales } from '@/theme/locales';
 
-
-
-const icon = (name: string) => (
-  <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />
-);
-
 const ICONS = {
-  tipoLocal: icon('ic_banking'),
-  localizacao: icon('ic_delivery'),
+  tipoLocal: <MdLocalOffer />,
+  localizacao: <FaMapLocation />,
 };
-
-
 
 export function useNavData() {
   const { t } = useLocales();
@@ -27,12 +20,12 @@ export function useNavData() {
         items: [
           {
             title: t('tipo local'),
-            path: paths.dashboard.infraestrutura.tipoLocal.list,
+            path: paths.dashboard.tipoLocal.list,
             icon: ICONS.tipoLocal,
           },
           {
             title: t('localizacao'),
-            path: paths.dashboard.infraestrutura.localizacao.list,
+            path: paths.dashboard.localizacao.list,
             icon: ICONS.localizacao,
           },
         ],

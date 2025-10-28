@@ -3,13 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import { RHFTextField } from '@/components/hook-form';
 
-
-
-interface Props {
-  isView?: boolean;
-}
-
-export function TipoLocalFormInformacoes({ isView }: Props) {
+export function TipoLocalFormInformacoes() {
   return (
     <Grid xs={12}>
       <Card sx={{ p: 3 }}>
@@ -23,7 +17,6 @@ export function TipoLocalFormInformacoes({ isView }: Props) {
               <RHFTextField
                 name="descricao"
                 label="Descrição"
-                readOnly={isView}
                 multiline
                 rows={4}
               />

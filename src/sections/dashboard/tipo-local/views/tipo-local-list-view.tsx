@@ -47,11 +47,11 @@ export function TipoLocalListView() {
   const fetchData = () => localFilteringPaging('ativo');
 
   const handleEdit = (item: ITipoLocalFindAll) => {
-    router.push(paths.dashboard.infraestrutura.tipoLocal.edit(item.id_tipolocal));
+    router.push(paths.dashboard.tipoLocal.edit(item.id_tipolocal));
   };
 
   const handleView = (item: ITipoLocalFindAll) => {
-    router.push(paths.dashboard.infraestrutura.tipoLocal.viewer(item.id_tipolocal));
+    router.push(paths.dashboard.tipoLocal.viewer(item.id_tipolocal));
   };
 
   useEffect(() => {
@@ -74,13 +74,13 @@ export function TipoLocalListView() {
             { name: 'Painel', href: paths.dashboard.root },
             {
               name: 'Tipos de Local',
-              href: paths.dashboard.infraestrutura.tipoLocal.list,
+              href: paths.dashboard.tipoLocal.list,
             },
             { name: 'Lista' },
           ]}
           actionRouter={{
             type: 'create',
-            route: paths.dashboard.infraestrutura.tipoLocal.create,
+            route: paths.dashboard.tipoLocal.create,
             label: 'Novo Tipo de Local',
           }}
         />

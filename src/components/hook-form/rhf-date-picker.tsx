@@ -77,6 +77,7 @@ export function RHFDatePicker({
             }}
             minDate={minDate}
             maxDate={maxDate}
+
             slotProps={{
               textField: {
                 size: size,

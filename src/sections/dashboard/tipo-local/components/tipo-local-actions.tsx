@@ -24,7 +24,7 @@ export function TipoLocalActions({ finalizeForm }: Props) {
           <Button
             variant="outlined"
             color="inherit"
-            onClick={() => router.push(paths.dashboard.infraestrutura.tipoLocal.list)}
+            onClick={() => router.push(paths.dashboard.tipoLocal.list)}
           >
             Voltar
           </Button>

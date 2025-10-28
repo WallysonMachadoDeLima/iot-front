@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 
-export const LOCAL_API = process.env.NEXT_PUBLIC_LOCAL_API;
+export const LOCAL_API = 'http://localhost:8085';
 
 const api = {
   next: axios.create({

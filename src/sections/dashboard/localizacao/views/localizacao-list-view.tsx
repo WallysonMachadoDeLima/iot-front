@@ -1,7 +1,7 @@
 'use client';
 
 import { useError } from '@/hooks';
-import { ITipoLocalFindAll } from '@/models';
+import { ILocalizacaoFindAll } from '@/models';
 import { paths, useRouter } from '@/routes';
 import {
   Card,
@@ -28,17 +28,17 @@ import {
   useTableLocal,
 } from '@/components/table';
 
-import { salaService } from '@/services/dashboard/sala';
+import { localizacaoService } from '@/services';
 import { TIPO_LOCAL_ENUM } from '../enums';
 
 
 
-export function TipoLocalListView() {
+export function LocalizacaoListView() {
   const router = useRouter();
   const handleError = useError();
   const settings = useSettingsContext();
 
-  const { methods, localFilteringPaging } = useTableLocal<ITipoLocalFindAll>();
+  const { methods, localFilteringPaging } = useTableLocal<ILocalizacaoFindAll>();
 
   const { setValue, watch } = methods;
 
@@ -46,12 +46,12 @@ export function TipoLocalListView() {
 
   const fetchData = () => localFilteringPaging('ativo');
 
-  const handleEdit = (item: ITipoLocalFindAll) => {
-    router.push(paths.dashboard.infraestrutura.tipoLocal.edit(item.id_tipolocal));
+  const handleEdit = (item: ILocalizacaoFindAll) => {
+    router.push(paths.dashboard.localizacao.edit(item.id_local));
   };
 
-  const handleView = (item: ITipoLocalFindAll) => {
-    router.push(paths.dashboard.infraestrutura.tipoLocal.view(item.id_tipolocal));
+  const handleView = (item: ILocalizacaoFindAll) => {
+    router.push(paths.dashboard.localizacao.viewer(item.id_local));
   };
 
   useEffect(() => {
@@ -59,29 +59,29 @@ export function TipoLocalListView() {
   }, [linesPerPage, page, search, tab]);
 
   useEffect(() => {
-    salaService
+    localizacaoService
       .findAll()
       .then((response: any[]) => setValue('dataTable', response))
-      .catch((error: any) => handleError(error, 'Serviço de Tipos de Local indisponível'));
+      .catch((error: any) => handleError(error, 'Serviço de Localização indisponível'));
   }, []);
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <RHFFormProvider methods={methods}>
         <CustomBreadcrumbs
-          heading="Listagem de Tipos de Local"
+          heading="Listagem de Localização"
           links={[
             { name: 'Painel', href: paths.dashboard.root },
             {
-              name: 'Tipos de Local',
-              href: paths.dashboard.infraestrutura.tipoLocal.list,
+              name: 'Localização',
+              href: paths.dashboard.localizacao.list,
             },
             { name: 'Lista' },
           ]}
           actionRouter={{
             type: 'create',
-            route: paths.dashboard.infraestrutura.tipoLocal.create,
-            label: 'Novo Tipo de Local',
+            route: paths.dashboard.localizacao.create,
+            label: 'Novo Localização',
           }}
         />
         <Card>
@@ -102,10 +102,10 @@ export function TipoLocalListView() {
                 <TableBody>
                   {dataTableFilter?.map((item) => {
                     return (
-                      <TableRow hover key={item.id_tipolocal}>
-                        <TableCell align="center">{item.id_tipolocal}</TableCell>
+                      <TableRow hover key={item.id_local}>
+                        <TableCell align="center">{item.id_local}</TableCell>
 
-                        <TableCell align="center">{item.descricao}</TableCell>
+                        <TableCell align="center">{item.nome}</TableCell>
 
                         <TableCell sx={{ whiteSpace: 'nowrap' }}>
                           <TableActions

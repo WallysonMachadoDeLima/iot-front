@@ -34,9 +34,9 @@ export function TipoLocalEditTabs({
   return (
     <RHFFormProvider methods={methods} onSubmit={onSubmit}>
       <Grid container spacing={3}>
-        <TipoLocalFormInformacoes isView={isView} />
+        <TipoLocalFormInformacoes />
 
-        {!isView && <TipoLocalActions finalizeForm={finalizeForm} />}
+        <TipoLocalActions finalizeForm={finalizeForm} />
       </Grid>
     </RHFFormProvider>
   );

@@ -1,7 +1,5 @@
-import { SalaCreateView } from '@/sections/dashboard/sala/views';
+import { LocalizacaoCreateView } from '@/sections/dashboard/localizacao/views';
 
-
-
-export default function SalaCreatePage() {
-  return <SalaCreateView />;
+export default function LocalizacaoCreatePage() {
+  return <LocalizacaoCreateView />;
 }

@@ -1,22 +1,21 @@
 'use client';
 
 import { useError } from '@/hooks';
-import { ITipoLocalCreateEdit } from '@/models';
+import { ILocalizacaoCreateEdit } from '@/models';
 import { paths, useRouter } from '@/routes';
-import { tipoLocalService } from '@/services';
+import { localizacaoService } from '@/services';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 
-import { TipoLocalEditTabs } from './localizacao-create-edit-tabs';
+import { LocalizacaoEditTabs } from './localizacao-create-edit-tabs';
 
 
 
 type Props = {
-  currentData?: ITipoLocalCreateEdit;
-  isView?: boolean;
+  currentData?: ILocalizacaoCreateEdit;
 };
 
-export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
+export function LocalizacaoCreateEditForm({ currentData }: Props) {
   const handleErrors = useError();
   const router = useRouter();
 
@@ -24,31 +23,31 @@ export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
 
   const [finalizeForm, setFinalizeForm] = useState<boolean>(false);
 
-  const [values, setValues] = useState<ITipoLocalCreateEdit>();
+  const [values, setValues] = useState<ILocalizacaoCreateEdit>();
 
-  const handleCreate = async (data: ITipoLocalCreateEdit) => {
-    tipoLocalService
+  const handleCreate = async (data: ILocalizacaoCreateEdit) => {
+    localizacaoService
       .create(data)
       .then((response) => {
         enqueueSnackbar('Criado com sucesso!');
-        router.push(paths.dashboard.infraestrutura.tipoLocal.list);
+        router.push(paths.dashboard.localizacao.list);
       })
       .catch((error) => handleErrors(error, 'Erro na criação!'))
       .finally(() => setFinalizeForm(false));
   };
 
-  const handleUpdate = async (data: ITipoLocalCreateEdit) => {
-    tipoLocalService
-      .update(Number(currentData?.id_tipolocal), { ...data, id_tipolocal: Number(currentData?.id_tipolocal) })
+  const handleUpdate = async (data: ILocalizacaoCreateEdit) => {
+    localizacaoService
+      .update(Number(currentData?.id_local), { ...data, id_local: Number(currentData?.id_local) })
       .then(() => {
         enqueueSnackbar('Atualizado com sucesso!');
-        router.push(paths.dashboard.infraestrutura.tipoLocal.list);
+        router.push(paths.dashboard.localizacao.list);
       })
       .catch((error) => handleErrors(error, 'Erro na atualização!'))
       .finally(() => setFinalizeForm(false));
   };
 
-  const clearingShippingData = (data: ITipoLocalCreateEdit) => {
+  const clearingShippingData = (data: ILocalizacaoCreateEdit) => {
     return data;
   };
 
@@ -60,12 +59,11 @@ export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
   }, [finalizeForm, values, currentData]);
 
   return (
-    <TipoLocalEditTabs
+    <LocalizacaoEditTabs
       currentData={values || currentData}
       setValues={setValues}
       finalizeForm={finalizeForm}
       setFinalizeForm={setFinalizeForm}
-      isView={isView}
     />
   );
 }

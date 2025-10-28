@@ -1,15 +1,15 @@
-import { ITipoLocalCreateEdit } from '@/models';
+import { ILocalizacaoCreateEdit } from '@/models';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
-import { TipoLocalDefaultValues } from './localizacao-default-values';
-import { tipoLocalValidationShema } from './localizacao-validation-shema';
+import { LocalizacaoDefaultValues } from './localizacao-default-values';
+import { localizacaoValidationShema } from './localizacao-validation-shema';
 
 
 
-export const TipoLocalResolver = (currentForm?: ITipoLocalCreateEdit) => {
+export const LocalizacaoResolver = (currentForm?: ILocalizacaoCreateEdit) => {
   return useForm({
-    resolver: yupResolver(tipoLocalValidationShema),
-    defaultValues: TipoLocalDefaultValues(currentForm),
+    resolver: yupResolver(localizacaoValidationShema),
+    defaultValues: LocalizacaoDefaultValues(currentForm),
   });
 };

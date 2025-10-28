@@ -31,7 +31,7 @@ export function TipoLocalEditView() {
       .then((response) => setCurrentData({ ...response, id_tipolocal: Number(id) }))
       .catch((error) => {
         handleErrors(error, 'Erro ao consultar Tipo de Local');
-        router.push(paths.dashboard.infraestrutura.tipoLocal.list);
+        router.push(paths.dashboard.tipoLocal.list);
       });
   }, []);
 
@@ -46,7 +46,7 @@ export function TipoLocalEditView() {
           },
           {
             name: 'Tipo de Local',
-            href: paths.dashboard.infraestrutura.tipoLocal.list,
+            href: paths.dashboard.tipoLocal.list,
           },
           { name: currentData?.descricao },
         ]}

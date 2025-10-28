@@ -13,10 +13,9 @@ import { TipoLocalEditTabs } from './tipo-local-create-edit-tabs';
 
 type Props = {
   currentData?: ITipoLocalCreateEdit;
-  isView?: boolean;
 };
 
-export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
+export function TipoLocalCreateEditForm({ currentData }: Props) {
   const handleErrors = useError();
   const router = useRouter();
 
@@ -31,7 +30,7 @@ export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
       .create(data)
       .then((response) => {
         enqueueSnackbar('Criado com sucesso!');
-        router.push(paths.dashboard.infraestrutura.tipoLocal.list);
+        router.push(paths.dashboard.tipoLocal.list);
       })
       .catch((error) => handleErrors(error, 'Erro na criação!'))
       .finally(() => setFinalizeForm(false));
@@ -42,7 +41,7 @@ export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
       .update(Number(currentData?.id_tipolocal), { ...data, id_tipolocal: Number(currentData?.id_tipolocal) })
       .then(() => {
         enqueueSnackbar('Atualizado com sucesso!');
-        router.push(paths.dashboard.infraestrutura.tipoLocal.list);
+        router.push(paths.dashboard.tipoLocal.list);
       })
       .catch((error) => handleErrors(error, 'Erro na atualização!'))
       .finally(() => setFinalizeForm(false));
@@ -65,7 +64,6 @@ export function TipoLocalCreateEditForm({ currentData, isView }: Props) {
       setValues={setValues}
       finalizeForm={finalizeForm}
       setFinalizeForm={setFinalizeForm}
-      isView={isView}
     />
   );
 }

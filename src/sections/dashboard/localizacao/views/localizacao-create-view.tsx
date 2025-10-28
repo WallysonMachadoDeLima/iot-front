@@ -5,31 +5,29 @@ import { Container } from '@mui/material';
 
 import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
 import { useSettingsContext } from '@/components/settings';
-
-import { TipoLocalCreateEditForm } from '../localizacao-create-edit-form';
-
+import { LocalizacaoCreateEditForm } from '../localizacao-create-edit-form';
 
 
-export function TipoLocalCreateView() {
+export function LocalizacaoCreateView() {
   const settings = useSettingsContext();
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <CustomBreadcrumbs
-        heading="Cadastrar Tipo de Local"
+        heading="Cadastrar Localização"
         links={[
           {
             name: 'Painel',
             href: paths.dashboard.root,
           },
           {
-            name: 'Tipos de Local',
-            href: paths.dashboard.infraestrutura.tipoLocal.list,
+            name: 'Localização',
+            href: paths.dashboard.localizacao.list,
           },
-          { name: 'Novo Tipo de Local' },
+          { name: 'Novo Localização' },
         ]}
       />
-      <TipoLocalCreateEditForm />
+      <LocalizacaoCreateEditForm />
     </Container>
   );
 }

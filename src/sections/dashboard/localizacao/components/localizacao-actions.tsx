@@ -9,7 +9,7 @@ type Props = {
   finalizeForm: boolean;
 };
 
-export function TipoLocalActions({ finalizeForm }: Props) {
+export function LocalizacaoActions({ finalizeForm }: Props) {
   const router = useRouter();
 
   return (
@@ -24,7 +24,7 @@ export function TipoLocalActions({ finalizeForm }: Props) {
           <Button
             variant="outlined"
             color="inherit"
-            onClick={() => router.push(paths.dashboard.infraestrutura.tipoLocal.list)}
+            onClick={() => router.push(paths.dashboard.localizacao.list)}
           >
             Voltar
           </Button>

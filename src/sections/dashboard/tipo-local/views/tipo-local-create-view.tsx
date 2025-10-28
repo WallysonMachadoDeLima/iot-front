@@ -24,7 +24,7 @@ export function TipoLocalCreateView() {
           },
           {
             name: 'Tipos de Local',
-            href: paths.dashboard.infraestrutura.tipoLocal.list,
+            href: paths.dashboard.tipoLocal.list,
           },
           { name: 'Novo Tipo de Local' },
         ]}

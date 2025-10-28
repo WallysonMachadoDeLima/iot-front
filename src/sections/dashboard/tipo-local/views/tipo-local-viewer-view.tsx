@@ -46,7 +46,7 @@ export function TipoLocalViewerView() {
       .then((response) => setCurrentData({ ...response, id_tipolocal: Number(id) }))
       .catch((error) => {
         handleErrors(error, 'Erro ao consultar Tipo de Local');
-        router.push(paths.dashboard.infraestrutura.tipoLocal.list);
+        router.push(paths.dashboard.tipoLocal.list);
       });
   }, []);
 
@@ -61,31 +61,29 @@ export function TipoLocalViewerView() {
           },
           {
             name: 'Tipo de Local',
-            href: paths.dashboard.infraestrutura.tipoLocal.list,
+            href: paths.dashboard.tipoLocal.list,
           },
           { name: currentData?.descricao },
         ]}
       />
 
       {currentData &&
-        <>
-          <Box sx={{ mt: 3 }}>
-            <Stack spacing={3}>
-              <Stack
-                direction="row"
-                spacing={3}
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(5, 1fr)',
-                  gap: 3
-                }}
-              >
-                <ViewField label="Código" value={currentData.id_tipolocal} />
-                <ViewField label="Descrição" value={currentData.descricao} />
-              </Stack>
+        <Box sx={{ mt: 3 }}>
+          <Stack spacing={3}>
+            <Stack
+              direction="row"
+              spacing={3}
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(5, 1fr)',
+                gap: 3
+              }}
+            >
+              <ViewField label="Código" value={currentData.id_tipolocal} />
+              <ViewField label="Descrição" value={currentData.descricao} />
             </Stack>
-          </Box>
-        </>
+          </Stack>
+        </Box>
       }
     </Container >
   );

@@ -1,7 +1,5 @@
-import { SalaListView } from '@/sections/dashboard/sala/views';
+import { LocalizacaoListView } from '@/sections/dashboard/localizacao/views';
 
-
-
-export default function SalaListPage() {
-  return <SalaListView />;
+export default function LocalizacaoListPage() {
+  return <LocalizacaoListView />;
 }

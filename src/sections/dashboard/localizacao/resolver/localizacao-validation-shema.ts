@@ -1,13 +1,13 @@
 import { Yup } from '@/utils';
 
 
-
 export const informacoesValidationShema = Yup.object().shape({
-  id_tipolocal: Yup.number().optional(),
-  descricao: Yup.string().required('Descrição'),
+  fk_id_tipolocal: Yup.number().required('Tipo de Local é obrigatório'),
+  nome: Yup.string().required('Nome é obrigatório'),
+  ativo: Yup.number().optional(),
 });
 
-export const tipoLocalValidationShema = Yup.object().shape({
+export const localizacaoValidationShema = Yup.object().shape({
   ...informacoesValidationShema.fields,
 });
 

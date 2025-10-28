@@ -66,6 +66,7 @@ export function RHFSelect({
           }}
           error={!!error}
           helperText={error ? error?.message : helperText}
+          variant='filled'
           {...other}
         >
           {cleanFild && !['', null, undefined].includes(watch(name)) && (

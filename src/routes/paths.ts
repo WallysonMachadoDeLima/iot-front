@@ -27,19 +27,17 @@ export const paths = {
     general: {
       app: `${ROOTS.DASHBOARD}/app`,
     },
-    infraestrutura: {
-      tipoLocal: {
-        create: `${ROOTS.DASHBOARD}/tipo-local/create`,
-        list: `${ROOTS.DASHBOARD}/tipo-local/list`,
-        edit: (id: string | number) => `${ROOTS.DASHBOARD}/tipo-local/${id}/edit`,
-        viewer: (id: string | number) => `${ROOTS.DASHBOARD}/tipo-local/${id}/viewer`,
-      },
-      localizacao: {
-        create: `${ROOTS.DASHBOARD}/localizacao/create`,
-        list: `${ROOTS.DASHBOARD}/localizacao/list`,
-        edit: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/edit`,
-        viewer: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/viewer`,
-      },
+    tipoLocal: {
+      create: `${ROOTS.DASHBOARD}/tipo-local/create`,
+      list: `${ROOTS.DASHBOARD}/tipo-local/list`,
+      edit: (id: string | number) => `${ROOTS.DASHBOARD}/tipo-local/${id}/edit`,
+      viewer: (id: string | number) => `${ROOTS.DASHBOARD}/tipo-local/${id}/viewer`,
+    },
+    localizacao: {
+      create: `${ROOTS.DASHBOARD}/localizacao/create`,
+      list: `${ROOTS.DASHBOARD}/localizacao/list`,
+      edit: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/edit`,
+      viewer: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/viewer`,
     },
   }
 };
