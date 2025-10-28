@@ -4,16 +4,31 @@ import { useError } from '@/hooks';
 import { ITipoLocalCreateEdit } from '@/models';
 import { paths } from '@/routes';
 import { tipoLocalService } from '@/services';
-import { Container } from '@mui/system';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
 import { useSettingsContext } from '@/components/settings';
 import { useRouter } from '@/routes/hooks';
+import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 
-import { TipoLocalCreateEditForm } from '../tipo-local-create-edit-form';
+interface ViewFieldProps {
+  label: string;
+  value: string | number | undefined;
+}
 
+function ViewField({ label, value }: ViewFieldProps) {
+  return (
+    <Paper sx={{ p: 2 }}>
+      <Typography variant="caption" color="text.secondary" gutterBottom>
+        {label}
+      </Typography>
+      <Typography variant="body1">
+        {value || '-'}
+      </Typography>
+    </Paper>
+  );
+}
 
 
 export function TipoLocalViewerView() {
@@ -52,7 +67,26 @@ export function TipoLocalViewerView() {
         ]}
       />
 
-      {currentData && <TipoLocalCreateEditForm currentData={currentData} isView={true} />}
-    </Container>
+      {currentData &&
+        <>
+          <Box sx={{ mt: 3 }}>
+            <Stack spacing={3}>
+              <Stack
+                direction="row"
+                spacing={3}
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(5, 1fr)',
+                  gap: 3
+                }}
+              >
+                <ViewField label="Código" value={currentData.id_tipolocal} />
+                <ViewField label="Descrição" value={currentData.descricao} />
+              </Stack>
+            </Stack>
+          </Box>
+        </>
+      }
+    </Container >
   );
 }

@@ -11,8 +11,8 @@ const icon = (name: string) => (
 );
 
 const ICONS = {
-  sala: icon('ic_banking'),
-  mercadorias: icon('ic_delivery'),
+  tipoLocal: icon('ic_banking'),
+  localizacao: icon('ic_delivery'),
 };
 
 
@@ -24,12 +24,16 @@ export function useNavData() {
     () => [
       {
         subheader: t('infraestrutura'),
-
         items: [
           {
-            title: t('salas'),
-            path: paths.dashboard.infraestrutura.sala.list,
-            icon: ICONS.sala,
+            title: t('tipo local'),
+            path: paths.dashboard.infraestrutura.tipoLocal.list,
+            icon: ICONS.tipoLocal,
+          },
+          {
+            title: t('localizacao'),
+            path: paths.dashboard.infraestrutura.localizacao.list,
+            icon: ICONS.localizacao,
           },
         ],
       },

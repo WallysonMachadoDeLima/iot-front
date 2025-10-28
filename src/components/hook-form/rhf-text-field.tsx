@@ -153,6 +153,7 @@ export function RHFTextField({
           error={!!error}
           helperText={error ? error?.message : helperText}
           InputProps={{ readOnly, ...handleInputProps() }}
+          variant='filled'
           {...other}
         />
       )}

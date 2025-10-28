@@ -28,7 +28,7 @@ import {
   useTableLocal,
 } from '@/components/table';
 
-import { salaService } from '@/services/dashboard/sala';
+import { tipoLocalService } from '@/services';
 import { TIPO_LOCAL_ENUM } from '../enums';
 
 
@@ -51,7 +51,7 @@ export function TipoLocalListView() {
   };
 
   const handleView = (item: ITipoLocalFindAll) => {
-    router.push(paths.dashboard.infraestrutura.tipoLocal.view(item.id_tipolocal));
+    router.push(paths.dashboard.infraestrutura.tipoLocal.viewer(item.id_tipolocal));
   };
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export function TipoLocalListView() {
   }, [linesPerPage, page, search, tab]);
 
   useEffect(() => {
-    salaService
+    tipoLocalService
       .findAll()
       .then((response: any[]) => setValue('dataTable', response))
       .catch((error: any) => handleError(error, 'Serviço de Tipos de Local indisponível'));

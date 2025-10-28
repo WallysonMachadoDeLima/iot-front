@@ -28,14 +28,18 @@ export const paths = {
       app: `${ROOTS.DASHBOARD}/app`,
     },
     infraestrutura: {
-      sala: {
-        create: `${ROOTS.DASHBOARD}/sala/create`,
-        list: `${ROOTS.DASHBOARD}/sala/list`,
-        edit: (id: string | number) => `${ROOTS.DASHBOARD}/sala/${id}/edit`,
-        view: (id: string | number) => `${ROOTS.DASHBOARD}/sala/${id}/view`,
-
-      }
-    }
-
-  },
+      tipoLocal: {
+        create: `${ROOTS.DASHBOARD}/tipo-local/create`,
+        list: `${ROOTS.DASHBOARD}/tipo-local/list`,
+        edit: (id: string | number) => `${ROOTS.DASHBOARD}/tipo-local/${id}/edit`,
+        viewer: (id: string | number) => `${ROOTS.DASHBOARD}/tipo-local/${id}/viewer`,
+      },
+      localizacao: {
+        create: `${ROOTS.DASHBOARD}/localizacao/create`,
+        list: `${ROOTS.DASHBOARD}/localizacao/list`,
+        edit: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/edit`,
+        viewer: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/viewer`,
+      },
+    },
+  }
 };
