@@ -4,7 +4,7 @@ import { SxProps, Theme } from '@mui/material/styles';
 
 import { RouterLink } from '@/routes/components';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   sx?: SxProps<Theme>;

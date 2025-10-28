@@ -9,7 +9,7 @@ import Iconify from '../../iconify';
 import { NavConfigProps, NavItemProps } from '../types';
 import { StyledDotIcon, StyledIcon, StyledItem } from './styles';
 
-// ----------------------------------------------------------------------
+
 
 type Props = NavItemProps & {
   config: NavConfigProps;

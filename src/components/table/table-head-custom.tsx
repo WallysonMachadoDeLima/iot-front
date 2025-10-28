@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 
-// ----------------------------------------------------------------------
+
 
 const visuallyHidden = {
   border: 0,
@@ -20,7 +20,7 @@ const visuallyHidden = {
   clip: 'rect(0 0 0 0)',
 } as const;
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   order?: 'asc' | 'desc';

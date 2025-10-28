@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { paths } from '@/routes';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -9,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 
@@ -19,7 +19,7 @@ import Iconify from '@/components/iconify';
 import { useBoolean } from '@/hooks/';
 import { useRouter, useSearchParams } from '@/routes/hooks';
 
-// ----------------------------------------------------------------------
+
 
 export default function JwtLoginView() {
   const { login } = useAuthContext();

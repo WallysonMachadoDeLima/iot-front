@@ -9,7 +9,7 @@ import { bgBlur } from '@/theme/css';
 import { IconifyProps } from '../iconify';
 import { LeftIcon, RightIcon } from './arrow-icons';
 
-// ----------------------------------------------------------------------
+
 
 const StyledRoot = styled(Box)(({ theme }) => ({
   ...bgBlur({
@@ -35,7 +35,7 @@ const StyledIconButton = styled(IconButton)({
   '&:hover': { opacity: 1 },
 });
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   index: number;

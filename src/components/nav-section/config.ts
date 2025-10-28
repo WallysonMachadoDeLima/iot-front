@@ -1,6 +1,6 @@
 import { NavConfigProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export const navVerticalConfig = (config?: NavConfigProps) => ({
   itemGap: config?.itemGap || 4,

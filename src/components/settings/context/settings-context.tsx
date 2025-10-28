@@ -4,7 +4,7 @@ import { createContext, useContext } from 'react';
 
 import { SettingsContextProps } from '../types';
 
-// ----------------------------------------------------------------------
+
 
 export const SettingsContext = createContext({} as SettingsContextProps);
 

@@ -2,7 +2,7 @@
 import { Box, FormControlLabel, MenuItem, Pagination, Select, Switch } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 export const TablePagination = () => {
   const { watch } = useFormContext();

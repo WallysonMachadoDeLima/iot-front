@@ -4,7 +4,7 @@
 import { AuthGuard } from '@/auth/guard';
 import DashboardLayout from '@/layouts/dashboard';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

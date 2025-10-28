@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 
 import Image from '../image';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   imgUrl?: string;

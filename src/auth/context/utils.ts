@@ -1,6 +1,6 @@
 import { paths } from '@/routes/paths';
 
-// ----------------------------------------------------------------------
+
 
 function jwtDecode(token: string) {
   const base64Url = token.split('.')[1];
@@ -16,7 +16,7 @@ function jwtDecode(token: string) {
   return JSON.parse(jsonPayload);
 }
 
-// ----------------------------------------------------------------------
+
 
 export const isValidToken = (accessToken: string) => {
   if (!accessToken) {
@@ -30,7 +30,7 @@ export const isValidToken = (accessToken: string) => {
   return decoded.exp > currentTime;
 };
 
-// ----------------------------------------------------------------------
+
 
 export const tokenExpired = (exp: number) => {
   let expiredTimer;
@@ -49,7 +49,7 @@ export const tokenExpired = (exp: number) => {
   }, timeLeft);
 };
 
-// ----------------------------------------------------------------------
+
 
 export const setSession = (accessToken: string | null) => {
   if (accessToken) {

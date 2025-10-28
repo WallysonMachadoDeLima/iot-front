@@ -1,6 +1,6 @@
 import { LightboxExternalProps } from 'yet-another-react-lightbox';
 
-// ----------------------------------------------------------------------
+
 
 export interface LightBoxProps extends LightboxExternalProps {
   disabledZoom?: boolean;

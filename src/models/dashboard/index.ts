@@ -1,1 +1,3 @@
-export * from './sala-model';
+export * from './localizacao-model';
+export * from './tipo-local-model';
+

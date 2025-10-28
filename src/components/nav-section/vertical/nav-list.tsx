@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
 import Collapse from '@mui/material/Collapse';
+import { useCallback, useEffect, useState } from 'react';
 
 import { usePathname } from '@/routes/hooks';
 import { useActiveLink } from '@/routes/hooks/use-active-link';
@@ -7,7 +7,7 @@ import { useActiveLink } from '@/routes/hooks/use-active-link';
 import { NavConfigProps, NavListProps } from '../types';
 import NavItem from './nav-item';
 
-// ----------------------------------------------------------------------
+
 
 type NavListRootProps = {
   data: NavListProps;
@@ -61,7 +61,7 @@ export default function NavList({ data, depth, hasChild, config }: NavListRootPr
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 type NavListSubProps = {
   data: NavListProps[];

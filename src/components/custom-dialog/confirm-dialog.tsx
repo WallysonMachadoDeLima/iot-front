@@ -6,7 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { ConfirmDialogProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function ConfirmDialog({
   title,

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
-// ----------------------------------------------------------------------
+
 type InputValue = Date | string | number | null | undefined;
 
 export function fDate(

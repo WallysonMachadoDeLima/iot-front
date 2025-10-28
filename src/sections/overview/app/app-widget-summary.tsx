@@ -9,7 +9,7 @@ import numeral from 'numeral';
 import Chart from '@/components/chart';
 import Iconify from '@/components/iconify';
 
-// ----------------------------------------------------------------------
+
 
 interface Props extends CardProps {
   title: string;

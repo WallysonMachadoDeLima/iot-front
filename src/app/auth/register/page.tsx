@@ -1,6 +1,6 @@
 import { JwtRegisterView } from '@/sections/auth';
 
-// ----------------------------------------------------------------------
+
 
 export const metadata = {
   title: 'Jwt: Register',

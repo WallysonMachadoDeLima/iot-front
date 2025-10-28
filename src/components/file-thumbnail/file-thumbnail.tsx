@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import DownloadButton from './download-button';
 import { fileData, fileFormat, fileThumb } from './utils';
 
-// ----------------------------------------------------------------------
+
 
 type FileIconProps = {
   file: File | string;

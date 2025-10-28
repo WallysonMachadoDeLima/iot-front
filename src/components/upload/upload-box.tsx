@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import Iconify from '../iconify';
 import { UploadProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function UploadBox({ placeholder, error, disabled, sx, ...other }: UploadProps) {
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({

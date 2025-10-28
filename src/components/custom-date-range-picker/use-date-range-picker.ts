@@ -5,7 +5,7 @@ import { fDate } from '@/utils/format-time';
 import { DateRangePickerProps } from './types';
 import { shortDateLabel } from './utils';
 
-// ----------------------------------------------------------------------
+
 
 type ReturnType = DateRangePickerProps;
 

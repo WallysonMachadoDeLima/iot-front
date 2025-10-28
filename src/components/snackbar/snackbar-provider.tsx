@@ -1,15 +1,15 @@
 'use client';
 
-import { useRef } from 'react';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import { closeSnackbar, SnackbarProvider as NotistackProvider } from 'notistack';
+import { useRef } from 'react';
 
 import Iconify from '../iconify';
 import { useSettingsContext } from '../settings';
 import { StyledIcon, StyledNotistack } from './styles';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

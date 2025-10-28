@@ -3,7 +3,7 @@ import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
 import Iconify from '@/components/iconify';
 
-// ----------------------------------------------------------------------
+
 
 const ArrowDownIcon = (props: SvgIconProps) => (
   <SvgIcon {...props}>
@@ -65,7 +65,7 @@ const TreeViewEndIcon = (props: SvgIconProps) => (
   </SvgIcon>
 );
 
-// ----------------------------------------------------------------------
+
 
 export function defaultProps(theme: Theme) {
   return {

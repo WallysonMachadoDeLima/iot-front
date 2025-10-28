@@ -4,7 +4,7 @@ import { SxProps, Theme } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import TablePagination, { TablePaginationProps } from '@mui/material/TablePagination';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   dense?: boolean;
@@ -12,7 +12,7 @@ type Props = {
   sx?: SxProps<Theme>;
 };
 
-export  function TablePaginationCustom({
+export function TablePaginationCustom({
   dense,
   onChangeDense,
   rowsPerPageOptions = [5, 10, 25],

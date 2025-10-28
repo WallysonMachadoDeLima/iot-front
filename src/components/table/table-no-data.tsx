@@ -6,7 +6,7 @@ import { isEqual } from 'lodash';
 import { useFormContext } from 'react-hook-form';
 import EmptyContent from '../empty-content';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   sx?: SxProps<Theme>;

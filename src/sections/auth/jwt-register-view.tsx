@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Alert from '@mui/material/Alert';
@@ -9,6 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 
@@ -21,7 +21,7 @@ import { RouterLink } from '@/routes/components';
 import { useRouter, useSearchParams } from '@/routes/hooks';
 import { paths } from '@/routes/paths';
 
-// ----------------------------------------------------------------------
+
 
 export default function JwtRegisterView() {
   const { register } = useAuthContext();

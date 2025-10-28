@@ -20,7 +20,7 @@ import FullScreenOption from './fullscreen-option';
 import LayoutOptions from './layout-options';
 import StretchOptions from './stretch-options';
 
-// ----------------------------------------------------------------------
+
 
 export default function SettingsDrawer() {
   const theme = useTheme();

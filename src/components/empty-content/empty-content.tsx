@@ -3,7 +3,7 @@ import Stack, { StackProps } from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
-// ----------------------------------------------------------------------
+
 
 type EmptyContentProps = StackProps & {
   title?: string;

@@ -1,9 +1,9 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { LazyMotion, m } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
-// ----------------------------------------------------------------------
+
 
 // eslint-disable-next-line import/extensions
 const loadFeatures = () => import('./features.js').then((res) => res.default);

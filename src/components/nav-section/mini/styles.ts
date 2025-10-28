@@ -4,7 +4,7 @@ import { alpha, styled } from '@mui/material/styles';
 
 import { NavConfigProps, NavItemProps } from '../types';
 
-// ----------------------------------------------------------------------
+
 
 type StyledItemProps = Omit<NavItemProps, 'item'> & {
   config: NavConfigProps;
@@ -43,8 +43,8 @@ export const StyledItem = styled(ListItemButton, {
     margin: `0 ${config.itemGap}px ${config.itemGap}px ${config.itemGap}px`,
     ...(config.hiddenLabel &&
       !subItem && {
-        padding: config.itemPadding,
-      }),
+      padding: config.itemPadding,
+    }),
 
     // Active root item
     ...(active && {
@@ -66,13 +66,13 @@ export const StyledItem = styled(ListItemButton, {
     // Open
     ...(open &&
       !active && {
-        color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
+      color: theme.palette.text.primary,
+      backgroundColor: theme.palette.action.hover,
+    }),
   };
 });
 
-// ----------------------------------------------------------------------
+
 
 type StyledIconProps = {
   size?: number;

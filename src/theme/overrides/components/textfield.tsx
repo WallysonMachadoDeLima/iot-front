@@ -4,7 +4,7 @@ import { inputLabelClasses } from '@mui/material/InputLabel';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { alpha, Theme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 export function textField(theme: Theme) {
   const color = {

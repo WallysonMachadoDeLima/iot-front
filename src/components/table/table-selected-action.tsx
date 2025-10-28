@@ -2,7 +2,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Stack, { StackProps } from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-// ----------------------------------------------------------------------
+
 
 interface Props extends StackProps {
   dense?: boolean;

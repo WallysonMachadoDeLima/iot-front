@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
 import { fNumber, Mask, MaskType, TfNumber } from '@/utils';
 import { InputAdornment, Typography } from '@mui/material';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
+import { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 type Props = TextFieldProps & {
   name: string;
@@ -143,11 +143,11 @@ export function RHFTextField({
             mask && !other.disabled
               ? (Mask as any)?.[mask]?.(field.value)
               : mask === 'money' && other.disabled
-              ? fNumber(
+                ? fNumber(
                   'money',
                   typeof field.value === 'string' ? fNumber('float', field.value) : field.value,
                 )
-              : field.value
+                : field.value
           }
           onChange={(event) => handleOnChange(event, field)}
           error={!!error}

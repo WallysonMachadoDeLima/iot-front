@@ -5,7 +5,7 @@ import { alpha } from '@mui/material/styles';
 
 import Iconify from '../../iconify';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   value: boolean;

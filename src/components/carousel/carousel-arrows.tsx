@@ -5,7 +5,7 @@ import { alpha, styled, useTheme } from '@mui/material/styles';
 import { IconifyProps } from '../iconify';
 import { LeftIcon, RightIcon } from './arrow-icons';
 
-// ----------------------------------------------------------------------
+
 
 interface StyledIconButtonProps extends IconButtonProps {
   filled?: boolean;
@@ -45,7 +45,7 @@ const StyledIconButton = styled(IconButton, {
   }),
 }));
 
-// ----------------------------------------------------------------------
+
 
 interface Props extends StackProps {
   shape?: 'circular' | 'rounded';

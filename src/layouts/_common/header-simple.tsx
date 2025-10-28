@@ -12,7 +12,7 @@ import { HEADER } from '../config-layout';
 import HeaderShadow from './header-shadow';
 import SettingsButton from './settings-button';
 
-// ----------------------------------------------------------------------
+
 
 export default function HeaderSimple() {
   const theme = useTheme();

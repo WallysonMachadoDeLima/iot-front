@@ -5,7 +5,7 @@ import { alpha } from '@mui/material/styles';
 // theme
 import { primaryPresets } from '@/theme/options/presets';
 
-// ----------------------------------------------------------------------
+
 
 type PresetsOptionsProps = {
   value: string;

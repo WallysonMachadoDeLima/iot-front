@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useLayoutEffect, useRef } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 

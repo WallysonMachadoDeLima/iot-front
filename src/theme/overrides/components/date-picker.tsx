@@ -3,7 +3,7 @@ import { Theme } from '@mui/material/styles';
 
 import Iconify from '@/components/iconify';
 
-// ----------------------------------------------------------------------
+
 
 const dateList = [
   'DatePicker',

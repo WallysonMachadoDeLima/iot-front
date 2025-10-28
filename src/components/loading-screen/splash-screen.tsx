@@ -4,7 +4,7 @@ import { m } from 'framer-motion';
 
 import Logo from '../logo';
 
-// ----------------------------------------------------------------------
+
 interface Props extends BoxProps {
   variant?: 'tv' | 'desktop' | 'mobile';
 }

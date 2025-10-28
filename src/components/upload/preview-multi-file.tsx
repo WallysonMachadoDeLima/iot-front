@@ -10,7 +10,7 @@ import FileThumbnail, { fileData } from '../file-thumbnail';
 import Iconify from '../iconify';
 import { UploadProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function MultiFilePreview({ thumbnail, files, onRemove, sx }: UploadProps) {
   return (

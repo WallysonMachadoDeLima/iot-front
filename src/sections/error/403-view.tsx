@@ -10,7 +10,7 @@ import { MotionContainer, varBounce } from '@/components/animate';
 import CompactLayout from '@/layouts/compact';
 import { RouterLink } from '@/routes/components';
 
-// ----------------------------------------------------------------------
+
 
 export default function View403() {
   return (

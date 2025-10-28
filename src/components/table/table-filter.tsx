@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { FiSearch } from 'react-icons/fi';
 import { IoMdTrash } from 'react-icons/io';
 
-// ----------------------------------------------------------------------
+
 
 export const TableFilter = () => {
   const { watch } = useFormContext();

@@ -1,7 +1,7 @@
 import { ListItemButtonProps } from '@mui/material/ListItemButton';
 import { StackProps } from '@mui/material/Stack';
 
-// ----------------------------------------------------------------------
+
 
 export type NavConfigProps = {
   hiddenLabel?: boolean;

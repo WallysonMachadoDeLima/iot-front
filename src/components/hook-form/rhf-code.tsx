@@ -4,7 +4,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { MuiOtpInput, MuiOtpInputProps } from 'mui-one-time-password-input';
 import { Controller, useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 type RHFCodesProps = MuiOtpInputProps & {
   name: string;

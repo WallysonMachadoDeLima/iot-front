@@ -1,11 +1,11 @@
-import { forwardRef, useCallback } from 'react';
 import { Box, FormHelperText, Typography } from '@mui/material';
 import ButtonBase from '@mui/material/ButtonBase';
 import Stack from '@mui/material/Stack';
 import { alpha, SxProps, Theme } from '@mui/material/styles';
+import { forwardRef, useCallback } from 'react';
 import { IoIosCheckmark } from 'react-icons/io';
 
-// ----------------------------------------------------------------------
+
 
 type ColorPickerProps = {
   colors: string[];

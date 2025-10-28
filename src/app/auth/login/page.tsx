@@ -1,6 +1,6 @@
 import { JwtLoginView } from '@/sections/auth';
 
-// ----------------------------------------------------------------------
+
 
 export const metadata = {
   title: 'IOT',

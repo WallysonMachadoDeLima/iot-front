@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { MOCK } from '@/mock';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { setLocalItem } from '@/utils/storage';
 
@@ -9,7 +9,7 @@ import { ActionMapType, AuthStateType, AuthUserType } from '../types';
 import { AuthContext } from './auth-context';
 import { setSession } from './utils';
 
-// ----------------------------------------------------------------------
+
 
 enum Types {
   INITIAL = 'INITIAL',
@@ -33,7 +33,7 @@ type Payload = {
 
 type ActionsType = ActionMapType<Payload>[keyof ActionMapType<Payload>];
 
-// ----------------------------------------------------------------------
+
 
 const initialState: AuthStateType = {
   user: null,
@@ -68,7 +68,7 @@ const reducer = (state: AuthStateType, action: ActionsType) => {
   return state;
 };
 
-// ----------------------------------------------------------------------
+
 
 const STORAGE_KEY = 'accessToken';
 
@@ -172,7 +172,7 @@ export function AuthProvider({ children }: Props) {
     });
   }, []);
 
-  // ----------------------------------------------------------------------
+
 
   const checkAuthenticated = state.user ? 'authenticated' : 'unauthenticated';
 

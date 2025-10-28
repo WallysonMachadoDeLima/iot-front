@@ -6,7 +6,7 @@ import { RouterLink } from '@/routes/components';
 
 import { MenuHotProductsProps } from '../types';
 
-// ----------------------------------------------------------------------
+
 
 export default function MenuHotProducts({ tags, ...other }: MenuHotProductsProps) {
   return (

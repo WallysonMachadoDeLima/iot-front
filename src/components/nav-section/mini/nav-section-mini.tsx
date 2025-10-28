@@ -1,11 +1,11 @@
-import { memo } from 'react';
 import Stack from '@mui/material/Stack';
+import { memo } from 'react';
 
 import { navMiniConfig } from '../config';
 import { NavConfigProps, NavListProps, NavSectionProps } from '../types';
 import NavList from './nav-list';
 
-// ----------------------------------------------------------------------
+
 
 function NavSectionMini({ data, config, sx, ...other }: NavSectionProps) {
   return (
@@ -19,7 +19,7 @@ function NavSectionMini({ data, config, sx, ...other }: NavSectionProps) {
 
 export default memo(NavSectionMini);
 
-// ----------------------------------------------------------------------
+
 
 type GroupProps = {
   items: NavListProps[];

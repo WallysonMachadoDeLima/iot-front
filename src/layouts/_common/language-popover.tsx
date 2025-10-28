@@ -1,14 +1,14 @@
-import { useCallback } from 'react';
 import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import { m } from 'framer-motion';
+import { useCallback } from 'react';
 
 import { varHover } from '@/components/animate';
 import CustomPopover, { usePopover } from '@/components/custom-popover';
 import Iconify from '@/components/iconify';
 import { useLocales } from '@/theme/locales';
 
-// ----------------------------------------------------------------------
+
 
 export default function LanguagePopover() {
   const locales = useLocales();

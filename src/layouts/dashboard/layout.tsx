@@ -10,7 +10,7 @@ import NavHorizontal from './nav-horizontal';
 import NavMini from './nav-mini';
 import NavVertical from './nav-vertical';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

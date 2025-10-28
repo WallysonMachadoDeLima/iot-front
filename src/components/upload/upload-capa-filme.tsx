@@ -9,7 +9,7 @@ import Image from '../image';
 import RejectionFiles from './errors-rejection-files';
 import { UploadProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function UploadCapaFilme({
   error,

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------
+
 
 type ReturnType = (classificacao: number | string) => {
   cor: string;

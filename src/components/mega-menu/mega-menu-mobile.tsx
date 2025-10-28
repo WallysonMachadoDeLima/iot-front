@@ -1,4 +1,3 @@
-import { forwardRef, useCallback, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
@@ -11,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { forwardRef, useCallback, useEffect, useState } from 'react';
 
 import { RouterLink } from '@/routes/components';
 import { usePathname } from '@/routes/hooks';
@@ -20,7 +20,7 @@ import Logo from '../logo';
 import Scrollbar from '../scrollbar';
 import { MegaMenuItemProps, ParentItemProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   data: MegaMenuItemProps[];
@@ -71,7 +71,7 @@ export default function MegaMenuMobile({ data, open, action, onOpen, onClose }: 
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 const ParentItem = forwardRef<HTMLDivElement, ParentItemProps>(
   ({ icon, title, hasSub, ...other }, ref) => (
@@ -99,7 +99,7 @@ const ParentItem = forwardRef<HTMLDivElement, ParentItemProps>(
   ),
 );
 
-// ----------------------------------------------------------------------
+
 
 type SubMenuProps = {
   parent: MegaMenuItemProps;

@@ -2,7 +2,7 @@ import hljs from 'highlight.js';
 
 import 'highlight.js/styles/base16/tomorrow-night.css';
 
-// ----------------------------------------------------------------------
+
 
 declare global {
   interface Window {

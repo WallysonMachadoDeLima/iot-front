@@ -3,7 +3,7 @@ import { alpha, Theme } from '@mui/material/styles';
 
 import { paper } from '../../css';
 
-// ----------------------------------------------------------------------
+
 
 export function drawer(theme: Theme) {
   const lightMode = theme.palette.mode === 'light';

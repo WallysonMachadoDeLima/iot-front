@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import { NavConfigProps, NavItemProps } from '../types';
 
-// ----------------------------------------------------------------------
+
 
 type StyledItemProps = Omit<NavItemProps, 'item'> & {
   config: NavConfigProps;
@@ -44,13 +44,13 @@ export const StyledItem = styled(ListItemButton, {
     // Open
     ...(open &&
       !active && {
-        color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
+      color: theme.palette.text.primary,
+      backgroundColor: theme.palette.action.hover,
+    }),
   };
 });
 
-// ----------------------------------------------------------------------
+
 
 type StyledIconProps = {
   size?: number;

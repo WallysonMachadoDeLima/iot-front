@@ -1,6 +1,5 @@
 'use client';
 
-import { memo, useCallback, useState } from 'react';
 import { useResponsive } from '@/hooks';
 import Box from '@mui/material/Box';
 import Dialog, { dialogClasses } from '@mui/material/Dialog';
@@ -12,6 +11,7 @@ import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
+import { memo, useCallback, useState } from 'react';
 
 import Iconify from '@/components/iconify';
 import Label from '@/components/label';
@@ -25,7 +25,7 @@ import { useNavData } from '../../dashboard/config-navigation';
 import ResultItem from './result-item';
 import { applyFilter, getAllItems, groupedData } from './utils';
 
-// ----------------------------------------------------------------------
+
 
 function Searchbar() {
   const theme = useTheme();

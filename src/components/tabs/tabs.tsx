@@ -1,7 +1,7 @@
 import { SxProps, Tab, Tabs as TabMui } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
-// ----------------------------------------------------------------------
+
 
 interface Props {
   tabs: { value: string; label: string; icon: JSX.Element; disabled?: boolean }[];

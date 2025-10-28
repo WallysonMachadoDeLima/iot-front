@@ -1,7 +1,7 @@
 import { Theme } from '@mui/material/styles';
 import { tabClasses } from '@mui/material/Tab';
 
-// ----------------------------------------------------------------------
+
 
 export function tabs(theme: Theme) {
   return {

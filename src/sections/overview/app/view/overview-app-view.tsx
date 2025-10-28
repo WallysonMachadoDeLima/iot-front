@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import { useSettingsContext } from '@/components/settings';
 
-// ----------------------------------------------------------------------
+
 
 export default function OverviewAppView() {
   const settings = useSettingsContext();

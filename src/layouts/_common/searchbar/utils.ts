@@ -1,7 +1,7 @@
 import { NavListProps, NavSectionProps } from '@/components/nav-section';
 import { flattenArray } from '@/utils/flatten-array';
 
-// ----------------------------------------------------------------------
+
 
 type ItemProps = {
   group: string;
@@ -25,7 +25,7 @@ export function getAllItems({ data }: NavSectionProps) {
   return items;
 }
 
-// ----------------------------------------------------------------------
+
 
 type FilterProps = {
   inputData: ItemProps[];
@@ -44,7 +44,7 @@ export function applyFilter({ inputData, query }: FilterProps) {
   return inputData;
 }
 
-// ----------------------------------------------------------------------
+
 
 export function splitPath(array: NavListProps[], key: string) {
   let stack = array.map((item) => ({
@@ -74,7 +74,7 @@ export function splitPath(array: NavListProps[], key: string) {
   return null;
 }
 
-// ----------------------------------------------------------------------
+
 
 export function handleLoop(array: any, subheader?: string) {
   return array?.map((list: any) => ({
@@ -86,7 +86,7 @@ export function handleLoop(array: any, subheader?: string) {
   }));
 }
 
-// ----------------------------------------------------------------------
+
 
 type GroupsProps = {
   [key: string]: ItemProps[];

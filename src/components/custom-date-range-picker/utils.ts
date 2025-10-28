@@ -2,7 +2,7 @@ import { getYear, isSameDay, isSameMonth } from 'date-fns';
 
 import { fDate } from '@/utils/format-time';
 
-// ----------------------------------------------------------------------
+
 
 export function shortDateLabel(startDate: Date | null, endDate: Date | null) {
   const getCurrentYear = new Date().getFullYear();

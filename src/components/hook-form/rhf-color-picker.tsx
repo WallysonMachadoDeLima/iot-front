@@ -4,7 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { ColorPicker } from '@/components/color-picker/color-picker';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   name: string;

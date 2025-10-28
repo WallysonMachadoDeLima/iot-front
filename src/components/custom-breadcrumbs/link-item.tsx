@@ -5,7 +5,7 @@ import { RouterLink } from '@/routes/components';
 
 import { BreadcrumbsLinkProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   link: BreadcrumbsLinkProps;
@@ -23,10 +23,10 @@ export default function BreadcrumbsLink({ link, activeLast, disabled }: Props) {
     display: 'inline-flex',
     ...(disabled &&
       !activeLast && {
-        cursor: 'default',
-        pointerEvents: 'none',
-        color: 'text.disabled',
-      }),
+      cursor: 'default',
+      pointerEvents: 'none',
+      color: 'text.disabled',
+    }),
   };
 
   const renderContent = (

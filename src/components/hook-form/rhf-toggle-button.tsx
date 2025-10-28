@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import { FormHelperText, ToggleButtonGroup, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
+import React, { useEffect, useState } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { useSettingsContext } from '../settings';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   name: string;

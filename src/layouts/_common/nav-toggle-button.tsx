@@ -9,7 +9,7 @@ import { bgBlur } from '@/theme/css';
 
 import { NAV } from '../config-layout';
 
-// ----------------------------------------------------------------------
+
 
 export default function NavToggleButton({ sx, ...other }: IconButtonProps) {
   const theme = useTheme();

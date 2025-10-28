@@ -7,7 +7,7 @@ import { FileRejection } from 'react-dropzone';
 
 import { fileData } from '../file-thumbnail';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   fileRejections: FileRejection[];

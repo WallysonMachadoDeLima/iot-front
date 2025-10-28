@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------
+
 
 export function flattenArray<T>(list: T[], key = 'children'): T[] {
   let children: T[] = [];

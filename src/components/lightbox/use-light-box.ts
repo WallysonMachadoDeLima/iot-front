@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Slide, SlideImage, SlideVideo } from 'yet-another-react-lightbox';
 
-// ----------------------------------------------------------------------
+
 
 type ReturnType = {
   open: boolean;

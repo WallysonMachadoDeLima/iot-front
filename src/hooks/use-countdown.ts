@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 type ReturnDateType = {
   days: string;
@@ -61,7 +61,7 @@ export function useCountdownDate(date: Date): ReturnDateType {
 // Usage
 // const countdown = useCountdown(new Date('07/07/2022 21:30'));
 
-// ----------------------------------------------------------------------
+
 
 type ReturnSecondsType = {
   counting: boolean;

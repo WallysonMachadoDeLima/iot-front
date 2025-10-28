@@ -1,11 +1,11 @@
 import { linearProgressClasses, LinearProgressProps } from '@mui/material/LinearProgress';
 import { alpha, Theme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
 
-// ----------------------------------------------------------------------
+
 
 export function progress(theme: Theme) {
   const rootStyles = (ownerState: LinearProgressProps) => {

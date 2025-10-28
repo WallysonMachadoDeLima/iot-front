@@ -11,7 +11,7 @@ import Iconify from '../iconify';
 import StyledLightbox from './styles';
 import { LightBoxProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 const ICON_SIZE = 24;
 
@@ -76,7 +76,7 @@ export default function Lightbox({
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 export function getPlugins({
   disabledZoom,
@@ -110,7 +110,7 @@ export function getPlugins({
   return plugins;
 }
 
-// ----------------------------------------------------------------------
+
 
 type DisplayTotalProps = {
   totalItems: number;

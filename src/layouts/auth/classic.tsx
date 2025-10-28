@@ -12,7 +12,7 @@ import { paths } from '@/routes/paths';
 // theme
 import { bgGradient } from '@/theme/css';
 
-// ----------------------------------------------------------------------
+
 
 const METHODS = [
   {

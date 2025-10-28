@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 
 import { HeaderSimple as Header } from '../_common';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

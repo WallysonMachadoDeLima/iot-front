@@ -4,7 +4,7 @@ import { alpha } from '@mui/material/styles';
 
 import { ColorPreviewProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function ColorPreview({ colors, limit = 3, sx }: ColorPreviewProps) {
   const renderColors = colors.slice(0, limit);

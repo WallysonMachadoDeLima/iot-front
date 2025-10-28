@@ -16,7 +16,7 @@ import { useRouter } from '@/routes/hooks';
 import { paths } from '@/routes/paths';
 import { getLocalItem } from '@/utils/storage';
 
-// ----------------------------------------------------------------------
+
 
 const OPTIONS = [
   {
@@ -33,7 +33,7 @@ const OPTIONS = [
   },
 ];
 
-// ----------------------------------------------------------------------
+
 
 export default function AccountPopover() {
   const router = useRouter();

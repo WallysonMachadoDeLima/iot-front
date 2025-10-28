@@ -15,7 +15,7 @@ import {
 
 import Iconify from '@/components/iconify';
 
-// ----------------------------------------------------------------------
+
 
 type PropsFilter = {
   searchBarApi: string;
@@ -96,7 +96,7 @@ export const LocalFilter = ({ searchBarApi, setSearchBarApi, totalItemsApi }: Pr
   );
 };
 
-// ----------------------------------------------------------------------
+
 
 type PropsPagination = {
   dense: boolean;

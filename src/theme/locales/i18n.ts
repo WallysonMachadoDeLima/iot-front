@@ -13,7 +13,7 @@ import translationEn from './langs/en.json';
 import translationFr from './langs/fr.json';
 import translationVi from './langs/vi.json';
 
-// ----------------------------------------------------------------------
+
 
 const lng = localStorageGetItem('i18nextLng', defaultLang.value);
 

@@ -11,7 +11,7 @@ import { NavToggleButton } from '../_common';
 import { NAV } from '../config-layout';
 import { useNavData } from './config-navigation';
 
-// ----------------------------------------------------------------------
+
 
 export default function NavMini() {
   const navData = useNavData();

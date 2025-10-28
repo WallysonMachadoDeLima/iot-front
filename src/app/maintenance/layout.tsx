@@ -2,8 +2,6 @@
 
 import CompactLayout from '@/layouts/compact';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   children: React.ReactNode;
 };

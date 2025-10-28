@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 
 import { HeaderSimple as Header } from '../_common';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

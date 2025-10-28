@@ -2,7 +2,7 @@ import { useWidth } from '@/hooks';
 import { useTheme } from '@mui/material/styles';
 import { Variant } from '@mui/material/styles/createTypography';
 
-// ----------------------------------------------------------------------
+
 
 function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16);

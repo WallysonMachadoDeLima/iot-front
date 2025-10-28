@@ -13,7 +13,7 @@ import {
   UploadSquare,
 } from '../upload';
 
-// ----------------------------------------------------------------------
+
 
 interface Props extends Omit<UploadProps, 'file'> {
   name: string;
@@ -21,7 +21,7 @@ interface Props extends Omit<UploadProps, 'file'> {
   multiple?: boolean;
 }
 
-// ----------------------------------------------------------------------
+
 
 export function RHFUploadAvatar({ name, ...other }: Props) {
   const { control } = useFormContext();
@@ -67,7 +67,7 @@ export function RHFUploadSquare({ name, url, ...other }: Props) {
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 export function RHFUploadCapaFilme({ name, url, ...other }: Props) {
   const { control } = useFormContext();
@@ -91,7 +91,7 @@ export function RHFUploadCapaFilme({ name, url, ...other }: Props) {
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 export function RHFUploadBanner({ name, url, ...other }: Props) {
   const { control } = useFormContext();
@@ -115,7 +115,7 @@ export function RHFUploadBanner({ name, url, ...other }: Props) {
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 export function RHFUploadBox({ name, ...other }: Props) {
   const { control } = useFormContext();
@@ -146,7 +146,7 @@ export function RHFUploadBox({ name, ...other }: Props) {
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 export function RHFUpload({ name, multiple, helperText, ...other }: Props) {
   const { control } = useFormContext();

@@ -3,7 +3,7 @@ import { accordionSummaryClasses } from '@mui/material/AccordionSummary';
 import { Theme } from '@mui/material/styles';
 import { typographyClasses } from '@mui/material/Typography';
 
-// ----------------------------------------------------------------------
+
 
 export function accordion(theme: Theme) {
   return {

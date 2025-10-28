@@ -5,7 +5,7 @@ import { alpha } from '@mui/material/styles';
 
 import Label from '@/components/label';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   title: {

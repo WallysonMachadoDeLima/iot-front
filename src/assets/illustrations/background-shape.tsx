@@ -1,7 +1,7 @@
-import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
+import { memo } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 function BackgroundShape() {
   const theme = useTheme();

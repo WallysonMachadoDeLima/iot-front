@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { localStorageAvailable } from '@/utils/storage-available';
 
-// ----------------------------------------------------------------------
+
 
 export function useLocalStorage<ValueType>(key: string, defaultValue: ValueType) {
   const storageAvailable = localStorageAvailable();

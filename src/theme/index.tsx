@@ -1,9 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@mui/material/styles';
 import merge from 'lodash/merge';
+import { useMemo } from 'react';
 
 import { useSettingsContext } from '@/components/settings';
 import { useLocales } from '@/theme/locales';
@@ -21,7 +21,7 @@ import { palette } from './palette';
 import { shadows } from './shadows';
 import { typography } from './typography';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

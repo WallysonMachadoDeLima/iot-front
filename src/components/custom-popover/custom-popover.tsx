@@ -5,7 +5,7 @@ import { StyledArrow } from './styles';
 import { MenuPopoverProps } from './types';
 import { getPosition } from './utils';
 
-// ----------------------------------------------------------------------
+
 
 export default function CustomPopover({
   open,

@@ -4,7 +4,7 @@ import { dividerClasses } from '@mui/material/Divider';
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { alpha, Theme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 export const paper = ({
   theme,
@@ -37,7 +37,7 @@ export const paper = ({
   }),
 });
 
-// ----------------------------------------------------------------------
+
 
 export const menuItem = (theme: Theme) => ({
   ...theme.typography.body2,
@@ -69,7 +69,7 @@ export const menuItem = (theme: Theme) => ({
   },
 });
 
-// ----------------------------------------------------------------------
+
 
 type BgBlurProps = {
   blur?: number;
@@ -110,7 +110,7 @@ export function bgBlur(props?: BgBlurProps) {
   };
 }
 
-// ----------------------------------------------------------------------
+
 
 type BgGradientProps = {
   direction?: string;
@@ -129,9 +129,8 @@ export function bgGradient(props?: BgGradientProps) {
 
   if (imgUrl) {
     return {
-      background: `linear-gradient(${direction}, ${startColor || color}, ${
-        endColor || color
-      }), url(${imgUrl})`,
+      background: `linear-gradient(${direction}, ${startColor || color}, ${endColor || color
+        }), url(${imgUrl})`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center',
@@ -143,7 +142,7 @@ export function bgGradient(props?: BgGradientProps) {
   };
 }
 
-// ----------------------------------------------------------------------
+
 
 export function textGradient(value: string) {
   return {
@@ -153,7 +152,7 @@ export function textGradient(value: string) {
   };
 }
 
-// ----------------------------------------------------------------------
+
 
 export const hideScroll = {
   x: {

@@ -12,7 +12,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { DateRangePickerProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function CustomDateRangePicker({
   title = 'Select date range',
@@ -49,8 +49,8 @@ export default function CustomDateRangePicker({
         sx={{
           ...(isCalendarView &&
             mdUp && {
-              overflow: 'unset',
-            }),
+            overflow: 'unset',
+          }),
         }}
       >
         <Stack

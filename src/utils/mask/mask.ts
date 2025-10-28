@@ -1,6 +1,6 @@
 import { fNumber } from '@/utils';
 
-// ----------------------------------------------------------------------
+
 
 export type MaskType = {
   cep: any;
@@ -251,7 +251,7 @@ const kg = (value = '', type?: 'kg') => {
   }
 };
 
-// ----------------------------------------------------------------------
+
 
 export const cpfOrCnpj = (value = '') => {
   if (value === undefined || value === null) return '';

@@ -1,6 +1,6 @@
 import { format, formatDistanceToNow, getTime } from 'date-fns';
 
-// ----------------------------------------------------------------------
+
 type InputValue = Date | string | number | null | undefined;
 
 export function fDate(date: InputValue, newFormat?: string): any {
@@ -28,8 +28,8 @@ export function fTimestamp(date: InputValue) {
 export function fToNow(date: InputValue) {
   return date
     ? formatDistanceToNow(new Date(date), {
-        addSuffix: true,
-      })
+      addSuffix: true,
+    })
     : '';
 }
 

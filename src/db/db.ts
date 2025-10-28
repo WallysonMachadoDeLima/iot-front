@@ -2,7 +2,7 @@
 import mysql from 'mysql2/promise';
 
 
-// ----------------------------------------------------------------------
+
 
 type DB = {
     pool: mysql.Pool;
@@ -17,11 +17,11 @@ function createPool() {
             : undefined;
 
     const pool = mysql.createPool({
-        host: process.env.NEXT_PUBLIC_DB_HOST!,
-        port: Number(process.env.NEXT_PUBLIC_DB_PORT || 3306),
-        user: process.env.NEXT_PUBLIC_DB_USER!,
-        password: process.env.NEXT_PUBLIC_DB_PASS!,
-        database: process.env.NEXT_PUBLIC_DB_NAME!,
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        password: 'root',
+        database: 'GestaoPatrimonio',
         waitForConnections: true,
         connectionLimit: 10,
         queueLimit: 0,

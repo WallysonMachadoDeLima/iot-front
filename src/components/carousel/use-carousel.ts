@@ -1,8 +1,8 @@
-import { useCallback, useRef, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
+import { useCallback, useRef, useState } from 'react';
 import Carousel, { Settings } from 'react-slick';
 
-// ----------------------------------------------------------------------
+
 
 type ReturnType = {
   currentIndex: number;

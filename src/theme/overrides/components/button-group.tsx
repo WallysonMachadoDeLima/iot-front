@@ -1,7 +1,7 @@
 import { buttonGroupClasses, ButtonGroupProps } from '@mui/material/ButtonGroup';
 import { alpha, Theme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
 
@@ -12,7 +12,7 @@ declare module '@mui/material/ButtonGroup' {
   }
 }
 
-// ----------------------------------------------------------------------
+
 
 export function buttonGroup(theme: Theme) {
   const rootStyles = (ownerState: ButtonGroupProps) => {

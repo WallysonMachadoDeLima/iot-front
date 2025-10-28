@@ -8,7 +8,7 @@ import { MotionContainer, varBounce } from '@/components/animate';
 
 import { useAuthContext } from '../hooks';
 
-// ----------------------------------------------------------------------
+
 
 type RoleBasedGuardProp = {
   hasContent?: boolean;

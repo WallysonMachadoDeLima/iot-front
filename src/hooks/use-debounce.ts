@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 type ReturnType = string;
 

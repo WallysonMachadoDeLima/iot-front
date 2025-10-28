@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 interface Tab {
   label: string;

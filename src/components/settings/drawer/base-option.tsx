@@ -4,7 +4,7 @@ import { alpha } from '@mui/material/styles';
 
 import SvgColor from '../../svg-color';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   icons: string[];

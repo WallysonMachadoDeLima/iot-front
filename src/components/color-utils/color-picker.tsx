@@ -1,12 +1,12 @@
-import { forwardRef, useCallback } from 'react';
 import ButtonBase from '@mui/material/ButtonBase';
 import Stack from '@mui/material/Stack';
 import { alpha } from '@mui/material/styles';
+import { forwardRef, useCallback } from 'react';
 
 import Iconify from '../iconify';
 import { ColorPickerProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
   ({ colors, selected, onSelectColor, limit = 'auto', sx, ...other }, ref) => {

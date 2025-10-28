@@ -1,5 +1,5 @@
-import localFont from 'next/font/local';
 import ThemeProvider from '@/theme';
+import localFont from 'next/font/local';
 
 import { AuthConsumer, AuthProvider } from '@/auth/context';
 import MotionLazy from '@/components/animate/motion-lazy';
@@ -11,7 +11,7 @@ import { LocalizationProvider } from '@/theme/locales';
 import 'src/theme/css';
 import 'src/theme/locales/i18n';
 
-// ----------------------------------------------------------------------
+
 
 export const metadata = {
   title: 'Iot',

@@ -1,7 +1,7 @@
 import { alpha, Theme } from '@mui/material/styles';
 import { switchClasses, SwitchProps } from '@mui/material/Switch';
 
-// ----------------------------------------------------------------------
+
 
 export function switches(theme: Theme) {
   const lightMode = theme.palette.mode === 'light';

@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-// ----------------------------------------------------------------------
+
 
 export const LOCAL_API = process.env.NEXT_PUBLIC_LOCAL_API;
 

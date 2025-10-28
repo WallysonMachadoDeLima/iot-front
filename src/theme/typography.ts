@@ -1,7 +1,7 @@
 import { Barlow, Public_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 
-// ----------------------------------------------------------------------
+
 
 export function remToPx(value: string) {
   return Math.round(parseFloat(value) * 16);
@@ -69,7 +69,7 @@ export const secondaryFont = Barlow({
   fallback: ['Helvetica', 'Arial', 'sans-serif'],
 });
 
-// ----------------------------------------------------------------------
+
 
 // LEARN MORE
 // https://nextjs.org/docs/basic-features/font-optimization#google-fonts

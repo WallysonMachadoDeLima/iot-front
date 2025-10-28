@@ -6,7 +6,7 @@ import { bgBlur } from '@/theme/css';
 
 import Iconify from '../iconify';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   onDownload?: VoidFunction;

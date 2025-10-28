@@ -1,7 +1,7 @@
 import Box, { BoxProps } from '@mui/material/Box';
 import { m, MotionValue, useSpring } from 'framer-motion';
 
-// ----------------------------------------------------------------------
+
 
 export interface ScrollProgressProps extends BoxProps {
   color?: 'inherit' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';

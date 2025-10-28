@@ -9,7 +9,7 @@ import Image from '../../image';
 import TextMaxLine from '../../text-max-line';
 import { MenuCarouselProps } from '../types';
 
-// ----------------------------------------------------------------------
+
 
 export default function MenuCarousel({ products, numberShow, sx }: MenuCarouselProps) {
   const theme = useTheme();

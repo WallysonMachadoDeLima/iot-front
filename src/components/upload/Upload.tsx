@@ -14,7 +14,7 @@ import MultiFilePreview from './preview-multi-file';
 import SingleFilePreview from './preview-single-file';
 import { UploadProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function Upload({
   disabled,

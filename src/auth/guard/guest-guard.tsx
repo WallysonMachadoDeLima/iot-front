@@ -5,7 +5,7 @@ import { paths } from '@/routes/paths';
 
 import { useAuthContext } from '../hooks';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

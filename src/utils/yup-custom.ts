@@ -3,7 +3,7 @@ import * as yup from 'yup';
 
 import { fNumber } from './format-data';
 
-// ----------------------------------------------------------------------
+
 
 declare module 'yup' {
   interface StringSchema {
@@ -11,7 +11,7 @@ declare module 'yup' {
   }
 }
 
-// ----------------------------------------------------------------------
+
 
 function cpfOrCnpjValidation(value: any): boolean {
   if (value) {
@@ -29,7 +29,7 @@ yup.addMethod(yup.string, 'cpfOrCnpj', function (message: string = 'CPF ou CNPJ 
   return this.test('cpfOrCnpj', message, cpfOrCnpjValidation);
 });
 
-// ----------------------------------------------------------------------
+
 
 type InputValue = 'number-required' | 'number';
 

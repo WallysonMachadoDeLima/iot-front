@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
 import isEqual from 'lodash/isEqual';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useLocalStorage } from '@/components/settings/context/use-local-storage';
 import { localStorageGetItem } from '@/utils/storage-available';
@@ -9,7 +9,7 @@ import { localStorageGetItem } from '@/utils/storage-available';
 import { SettingsValueProps } from '../types';
 import { SettingsContext } from './settings-context';
 
-// ----------------------------------------------------------------------
+
 
 type SettingsProviderProps = {
   children: React.ReactNode;

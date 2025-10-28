@@ -3,7 +3,7 @@ import { alpha, styled, Theme } from '@mui/material/styles';
 
 import { ILabelColor, LabelVariant } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export const StyledLabel = styled(Box)(({
   theme,

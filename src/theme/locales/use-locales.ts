@@ -8,7 +8,7 @@ import { localStorageGetItem } from '@/utils/storage-available';
 
 import { allLangs, defaultLang } from './config-lang';
 
-// ----------------------------------------------------------------------
+
 
 export default function useLocales() {
   const { i18n, t } = useTranslation();

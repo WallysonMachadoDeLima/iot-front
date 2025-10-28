@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   timeout?: number;

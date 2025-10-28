@@ -1,14 +1,14 @@
-import { memo, useCallback, useState } from 'react';
 import Collapse from '@mui/material/Collapse';
 import List from '@mui/material/List';
 import Stack from '@mui/material/Stack';
+import { memo, useCallback, useState } from 'react';
 
 import { navVerticalConfig } from '../config';
 import { NavConfigProps, NavListProps, NavSectionProps } from '../types';
 import NavList from './nav-list';
 import { StyledSubheader } from './styles';
 
-// ----------------------------------------------------------------------
+
 
 function NavSectionVertical({ data, config, sx, ...other }: NavSectionProps) {
   return (
@@ -28,7 +28,7 @@ function NavSectionVertical({ data, config, sx, ...other }: NavSectionProps) {
 
 export default memo(NavSectionVertical);
 
-// ----------------------------------------------------------------------
+
 
 type GroupProps = {
   subheader: string;

@@ -1,10 +1,10 @@
-import { memo } from 'react';
 import Box, { BoxProps } from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
+import { memo } from 'react';
 
 import BackgroundShape from './background-shape';
 
-// ----------------------------------------------------------------------
+
 
 function MaintenanceIllustration({ ...other }: BoxProps) {
   const theme = useTheme();

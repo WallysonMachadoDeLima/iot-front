@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 
-// ----------------------------------------------------------------------
+
 
 type ReturnType = boolean;
 

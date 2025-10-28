@@ -1,6 +1,6 @@
 import { alpha, Theme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 export function backdrop(theme: Theme) {
   return {

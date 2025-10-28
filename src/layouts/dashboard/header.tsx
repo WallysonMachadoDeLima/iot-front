@@ -15,7 +15,7 @@ import { bgBlur } from '@/theme/css';
 import { AccountPopover } from '../_common';
 import { HEADER, NAV } from '../config-layout';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   onOpenNav?: VoidFunction;

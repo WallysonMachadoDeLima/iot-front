@@ -4,7 +4,7 @@ import { IPaginatedResponse } from '@/models';
 import { useEffect, useMemo, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 export interface IUseTableApi<T, IExtra> {
   response?: IPaginatedResponse<any>;

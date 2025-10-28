@@ -5,7 +5,7 @@ import { alpha, styled } from '@mui/material/styles';
 
 import { NavConfigProps, NavItemProps } from '../types';
 
-// ----------------------------------------------------------------------
+
 
 type StyledItemProps = Omit<NavItemProps, 'item'> & {
   config: NavConfigProps;
@@ -65,7 +65,7 @@ export const StyledItem = styled(ListItemButton, {
   };
 });
 
-// ----------------------------------------------------------------------
+
 
 type StyledIconProps = {
   size?: number;
@@ -96,7 +96,7 @@ export const StyledDotIcon = styled('span')<StyledDotIconProps>(({ active, theme
   }),
 }));
 
-// ----------------------------------------------------------------------
+
 
 type StyledSubheaderProps = {
   config: NavConfigProps;

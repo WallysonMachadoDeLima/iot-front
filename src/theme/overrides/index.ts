@@ -45,7 +45,7 @@ import { treeView } from './components/tree-view';
 import { typography } from './components/typography';
 import { defaultProps } from './default-props';
 
-// ----------------------------------------------------------------------
+
 
 export function componentsOverrides(theme: Theme) {
   const components = merge(

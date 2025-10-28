@@ -1,14 +1,14 @@
-import React from 'react';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { LoadingButton } from '@mui/lab';
 import { Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { ConfirmDialog } from '../custom-dialog';
 import Iconify from '../iconify';
 
-// ----------------------------------------------------------------------
+
 
 interface ICommomActions {
   tooltip?: string;
@@ -34,9 +34,9 @@ interface PropsDelete extends ICommomActions {
   };
 }
 
-interface PropsViewer extends ICommomActions {}
+interface PropsViewer extends ICommomActions { }
 
-interface PropsEdit extends ICommomActions {}
+interface PropsEdit extends ICommomActions { }
 
 interface Props {
   row: any;
@@ -126,9 +126,9 @@ export function TableActions({
               deleter?.onClick
                 ? deleter?.onClick
                 : () => {
-                    setValue('confirm', true);
-                    setValue('currentRow', row);
-                  }
+                  setValue('confirm', true);
+                  setValue('currentRow', row);
+                }
             }
             disabled={deleter?.disabled || disabledAll}
             sx={{

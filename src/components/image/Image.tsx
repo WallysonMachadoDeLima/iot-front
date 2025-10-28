@@ -1,13 +1,13 @@
-import { forwardRef } from 'react';
 import Box from '@mui/material/Box';
 import { alpha, useTheme } from '@mui/material/styles';
+import { forwardRef } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { ImageProps } from './types';
 //
 import { getRatio } from './utils';
 
-// ----------------------------------------------------------------------
+
 
 const Image = forwardRef<HTMLSpanElement, ImageProps>(
   (

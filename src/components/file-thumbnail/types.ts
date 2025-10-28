@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------
+
 
 export interface ExtendFile extends File {
   preview?: string;

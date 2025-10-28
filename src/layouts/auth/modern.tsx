@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 
 import Logo from '@/components/logo';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   image?: string;

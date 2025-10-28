@@ -1,8 +1,8 @@
-import { forwardRef } from 'react';
 import Link from '@mui/material/Link';
 import ListItemText from '@mui/material/ListItemText';
 import { useTheme } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
+import { forwardRef } from 'react';
 
 import { RouterLink } from '@/routes/components';
 
@@ -10,7 +10,7 @@ import Iconify from '../../iconify';
 import { NavConfigProps, NavItemProps } from '../types';
 import { StyledIcon, StyledItem } from './styles';
 
-// ----------------------------------------------------------------------
+
 
 type Props = NavItemProps & {
   config: NavConfigProps;

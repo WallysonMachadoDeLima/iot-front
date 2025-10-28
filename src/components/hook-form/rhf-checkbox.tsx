@@ -11,7 +11,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import { Controller, useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 interface RHFCheckboxProps extends Partial<Omit<FormControlLabelProps, 'control'>> {
   name: string;
@@ -56,7 +56,7 @@ export function RHFCheckbox({
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 interface RHFMultiCheckboxProps extends Omit<FormControlLabelProps, 'control' | 'label'> {
   name: string;

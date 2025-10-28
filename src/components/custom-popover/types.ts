@@ -1,6 +1,6 @@
 import { PopoverProps } from '@mui/material/Popover';
 
-// ----------------------------------------------------------------------
+
 
 export type MenuPopoverArrowValue =
   | 'top-left'

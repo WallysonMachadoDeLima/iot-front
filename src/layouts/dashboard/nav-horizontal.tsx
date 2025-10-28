@@ -1,7 +1,7 @@
-import { memo } from 'react';
 import AppBar from '@mui/material/AppBar';
 import { useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
+import { memo } from 'react';
 
 import { NavSectionHorizontal } from '@/components/nav-section';
 // theme
@@ -12,7 +12,7 @@ import { HeaderShadow } from '../_common';
 import { HEADER } from '../config-layout';
 import { useNavData } from './config-navigation';
 
-// ----------------------------------------------------------------------
+
 
 function NavHorizontal() {
   const theme = useTheme();

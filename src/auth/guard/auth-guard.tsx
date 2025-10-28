@@ -5,13 +5,13 @@ import { paths } from '@/routes/paths';
 
 import { useAuthContext } from '../hooks';
 
-// ----------------------------------------------------------------------
+
 
 const loginPaths: Record<string, string> = {
   jwt: paths.auth.jwt.login,
 };
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   children: React.ReactNode;

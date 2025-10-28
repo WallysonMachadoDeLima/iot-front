@@ -1,6 +1,6 @@
 import numeral from 'numeral';
 
-// ----------------------------------------------------------------------
+
 export type TfNumber = 'number' | 'interger' | 'float' | 'money' | 'percentage' | 'kg' | 'bytes';
 
 export function fNumber(type: TfNumber, value: any): number | string {

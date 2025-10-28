@@ -1,8 +1,8 @@
-import { memo } from 'react';
 import Box, { BoxProps } from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
+import { memo } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 function PlanFreeIcon({ ...other }: BoxProps) {
   const theme = useTheme();

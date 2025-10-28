@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import TableCell from '@mui/material/TableCell';
 import TableRow, { TableRowProps } from '@mui/material/TableRow';
 
-// ----------------------------------------------------------------------
+
 
 export function TableSkeleton({ ...other }: TableRowProps) {
   return (

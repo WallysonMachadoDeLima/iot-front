@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useResponsive } from '@/hooks';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Stack from '@mui/material/Stack';
+import { useEffect } from 'react';
 
 import Logo from '@/components/logo';
 import { NavSectionVertical } from '@/components/nav-section';
@@ -16,7 +16,7 @@ import { NavToggleButton } from '../_common';
 import { NAV } from '../config-layout';
 import { useNavData } from './config-navigation';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   openNav: boolean;

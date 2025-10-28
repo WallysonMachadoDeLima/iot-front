@@ -1,11 +1,11 @@
-import { memo } from 'react';
-import dynamic from 'next/dynamic';
 import { alpha, styled } from '@mui/material/styles';
+import dynamic from 'next/dynamic';
+import { memo } from 'react';
 
 // theme
 import { bgBlur } from '@/theme/css';
 
-// ----------------------------------------------------------------------
+
 
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 

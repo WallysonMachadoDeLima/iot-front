@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
 import FormHelperText from '@mui/material/FormHelperText';
+import { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import Editor, { EditorProps } from '../editor';
 
-// ----------------------------------------------------------------------
+
 
 interface Props extends EditorProps {
   name: string;

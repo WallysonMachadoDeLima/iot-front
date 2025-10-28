@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
+import { forwardRef } from 'react';
 
 import { StyledLabel } from './styles';
 import { LabelProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 const Label = forwardRef<HTMLSpanElement, LabelProps>(
   ({ children, color = 'default', variant = 'soft', startIcon, endIcon, sx, ...other }, ref) => {

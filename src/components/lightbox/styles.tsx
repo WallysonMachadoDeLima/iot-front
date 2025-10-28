@@ -1,7 +1,7 @@
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { alpha, useTheme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 export default function StyledLightbox() {
   const theme = useTheme();

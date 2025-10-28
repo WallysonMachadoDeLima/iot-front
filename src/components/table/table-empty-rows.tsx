@@ -2,7 +2,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { useFormContext } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 interface Props {
   emptyRows?: number;

@@ -6,7 +6,7 @@ import Iconify from '../iconify';
 import LinkItem from './link-item';
 import { CustomBreadcrumbsProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function CustomBreadcrumbs({
   links,
@@ -74,7 +74,7 @@ export default function CustomBreadcrumbs({
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 function Separator() {
   return (

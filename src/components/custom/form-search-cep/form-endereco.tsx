@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
 import { LocusService } from '@/services';
 import { Mask } from '@/utils';
 import { Box, CircularProgress, MenuItem, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useSnackbar } from 'notistack';
+import { useEffect, useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { RHFSelect, RHFTextField } from '@/components/hook-form';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   loader?: boolean;
@@ -135,8 +135,8 @@ export function FormEndereco({
       setValue(
         names?.cidadeNome,
         listaCidades?.find((cidade: any) => cidade.id === values?.[names?.cidade])?.nome ||
-          values?.[names?.cidadeNome] ||
-          '',
+        values?.[names?.cidadeNome] ||
+        '',
       );
     }
   }, [values?.[names?.cidade]]);

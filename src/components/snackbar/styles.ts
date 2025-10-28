@@ -1,7 +1,7 @@
 import { alpha, styled } from '@mui/material/styles';
 import { MaterialDesignContent } from 'notistack';
 
-// ----------------------------------------------------------------------
+
 
 export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
   const isLight = theme.palette.mode === 'light';
@@ -32,7 +32,7 @@ export const StyledNotistack = styled(MaterialDesignContent)(({ theme }) => {
   };
 });
 
-// ----------------------------------------------------------------------
+
 
 type StyledIconProps = {
   color: 'info' | 'success' | 'warning' | 'error';

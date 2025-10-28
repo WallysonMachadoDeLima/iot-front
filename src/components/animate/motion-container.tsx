@@ -3,7 +3,7 @@ import { m, MotionProps } from 'framer-motion';
 
 import { varContainer } from './variants';
 
-// ----------------------------------------------------------------------
+
 
 type IProps = BoxProps & MotionProps;
 

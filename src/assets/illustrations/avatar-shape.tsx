@@ -1,7 +1,7 @@
-import { memo } from 'react';
 import Box, { BoxProps } from '@mui/material/Box';
+import { memo } from 'react';
 
-// ----------------------------------------------------------------------
+
 
 function AvatarShape({ sx, ...other }: BoxProps) {
   return (

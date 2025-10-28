@@ -1,11 +1,11 @@
 import { alpha, Theme } from '@mui/material/styles';
 import { toggleButtonClasses, ToggleButtonProps } from '@mui/material/ToggleButton';
 
-// ----------------------------------------------------------------------
+
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
 
-// ----------------------------------------------------------------------
+
 
 export function toggleButton(theme: Theme) {
   const rootStyles = (ownerState: ToggleButtonProps) => {

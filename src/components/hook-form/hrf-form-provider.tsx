@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
 import { fDate, fNumber } from '@/utils';
+import { useEffect } from 'react';
 import { FormProvider, UseFormReturn } from 'react-hook-form';
 
-// ----------------------------------------------------------------------
+
 
 interface Props {
   children: React.ReactNode;
@@ -88,8 +88,8 @@ export function RHFFormProvider({
         const newValue = !isNaN(Number(value))
           ? value
           : value === null
-          ? null
-          : value?.toString().trim();
+            ? null
+            : value?.toString().trim();
         setValue(rest, path, newValue);
       }
     });

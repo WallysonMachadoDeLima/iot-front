@@ -7,7 +7,7 @@ import CustomPopover, { usePopover } from '@/components/custom-popover';
 import Iconify from '@/components/iconify';
 import Scrollbar from '@/components/scrollbar';
 
-// ----------------------------------------------------------------------
+
 
 export default function ContactsPopover() {
   const popover = usePopover();

@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
 import { LocusService } from '@/services';
 import { MenuItem, Stack } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { RHFSelect } from '@/components/hook-form';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   names: {
@@ -65,8 +65,8 @@ export default function FormUfCidade({
       setValue(
         names.cidadeNome,
         listaCidades?.find((cidade: any) => cidade.id === values?.[names.cidade])?.nome ||
-          values?.[names.cidadeNome] ||
-          '',
+        values?.[names.cidadeNome] ||
+        '',
       );
     }
   }, [values?.[names.cidade]]);

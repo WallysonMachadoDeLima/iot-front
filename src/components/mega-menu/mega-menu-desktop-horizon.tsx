@@ -1,10 +1,10 @@
-import { useCallback, useState } from 'react';
 import Masonry from '@mui/lab/Masonry';
 import Divider from '@mui/material/Divider';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { useCallback, useState } from 'react';
 
 import { RouterLink } from '@/routes/components';
 
@@ -13,7 +13,7 @@ import MenuCarousel from './_common/menu-carousel';
 import MenuHotProducts from './_common/menu-hot-products';
 import { MegaMenuItemProps, ParentItemProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 const ITEM_SPACING = 4;
 const PARENT_ITEM_HEIGHT = 64;
@@ -32,7 +32,7 @@ export default function MegaMenuDesktopHorizon({ data, ...other }: Props) {
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 function MegaMenuItem({ parent }: { parent: MegaMenuItemProps }) {
   const { title, path, icon, more, products, tags, children } = parent;
@@ -142,7 +142,7 @@ function MegaMenuItem({ parent }: { parent: MegaMenuItemProps }) {
   return <ParentItem path={path} title={title} icon={icon} />;
 }
 
-// ----------------------------------------------------------------------
+
 
 function ParentItem({ title, path = '', icon, open, hasSub, ...other }: ParentItemProps) {
   const activeStyle = {

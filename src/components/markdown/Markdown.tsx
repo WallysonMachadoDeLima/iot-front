@@ -14,7 +14,7 @@ import Image from '../image';
 import StyledMarkdown from './styles';
 import { MarkdownProps } from './types';
 
-// ----------------------------------------------------------------------
+
 
 export default function Markdown({ sx, ...other }: MarkdownProps) {
   return (
@@ -28,7 +28,7 @@ export default function Markdown({ sx, ...other }: MarkdownProps) {
   );
 }
 
-// ----------------------------------------------------------------------
+
 
 const components = {
   img: ({ ...props }) => <Image alt={props.alt} ratio="16/9" sx={{ borderRadius: 2 }} {...props} />,

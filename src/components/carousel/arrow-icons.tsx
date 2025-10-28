@@ -1,6 +1,6 @@
 import Iconify, { IconifyProps } from '../iconify';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   icon?: IconifyProps; // Right icon
@@ -9,7 +9,7 @@ type Props = {
 
 export function LeftIcon({ icon = 'eva:arrow-ios-forward-fill', isRTL }: Props) {
   return (
-      <Iconify
+    <Iconify
 
 
 
@@ -20,7 +20,7 @@ export function LeftIcon({ icon = 'eva:arrow-ios-forward-fill', isRTL }: Props) 
 
 
 
-                    icon={icon}
+      icon={icon}
       sx={{
         transform: ' scaleX(-1)',
         ...(isRTL && {

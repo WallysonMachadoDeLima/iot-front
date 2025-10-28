@@ -1,6 +1,6 @@
 import { alpha, styled } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 const StyledMarkdown = styled('div')(({ theme }) => {
   const isLight = theme.palette.mode === 'light';

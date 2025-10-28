@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
 import { paths } from '@/routes';
+import { useMemo } from 'react';
 
 import SvgColor from '@/components/svg-color';
 import { useLocales } from '@/theme/locales';
 
-// ----------------------------------------------------------------------
+
 
 const icon = (name: string) => (
   <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />
@@ -15,7 +15,7 @@ const ICONS = {
   mercadorias: icon('ic_delivery'),
 };
 
-// ----------------------------------------------------------------------
+
 
 export function useNavData() {
   const { t } = useLocales();

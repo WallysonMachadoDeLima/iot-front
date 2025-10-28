@@ -2,7 +2,7 @@ import { fNumber, Mask } from '@/utils';
 import { cnpj as CNPJ, cpf as CPF } from 'cpf-cnpj-validator';
 import * as yup from 'yup';
 
-// ----------------------------------------------------------------------
+
 
 declare module 'yup' {
   interface StringSchema {
@@ -99,7 +99,7 @@ yup.mixed.prototype.nonNullable = function (...args: any[]): yup.MixedSchema {
   return originalMixedNonNullable.apply(this, args as any);
 };
 
-// ----------------------------------------------------------------------
+
 
 yup.addMethod(yup.string, 'cpf', function (message: string = 'CPF inválido') {
   return this.test('cpf', message, (value) => {
@@ -154,7 +154,7 @@ yup.addMethod(yup.string, 'email', function (message: string = 'E-mail inválido
   });
 });
 
-// ----------------------------------------------------------------------
+
 
 const number = () => {
   const required = (message: string) => {
@@ -189,7 +189,7 @@ const number = () => {
   };
 };
 
-// ----------------------------------------------------------------------
+
 
 const Yup = {
   ...yup,

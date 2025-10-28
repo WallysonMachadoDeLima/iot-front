@@ -8,7 +8,7 @@ import { varHover } from '@/components/animate';
 import Iconify from '@/components/iconify';
 import { useSettingsContext } from '@/components/settings';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   sx?: SxProps<Theme>;

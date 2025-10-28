@@ -1,7 +1,7 @@
 import { sliderClasses } from '@mui/material/Slider';
 import { Theme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
+
 
 export function slider(theme: Theme) {
   const lightMode = theme.palette.mode === 'light';

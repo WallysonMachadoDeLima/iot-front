@@ -2,7 +2,7 @@ import { FullscreenControl, GeolocateControl, NavigationControl, ScaleControl } 
 
 import { StyledMapControls } from './styles';
 
-// ----------------------------------------------------------------------
+
 
 type Props = {
   hideScaleControl?: boolean;

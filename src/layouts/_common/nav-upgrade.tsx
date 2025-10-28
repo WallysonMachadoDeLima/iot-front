@@ -9,7 +9,7 @@ import Label from '@/components/label';
 import { paths } from '@/routes/paths';
 import { useLocales } from '@/theme/locales';
 
-// ----------------------------------------------------------------------
+
 
 export default function NavUpgrade() {
   const { user } = useAuthContext();

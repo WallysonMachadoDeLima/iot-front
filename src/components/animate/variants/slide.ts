@@ -1,7 +1,7 @@
 import { VariantsType } from '../types';
 import { varTranEnter, varTranExit } from './transition';
 
-// ----------------------------------------------------------------------
+
 
 export const varSlide = (props?: VariantsType) => {
   const distance = props?.distance || 160;
