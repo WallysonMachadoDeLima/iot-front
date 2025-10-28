@@ -1,4 +1,6 @@
+// src/lib/db.ts
 import mysql from 'mysql2/promise';
+
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +13,7 @@ const globalForDb = global as unknown as { _db?: DB };
 function createPool() {
     const ssl =
         process.env.NEXT_PUBLIC_DB_SSL === 'true'
-            ? { rejectUnauthorized: true }
+            ? { rejectUnauthorized: true } // troque conforme seu provedor (pode exigir CA)
             : undefined;
 
     const pool = mysql.createPool({

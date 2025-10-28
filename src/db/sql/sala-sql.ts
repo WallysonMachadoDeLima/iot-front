@@ -3,7 +3,7 @@ import { ISalaCreateEdit } from '@/models';
 
 // ----------------------------------------------------------------------
 
-const TABLE = 'Dispositivo';
+const TABLE = 'Sala';
 
 export async function listarSalas(): Promise<ISalaCreateEdit[]> {
     return query<ISalaCreateEdit>(`SELECT id, nome, descricao FROM ${TABLE} ORDER BY id DESC`);
