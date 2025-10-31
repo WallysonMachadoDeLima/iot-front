@@ -39,5 +39,11 @@ export const paths = {
       edit: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/edit`,
       viewer: (id: string | number) => `${ROOTS.DASHBOARD}/localizacao/${id}/viewer`,
     },
+    dispositivo: {
+      create: `${ROOTS.DASHBOARD}/dispositivo/create`,
+      list: `${ROOTS.DASHBOARD}/dispositivo/list`,
+      edit: (id: string | number) => `${ROOTS.DASHBOARD}/dispositivo/${id}/edit`,
+      viewer: (id: string | number) => `${ROOTS.DASHBOARD}/dispositivo/${id}/viewer`,
+    },
   }
 };
