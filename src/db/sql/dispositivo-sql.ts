@@ -6,7 +6,7 @@ const TABLE = 'Dispositivo';
 async function create(data: IDispositivoCreateEdit) {
     const res = await exec(
         `INSERT INTO ${TABLE} (identificador, descricao, tipo, ativo, fk_id_local) VALUES (?,?,?,?,?)`,
-        [data.identificador, data.descricao, data.tipo, data.ativo ?? 1, data.fk_id_local]
+        [data.identificador, data.descricao ?? null, data.tipo, data.ativo ?? 1, data.fk_id_local]
     );
     return findOne(res.insertId);
 }

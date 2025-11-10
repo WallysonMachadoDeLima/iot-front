@@ -1,25 +1,22 @@
+
+export interface IDispositivoFindAll   {
+    id_dispositivo: number;
+    identificador: string;
+    descricao: string;
+    tipo: string;
+    ativo: number;
+    fk_id_tipolocal: number;
+    criado_em: Date;
+}
+
 export interface IDispositivoCreateEdit {
+    id_dispositivo?: number;
+    fk_id_local: number;
     identificador: string;
     descricao?: string;
     tipo: string;
     ativo?: number;
-    fk_id_local: number;
-}
-
-export interface IDispositivoFindAll extends IDispositivoCreateEdit {
-    id_dispositivo: number;
     criado_em: Date;
-    localizacao: string;
 }
 
-export type TDispositivoTableResp = IDispositivoFindAll;
-
-export type TDispositivoTableRow = IDispositivoFindAll & {
-    actions?: boolean;
-};
-
-export type TDispositivoDialog = {
-    open: boolean;
-    type: string;
-    data?: IDispositivoFindAll;
-};
+export interface IDispositivoFindOne extends IDispositivoCreateEdit { }

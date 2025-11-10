@@ -4,7 +4,7 @@ export * from './utils';
 export * from './table-actions';
 export * from './table-filter';
 export * from './table-pagination';
-export * from './use-table-api';
+export * from './use-table';
 export * from './use-table-local';
 
 export * from './table-empty-rows';
