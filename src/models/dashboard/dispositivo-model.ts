@@ -11,7 +11,7 @@ export interface IDispositivoFindAll   {
 
 export interface IDispositivoCreateEdit {
     id_dispositivo?: number;
-    fk_id_local: number;
+    fk_id_tipolocal: number;
     identificador: string;
     descricao?: string;
     tipo: string;
