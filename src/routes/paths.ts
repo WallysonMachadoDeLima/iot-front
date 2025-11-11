@@ -1,3 +1,4 @@
+import { create } from "lodash";
 
 
 
@@ -51,5 +52,11 @@ export const paths = {
       edit: (id: string | number) => `${ROOTS.DASHBOARD}/dispositivo/${id}/edit`,
       viewer: (id: string | number) => `${ROOTS.DASHBOARD}/dispositivo/${id}/viewer`,
     },
+    movimento:{
+      create: `${ROOTS.DASHBOARD}/movimento/create`,
+      list: `${ROOTS.DASHBOARD}/movimento/list`,
+      edit: (id: string | number) => `${ROOTS.DASHBOARD}/movimento/${id}/edit`,
+      viewer: (id: string | number) => `${ROOTS.DASHBOARD}/movimento/${id}/viewer`,
+    }
   }
 };
