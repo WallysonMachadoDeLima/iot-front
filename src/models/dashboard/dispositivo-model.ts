@@ -1,5 +1,5 @@
 
-export interface IDispositivoFindAll   {
+export interface IDispositivoFindAll {
     id_dispositivo: number;
     identificador: string;
     descricao: string;
@@ -17,6 +17,7 @@ export interface IDispositivoCreateEdit {
     tipo: string;
     ativo?: number;
     criado_em: Date;
+    fk_id_local?: number;
 }
 
 export interface IDispositivoFindOne extends IDispositivoCreateEdit { }
