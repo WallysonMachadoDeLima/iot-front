@@ -9,7 +9,7 @@ const formTabs = [
 ];
 
 const tableHeader = [
-  { label: 'ID', sx: { width: '10%' } },
+  { label: 'ID', sx: { width: '3%' } },
   { label: 'Identificador', align: 'center' },
   { label: 'Descrição', align: 'center' },
   { label: 'Tipo', align: 'center' },

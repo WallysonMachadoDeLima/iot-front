@@ -20,7 +20,7 @@ interface ViewFieldProps {
 
 function ViewField({ label, value }: ViewFieldProps) {
   return (
-    <Paper sx={{ p: 2 }}>
+    <Paper sx={{ p: 2, w: "100%" }}>
       <Typography variant="caption" color="text.secondary" gutterBottom>
         {label}
       </Typography>
@@ -75,7 +75,7 @@ export function LocalizacaoViewerView() {
               spacing={3}
               sx={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(5, 1fr)',
+                gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: 3
               }}
             >

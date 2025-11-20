@@ -1,10 +1,10 @@
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { LoadingButton } from '@mui/lab';
 import { Tooltip } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
+import { VscEye } from "react-icons/vsc";
 import { ConfirmDialog } from '../custom-dialog';
 import Iconify from '../iconify';
 
@@ -85,7 +85,7 @@ export function TableActions({
       {(viewer?.render ?? true) && viewer && Object.keys(viewer).length > 0 ? (
         <Tooltip title={viewer?.tooltip || 'Visualizar'}>
           <IconButton
-            color="default"
+            color="inherit"
             onClick={viewer?.onClick}
             disabled={viewer?.disabled || disabledAll}
             sx={{
@@ -93,7 +93,7 @@ export function TableActions({
               mr: -1,
             }}
           >
-            {viewer?.icon || <RemoveRedEyeIcon color="secondary" sx={{ fontSize: '1.3rem' }} />}
+            {viewer?.icon || <VscEye color="inherit" />}
           </IconButton>
         </Tooltip>
       ) : (

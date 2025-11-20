@@ -1,15 +1,15 @@
 'use client';
 
+import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
+import { useSettingsContext } from '@/components/settings';
 import { useError } from '@/hooks';
 import { IDispositivoFindAll } from '@/models';
 import { paths } from '@/routes';
+import { useRouter } from '@/routes/hooks';
 import { dispositivoService } from '@/services/dashboard';
+import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
-import { useSettingsContext } from '@/components/settings';
-import { Box, Container, Paper, Stack, Typography } from '@mui/material';
-import { useRouter } from '@/routes/hooks';
 
 interface ViewFieldProps {
   label: string;
@@ -18,7 +18,7 @@ interface ViewFieldProps {
 
 function ViewField({ label, value }: ViewFieldProps) {
   return (
-    <Paper sx={{ p: 2 }}>
+    <Paper sx={{ p: 2, w: "100%" }}>
       <Typography variant="caption" color="text.secondary" gutterBottom>
         {label}
       </Typography>

@@ -1,5 +1,16 @@
 'use client';
 
+import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
+import { RHFFormProvider } from '@/components/hook-form';
+import Scrollbar from '@/components/scrollbar';
+import { useSettingsContext } from '@/components/settings';
+import {
+  TableActions,
+  TableFilter,
+  TableNoData,
+  TablePagination,
+  useTableLocal,
+} from '@/components/table';
 import { useError } from '@/hooks';
 import { IMovimentoFindAll } from '@/models';
 import { paths, useRouter } from '@/routes';
@@ -15,18 +26,7 @@ import {
   TableRow,
 } from '@mui/material';
 import { useEffect } from 'react';
-
-import CustomBreadcrumbs from '@/components/custom-breadcrumbs';
-import { RHFFormProvider } from '@/components/hook-form';
-import Scrollbar from '@/components/scrollbar';
-import { useSettingsContext } from '@/components/settings';
-import {
-  TableActions,
-  TableFilter,
-  TableNoData,
-  TablePagination,
-  useTableLocal,
-} from '@/components/table';
+import { MdOutlineNoteAlt } from "react-icons/md";
 
 import { movimentoService } from '@/services';
 import { MOVIMENTO_ENUM } from '../enums';
@@ -78,11 +78,7 @@ export function MovimentoListView() {
             },
             { name: 'Lista' },
           ]}
-          actionRouter={{
-            type: 'create',
-            route: paths.dashboard.movimento.create,
-            label: 'Nova Movimentação',
-          }}
+
         />
         <Card>
           <TableFilter />
@@ -112,6 +108,8 @@ export function MovimentoListView() {
                             row={item}
                             edit={{
                               onClick: () => handleEdit(item),
+                              icon: <MdOutlineNoteAlt />,
+                              tooltip: 'Observação'
                             }}
                             viewer={{
                               onClick: () => handleView(item),

@@ -12,7 +12,7 @@ import Scrollbar from '@/components/scrollbar';
 import { usePathname } from '@/routes/hooks';
 import { getLocalItem } from '@/utils/storage';
 
-import { NavToggleButton } from '../_common';
+import { AccountPopover } from '../_common';
 import { NAV } from '../config-layout';
 import { useNavData } from './config-navigation';
 
@@ -67,9 +67,9 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
       sx={{
         flexShrink: { lg: 0 },
         width: { lg: NAV.W_VERTICAL },
+
       }}
     >
-      <NavToggleButton />
 
       {lgUp ? (
         <Stack
@@ -77,10 +77,25 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
             height: 1,
             position: 'fixed',
             width: NAV.W_VERTICAL,
-            borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,
+            borderRight: (theme) => `solid 1px ${theme.palette.divider}`,
+            borderRadius: 2,
+            boxShadow: (theme) => theme.shadows[4],
           }}
         >
           {renderContent}
+
+          <Stack
+            flexGrow={1}
+            direction="row"
+            alignItems="center"
+            sx={{
+              ml: 2,
+              mb: 2,
+            }}
+            spacing={{ xs: 0.5, sm: 1 }}
+          >
+            <AccountPopover />
+          </Stack>
         </Stack>
       ) : (
         <Drawer

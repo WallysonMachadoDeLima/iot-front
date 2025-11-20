@@ -43,13 +43,6 @@ export const TablePaginationLocal = () => {
           fontSize: '0.875rem',
         }}
       >
-        <FormControlLabel
-          value="comprimir"
-          control={<Switch color="primary" checked={dense} onChange={handleDense} />}
-          label="Comprimir tabela"
-          labelPlacement="start"
-        />
-        <Pagination count={totalPages} page={page} onChange={handlePageChange} />
 
         <Box
           style={{
@@ -58,7 +51,6 @@ export const TablePaginationLocal = () => {
             alignItems: 'center',
           }}
         >
-          <span> Itens por página: </span>
           <Select
             value={linesPerPage}
             onChange={handleLinesPerPageChange}
@@ -87,6 +79,8 @@ export const TablePaginationLocal = () => {
             ))}
           </Select>
         </Box>
+
+        <Pagination count={totalPages} page={page} onChange={handlePageChange} />
       </Box>
     </>
   );

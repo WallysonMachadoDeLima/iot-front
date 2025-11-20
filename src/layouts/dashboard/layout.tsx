@@ -67,7 +67,6 @@ export default function DashboardLayout({ children }: Props) {
 
   return (
     <>
-      <Header onOpenNav={nav.onTrue} />
 
       <Box
         sx={{

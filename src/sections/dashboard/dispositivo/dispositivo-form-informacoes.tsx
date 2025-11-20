@@ -3,8 +3,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { useEffect, useState } from 'react';
 
 import { RHFSelect, RHFSwitch, RHFTextField } from '@/components/hook-form';
-import { localizacaoService } from '@/services';
 import { ILocalizacaoFindAll } from '@/models';
+import { localizacaoService } from '@/services';
 
 export function DispositivoFormInformacoes() {
   const [localizacoes, setLocalizacoes] = useState<ILocalizacaoFindAll[]>([]);
@@ -28,7 +28,15 @@ export function DispositivoFormInformacoes() {
               <RHFSwitch name="ativo" label="Ativo" />
             </Grid>
 
-            <Grid xs={12} md={6}>
+            <Grid xs={12} md={4}>
+              <RHFTextField name="identificador" label="Identificador" />
+            </Grid>
+
+            <Grid xs={12} md={4}>
+              <RHFTextField name="tipo" label="Tipo" />
+            </Grid>
+
+            <Grid xs={12} md={4}>
               <RHFSelect name="fk_id_local" label="Local">
                 {localizacoes.map((l) => (
                   <MenuItem key={l.id_local} value={l.id_local}>
@@ -38,15 +46,7 @@ export function DispositivoFormInformacoes() {
               </RHFSelect>
             </Grid>
 
-            <Grid xs={12} md={6}>
-              <RHFTextField name="identificador" label="Identificador" />
-            </Grid>
-
-            <Grid xs={12} md={6}>
-              <RHFTextField name="tipo" label="Tipo" />
-            </Grid>
-
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
               <RHFTextField name="descricao" label="Descrição" multiline rows={3} />
             </Grid>
           </Grid>

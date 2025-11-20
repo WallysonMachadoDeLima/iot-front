@@ -39,6 +39,7 @@ export const TableFilterLocal = () => {
             fullWidth
             placeholder="Pesquise..."
             value={search}
+            variant='filled'
             onChange={(event: any) => setValue('search', event.target.value)}
             InputProps={{
               startAdornment: (

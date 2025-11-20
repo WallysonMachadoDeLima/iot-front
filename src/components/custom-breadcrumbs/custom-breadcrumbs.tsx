@@ -26,7 +26,7 @@ export default function CustomBreadcrumbs({
         component={RouterLink}
         href={actionRouter?.route || '#'}
         onClick={actionRouter?.onClick}
-        variant="contained"
+        variant="soft"
         startIcon={
           actionRouter?.type === 'list' ? <RiFileList2Line /> : <Iconify icon="mingcute:add-line" />
         }

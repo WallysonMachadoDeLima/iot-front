@@ -11,7 +11,7 @@ const formTabs = [
 ];
 
 const tableHeader = [
-  { label: 'ID', sx: { width: '10%' } },
+  { label: 'ID', sx: { width: '3%' } },
   { label: 'Nome', sx: { width: 0 }, align: 'center' },
   { label: 'Ações', sx: { width: '1%' } },
 ];

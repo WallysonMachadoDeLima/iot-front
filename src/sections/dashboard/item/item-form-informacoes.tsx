@@ -29,19 +29,15 @@ export function ItemFormInformacoes() {
               <RHFSwitch name="ativo" label="Ativo" />
             </Grid>
 
-            <Grid xs={12} md={6}>
+            <Grid xs={12} md={4}>
+              <RHFTextField name="nome" label="Nome" />
+            </Grid>
+            <Grid xs={12} md={4}>
               <RHFTextField name="tag_codigo" label="Tag/Código" />
             </Grid>
 
-            <Grid xs={12} md={6}>
-              <RHFTextField name="nome" label="Nome" />
-            </Grid>
 
-            <Grid xs={12} md={12}>
-              <RHFTextField name="descricao" label="Descrição" multiline rows={3} />
-            </Grid>
-
-            <Grid xs={12} md={6}>
+            <Grid xs={12} md={4}>
               <RHFSelect name="fk_id_local_origem" label="Local de Origem">
                 {locais.map((local) => (
                   <MenuItem key={local.id_local} value={local.id_local}>
@@ -50,6 +46,11 @@ export function ItemFormInformacoes() {
                 ))}
               </RHFSelect>
             </Grid>
+            <Grid xs={12}>
+              <RHFTextField name="descricao" label="Descrição" multiline rows={3} />
+            </Grid>
+
+
           </Grid>
         </Stack>
       </Card>

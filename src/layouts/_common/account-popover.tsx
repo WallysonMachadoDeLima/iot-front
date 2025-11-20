@@ -1,7 +1,6 @@
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -64,16 +63,22 @@ export default function AccountPopover() {
 
   return (
     <>
-      <IconButton
-        component={m.button}
+      <Box
+        component={m.div}
         whileTap="tap"
         whileHover="hover"
-        variants={varHover(1.05)}
+        variants={varHover(1.02)}
         onClick={popover.onOpen}
         sx={{
-          width: 40,
-          height: 40,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1.5,
+          px: 2,
+          py: 1,
+          borderRadius: 2,
+          cursor: 'pointer',
           background: (theme) => alpha(theme.palette.grey[500], 0.08),
+          transition: 'all 0.2s',
           ...(popover.open && {
             background: (theme) =>
               `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
@@ -84,14 +89,31 @@ export default function AccountPopover() {
           src={user?.photoURL}
           alt={user?.name}
           sx={{
-            width: 36,
-            height: 36,
+            width: 40,
+            height: 40,
             border: (theme) => `solid 2px ${theme.palette.background.default}`,
           }}
         />
-      </IconButton>
 
-      <CustomPopover open={popover.open} onClose={popover.onClose} sx={{ width: 200, p: 0 }}>
+        <Box sx={{ minWidth: 0 }}>
+          <Typography variant="subtitle2" noWrap>
+            {user?.name}
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }} noWrap>
+            {user?.email}
+          </Typography>
+        </Box>
+      </Box>
+
+      <CustomPopover
+        open={popover.open}
+        onClose={popover.onClose}
+        sx={{ width: 180, p: 0 }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        arrow="bottom-left"
+        hiddenArrow
+      >
         <Box sx={{ p: 2, pb: 1.5 }}>
           <Typography variant="subtitle2" noWrap>
             {user?.name}
@@ -107,9 +129,9 @@ export default function AccountPopover() {
         {/*
         <Stack sx={{ p: 1 }}>
           {OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={() => handleClickItem(option.linkTo)}>
-              {option.label}
-            </MenuItem>
+        <MenuItem key={option.label} onClick={() => handleClickItem(option.linkTo)}>
+          {option.label}
+        </MenuItem>
           ))}
         </Stack>
          */}
@@ -126,3 +148,4 @@ export default function AccountPopover() {
     </>
   );
 }
+

@@ -81,7 +81,7 @@ export function LocalizacaoListView() {
           actionRouter={{
             type: 'create',
             route: paths.dashboard.localizacao.create,
-            label: 'Novo Localização',
+            label: 'Nova Localização',
           }}
         />
         <Card>

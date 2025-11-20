@@ -19,7 +19,7 @@ interface ViewFieldProps {
 
 function ViewField({ label, value }: ViewFieldProps) {
   return (
-    <Paper sx={{ p: 2 }}>
+    <Paper sx={{ p: 2, w: "100%" }}>
       <Typography variant="caption" color="text.secondary" gutterBottom>
         {label}
       </Typography>

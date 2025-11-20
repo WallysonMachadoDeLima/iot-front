@@ -19,7 +19,7 @@ interface ViewFieldProps {
 
 function ViewField({ label, value }: ViewFieldProps) {
   return (
-    <Paper sx={{ p: 2 }}>
+    <Paper sx={{ p: 2, width: "100%", gridColumn: "span 1" }}>
       <Typography variant="caption" color="text.secondary" gutterBottom>
         {label}
       </Typography>
@@ -75,7 +75,7 @@ export function TipoLocalViewerView() {
               spacing={3}
               sx={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(5, 1fr)',
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: 3
               }}
             >
