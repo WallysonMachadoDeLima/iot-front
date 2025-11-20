@@ -6,11 +6,11 @@ import { IoIosApps } from "react-icons/io";
 import { LuMapPinned } from "react-icons/lu";
 import { MdOutlineDeveloperBoard, MdOutlineLocalOffer } from "react-icons/md";
 import { RiDashboardHorizontalLine } from "react-icons/ri";
-import { TbHomeMove } from "react-icons/tb";
-
+import { TbHomeMove, TbReportAnalytics } from "react-icons/tb";
 
 const ICONS = {
   dashboard: <RiDashboardHorizontalLine />,
+  relatorio: <TbReportAnalytics />,
   movimento: <TbHomeMove />,
   leitura: <BiScan />,
   item: <IoIosApps />,
@@ -31,6 +31,11 @@ export function useNavData() {
             title: t('dashboard'),
             path: paths.dashboard.root,
             icon: ICONS.dashboard,
+          },
+          {
+            title: t('relatórios'),
+            path: paths.dashboard.relatorio.create,
+            icon: ICONS.relatorio,
           },
           {
             title: t('movimentação'),

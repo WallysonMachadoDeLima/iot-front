@@ -27,6 +27,9 @@ export const paths = {
     general: {
       app: `${ROOTS.DASHBOARD}/app`,
     },
+    relatorio: {
+      create: `${ROOTS.DASHBOARD}/relatorio/create`,
+    },
     tipoLocal: {
       create: `${ROOTS.DASHBOARD}/tipo-local/create`,
       list: `${ROOTS.DASHBOARD}/tipo-local/list`,
