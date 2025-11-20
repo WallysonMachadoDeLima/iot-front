@@ -41,6 +41,11 @@ export function useNavData() {
             path: paths.dashboard.item.list,
             icon: ICONS.item,
           },
+          {
+            title: t('movimentação'),
+            path: paths.dashboard.movimento.list,
+            icon: ICONS.item,
+          },
         ],
       },
     ],
