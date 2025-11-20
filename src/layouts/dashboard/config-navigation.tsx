@@ -1,16 +1,22 @@
 import { paths } from '@/routes';
-import { useMemo } from 'react';
-import { FaMapLocation } from "react-icons/fa6";
-import { MdLocalOffer, MdOutlineInventory } from "react-icons/md";
-import { IoIosApps } from "react-icons/io";
-
 import { useLocales } from '@/theme/locales';
+import { useMemo } from 'react';
+import { BiScan } from "react-icons/bi";
+import { IoIosApps } from "react-icons/io";
+import { LuMapPinned } from "react-icons/lu";
+import { MdOutlineDeveloperBoard, MdOutlineLocalOffer } from "react-icons/md";
+import { RiDashboardHorizontalLine } from "react-icons/ri";
+import { TbHomeMove } from "react-icons/tb";
+
 
 const ICONS = {
-  tipoLocal: <MdLocalOffer />,
-  localizacao: <FaMapLocation />,
-  dispositivo: <IoIosApps />,
-  item: <MdOutlineInventory />,
+  dashboard: <RiDashboardHorizontalLine />,
+  movimento: <TbHomeMove />,
+  leitura: <BiScan />,
+  item: <IoIosApps />,
+  dispositivo: <MdOutlineDeveloperBoard />,
+  localizacao: <LuMapPinned />,
+  tipoLocal: <MdOutlineLocalOffer />,
 };
 
 export function useNavData() {
@@ -19,35 +25,56 @@ export function useNavData() {
   const data = useMemo(
     () => [
       {
-        subheader: t('infraestrutura'),
+        subheader: t('overview'),
         items: [
           {
-            title: t('tipo local'),
-            path: paths.dashboard.tipoLocal.list,
-            icon: ICONS.tipoLocal,
+            title: t('dashboard'),
+            path: paths.dashboard.root,
+            icon: ICONS.dashboard,
           },
           {
-            title: t('localizacao'),
-            path: paths.dashboard.localizacao.list,
-            icon: ICONS.localizacao,
+            title: t('movimentação'),
+            path: paths.dashboard.movimento.list,
+            icon: ICONS.movimento,
           },
           {
-            title: t('dispositivos'),
-            path: paths.dashboard.dispositivo.list,
-            icon: ICONS.dispositivo,
+            title: t('Leituras'),
+            path: paths.dashboard.leitura.list,
+            icon: ICONS.leitura,
           },
+        ],
+      },
+      {
+        subheader: t('equipamentos'),
+        items: [
           {
             title: t('itens'),
             path: paths.dashboard.item.list,
             icon: ICONS.item,
           },
           {
-            title: t('movimentação'),
-            path: paths.dashboard.movimento.list,
-            icon: ICONS.item,
+            title: t('dispositivos'),
+            path: paths.dashboard.dispositivo.list,
+            icon: ICONS.dispositivo,
           },
         ],
       },
+      {
+        subheader: t('locais'),
+        items: [
+          {
+            title: t('localização'),
+            path: paths.dashboard.localizacao.list,
+            icon: ICONS.localizacao,
+          },
+          {
+            title: t('tipo local'),
+            path: paths.dashboard.tipoLocal.list,
+            icon: ICONS.tipoLocal,
+          },
+        ],
+      },
+
     ],
     [t],
   );
