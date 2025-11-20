@@ -1,4 +1,3 @@
-Teste a IA diretamente nos seus apps favoritos … Use o Gemini para criar rascunhos e editar conteúdo, e tenha acesso à IA de última geração do Google com o Gemini Pro por R$ 96,99 R$ 0 durante 1 mês
 -- =========================================================
 -- RECRIA BANCO
 -- =========================================================
@@ -240,7 +239,7 @@ SELECT
   v.id_item,
   v.item,
   v.tag_codigo,
-  v.lido_em AS ultima_leitura
+  v.referencia_em AS ultima_leitura
 FROM v_status_atual_de_cada_item v
 JOIN Localizacao loc ON loc.id_local=v.id_local_atual
 JOIN TipoLocal tl ON tl.id_tipolocal=loc.fk_id_tipolocal
