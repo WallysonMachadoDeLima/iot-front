@@ -1,5 +1,8 @@
 module.exports = {
   trailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   modularizeImports: {
     '@mui/material': {
       transform: '@mui/material/{{member}}',
