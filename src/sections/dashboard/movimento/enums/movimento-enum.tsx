@@ -11,9 +11,13 @@ const formTabs = [
 ];
 
 const tableHeader = [
-  { label: 'ID', sx: { width: '3%' } },
-  { label: 'Descrição', sx: { width: 0 }, align: 'center' },
-  { label: 'Ações', sx: { width: '1%' } },
+  { label: 'ID', sx: { width: '3%' }, align: 'center' },
+  { label: 'Dispositivo', sx: { width: '15%' }, align: 'center' },
+  { label: 'Item', sx: { width: '15%' }, align: 'center' },
+  { label: 'Local Anterior', sx: { width: '15%' }, align: 'center' },
+  { label: 'Local Destino', sx: { width: '15%' }, align: 'center' },
+  { label: 'Data/Hora', sx: { width: '12%' }, align: 'center' },
+  { label: 'Ações', sx: { width: '5%' } },
 ];
 
 export const MOVIMENTO_ENUM = {

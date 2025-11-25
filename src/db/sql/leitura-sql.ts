@@ -1,4 +1,4 @@
-import { exec } from '@/db/db';
+import { exec, query } from '@/db/db';
 import { ILeituraCreateEdit } from '@/models';
 
 const TABLE = 'Leitura';
@@ -11,6 +11,13 @@ async function create(data: ILeituraCreateEdit) {
     return { id: res.insertId };
 }
 
+async function findAll() {
+    return query(
+        `SELECT * FROM ${TABLE} ORDER BY id_leitura DESC`
+    );
+}
+
 export const leituraSql = {
     create,
+    findAll,
 };

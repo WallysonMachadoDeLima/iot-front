@@ -4,6 +4,11 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
+export async function GET() {
+    const data = await leituraSql.findAll();
+    return NextResponse.json(data);
+}
+
 export async function POST(req: Request) {
     const body = await req.json();
     const error = findFirstKeyWithValue(body);

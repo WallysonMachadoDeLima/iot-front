@@ -27,7 +27,7 @@ async function findAll(): Promise<IMovimentoFindAll[]> {
        I.nome  AS item,
        LO.nome AS local_origem,
        LD.nome AS local_destino,
-       D.nome  AS dispositivo
+       D.descricao  AS dispositivo
      FROM ${TABLE} M
      LEFT JOIN Item        I  ON I.id_item         = M.fk_id_item
      LEFT JOIN Localizacao LO ON LO.id_local       = M.fk_id_local_origem
@@ -44,7 +44,7 @@ async function findOne(id: number): Promise<IMovimentoFindAll | undefined> {
        I.nome  AS item,
        LO.nome AS local_origem,
        LD.nome AS local_destino,
-       D.nome  AS dispositivo
+       D.descricao  AS dispositivo
      FROM ${TABLE} M
      LEFT JOIN Item        I  ON I.id_item         = M.fk_id_item
      LEFT JOIN Localizacao LO ON LO.id_local       = M.fk_id_local_origem

@@ -1,14 +1,19 @@
 
-import { Card, MenuItem, Stack, Typography } from '@mui/material';
+import { Card, MenuItem, Stack, Typography, Button, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { RHFSelect, RHFSwitch, RHFTextField } from '@/components/hook-form';
 import { ILocalizacaoFindAll } from '@/models';
-import { localizacaoService } from '@/services';
+import { localizacaoService, leituraService } from '@/services';
+import { useSnackbar } from '@/components/snackbar';
 
 export function ItemFormInformacoes() {
   const [locais, setLocais] = useState<ILocalizacaoFindAll[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { setValue } = useFormContext();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     localizacaoService
@@ -16,6 +21,23 @@ export function ItemFormInformacoes() {
       .then((res) => setLocais(res))
       .catch(() => setLocais([]));
   }, []);
+
+  const handleGetLastTag = async () => {
+    setLoading(true);
+    try {
+      const lastReading = await leituraService.getLastReading();
+      if (lastReading && lastReading.tag_codigo) {
+        setValue('tag_codigo', lastReading.tag_codigo);
+        enqueueSnackbar('Tag preenchida com a última leitura!', { variant: 'success' });
+      } else {
+        enqueueSnackbar('Nenhuma leitura encontrada', { variant: 'warning' });
+      }
+    } catch (error) {
+      enqueueSnackbar('Erro ao buscar última leitura', { variant: 'error' });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Grid xs={12}>
@@ -33,7 +55,17 @@ export function ItemFormInformacoes() {
               <RHFTextField name="nome" label="Nome" />
             </Grid>
             <Grid xs={12} md={4}>
-              <RHFTextField name="tag_codigo" label="Tag/Código" />
+              <Stack direction="row" spacing={1} alignItems="flex-end">
+                <RHFTextField name="tag_codigo" label="Tag/Código" sx={{ flex: 1 }} />
+                <Button 
+                  variant="contained" 
+                  onClick={handleGetLastTag}
+                  disabled={loading}
+                  sx={{ minWidth: 180, height: 56 }}
+                >
+                  {loading ? <CircularProgress size={24} /> : 'Buscar Última Tag'}
+                </Button>
+              </Stack>
             </Grid>
 
 

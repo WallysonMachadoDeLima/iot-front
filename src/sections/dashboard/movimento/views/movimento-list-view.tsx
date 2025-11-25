@@ -14,6 +14,7 @@ import {
 import { useError } from '@/hooks';
 import { IMovimentoFindAll } from '@/models';
 import { paths, useRouter } from '@/routes';
+import { fDateTime } from '@/utils/format-time';
 import {
   Card,
   Container,
@@ -25,18 +26,19 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useEffect } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { MdOutlineNoteAlt } from "react-icons/md";
 
 import { movimentoService } from '@/services';
 import { MOVIMENTO_ENUM } from '../enums';
 
-
+const REFRESH_INTERVAL = 3000;
 
 export function MovimentoListView() {
   const router = useRouter();
   const handleError = useError();
   const settings = useSettingsContext();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const { methods, localFilteringPaging } = useTableLocal<IMovimentoFindAll>();
 
@@ -45,6 +47,13 @@ export function MovimentoListView() {
   const { dense, dataTableFilter, linesPerPage, page, search, tab } = watch();
 
   const fetchData = () => localFilteringPaging('ativo');
+
+  const loadMovimentos = useCallback(() => {
+    movimentoService
+      .findAll()
+      .then((response: any[]) => setValue('dataTable', response))
+      .catch((error: any) => handleError(error, 'Serviço de Movimentação indisponível'));
+  }, [setValue, handleError]);
 
   const handleEdit = (item: IMovimentoFindAll) => {
     router.push(paths.dashboard.movimento.edit(item.id_movimento));
@@ -58,12 +67,23 @@ export function MovimentoListView() {
     fetchData();
   }, [linesPerPage, page, search, tab]);
 
+  // Auto-refresh: carrega dados inicialmente e configura intervalo
   useEffect(() => {
-    movimentoService
-      .findAll()
-      .then((response: any[]) => setValue('dataTable', response))
-      .catch((error: any) => handleError(error, 'Serviço de Movimentação indisponível'));
-  }, []);
+    // Carrega dados imediatamente
+    loadMovimentos();
+
+    // Configura auto-refresh
+    intervalRef.current = setInterval(() => {
+      loadMovimentos();
+    }, REFRESH_INTERVAL);
+
+    // Cleanup: limpa o intervalo quando o componente for desmontado
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [loadMovimentos]);
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
@@ -101,7 +121,19 @@ export function MovimentoListView() {
                       <TableRow hover key={item.id_movimento}>
                         <TableCell align="center">{item.id_movimento}</TableCell>
 
-                        <TableCell align="center">{item.observacoes}</TableCell>
+                        <TableCell align="center">{item.dispositivo || '-'}</TableCell>
+
+                        <TableCell align="center">{item.item || '-'}</TableCell>
+
+                        <TableCell align="center">{item.local_origem || '-'}</TableCell>
+
+                        <TableCell align="center">{item.local_destino || '-'}</TableCell>
+
+
+
+                        <TableCell align="center">
+                          {item.movido_em ? fDateTime(item.movido_em) : '-'}
+                        </TableCell>
 
                         <TableCell sx={{ whiteSpace: 'nowrap' }}>
                           <TableActions

@@ -2,7 +2,7 @@
 "use client";
 
 import { IItemCreateEdit, IItemFindAll } from '@/models';
-import { api } from '@/services';
+import { api } from '@/services/config-service';
 
 async function create(payload: IItemCreateEdit): Promise<IItemCreateEdit> {
     const { data } = await api.next.post<IItemCreateEdit>('/item', payload);
