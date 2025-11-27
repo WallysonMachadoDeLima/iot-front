@@ -6,6 +6,7 @@ export interface IDispositivoFindAll {
     tipo: string;
     ativo: number;
     fk_id_tipolocal: number;
+    fk_id_local?: number;
     criado_em: Date;
 }
 

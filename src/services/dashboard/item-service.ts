@@ -19,6 +19,11 @@ async function findOneById(id: number): Promise<IItemFindAll> {
     return data;
 }
 
+async function findByLocalizacao(idLocal: number): Promise<IItemFindAll[]> {
+    const { data } = await api.next.get<IItemFindAll[]>(`/item/localizacao/${idLocal}`);
+    return data;
+}
+
 async function update(id: number, payload: IItemCreateEdit): Promise<IItemCreateEdit> {
     const { data } = await api.next.put<IItemCreateEdit>(`/item/${id}`, payload);
     return data;
@@ -32,6 +37,7 @@ async function remove(id: number): Promise<{ ok: true }> {
 export const itemService = {
     findAll,
     findOneById,
+    findByLocalizacao,
     create,
     update,
     remove,
