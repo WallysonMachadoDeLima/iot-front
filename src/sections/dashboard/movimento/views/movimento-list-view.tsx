@@ -32,7 +32,7 @@ import { MdOutlineNoteAlt } from "react-icons/md";
 import { movimentoService } from '@/services';
 import { MOVIMENTO_ENUM } from '../enums';
 
-const REFRESH_INTERVAL = 3000;
+const REFRESH_INTERVAL = 1500;
 
 export function MovimentoListView() {
   const router = useRouter();

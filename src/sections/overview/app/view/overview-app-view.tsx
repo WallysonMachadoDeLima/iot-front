@@ -2,8 +2,8 @@
 
 import { useSettingsContext } from '@/components/settings';
 import { useSnackbar } from '@/components/snackbar';
-import { IDispositivoFindAll, IItemFindAll, ILocalizacaoFindAll } from '@/models';
-import { dispositivoService, itemService, localizacaoService } from '@/services';
+import { IDispositivoFindAll, IItemFindAll, ILocalizacaoFindAll, IMovimentoFindAll } from '@/models';
+import { dispositivoService, itemService, localizacaoService, movimentoService } from '@/services';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
@@ -19,6 +19,7 @@ export default function OverviewAppView() {
   const [rooms, setRooms] = useState<ILocalizacaoFindAll[]>([]);
   const [items, setItems] = useState<IItemFindAll[]>([]);
   const [devices, setDevices] = useState<IDispositivoFindAll[]>([]);
+  const [movements, setMovements] = useState<IMovimentoFindAll[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [selectedRoom, setSelectedRoom] = useState<ILocalizacaoFindAll | null>(null);
@@ -27,15 +28,17 @@ export default function OverviewAppView() {
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
-      const [roomsData, itemsData, devicesData] = await Promise.all([
+      const [roomsData, itemsData, devicesData, movementsData] = await Promise.all([
         localizacaoService.findAll(),
         itemService.findAll(),
         dispositivoService.findAll(),
+        movimentoService.findAll(),
       ]);
 
       setRooms(roomsData);
       setItems(itemsData);
       setDevices(devicesData);
+      setMovements(movementsData);
     } catch (error) {
       console.error('Erro ao carregar dados:', error);
       enqueueSnackbar('Erro ao carregar dados do dashboard', { variant: 'error' });
@@ -46,7 +49,27 @@ export default function OverviewAppView() {
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const [roomsData, itemsData, devicesData, movementsData] = await Promise.all([
+        localizacaoService.findAll(),
+        itemService.findAll(),
+        dispositivoService.findAll(),
+        movimentoService.findAll(),
+      ]);
+
+      setRooms(roomsData);
+      setItems(itemsData);
+      setDevices(devicesData);
+      setMovements(movementsData);
+    }, 1000);
+
+    // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, [fetchData]);
+
 
   const handleRoomClick = (room: ILocalizacaoFindAll) => {
     setSelectedRoom(room);
@@ -70,11 +93,29 @@ export default function OverviewAppView() {
     return items.filter((item) => item.fk_id_local_origem === roomId);
   };
 
-  // For "items currently in room", we would need movimento data to track location
-  // For now, we'll show items owned by the room as a placeholder
+  // Get current location of an item based on last movement
+  const getCurrentLocationOfItem = (itemId: number): number | null => {
+    // Filter movements for this item and sort by date (most recent first)
+    const itemMovements = movements
+      .filter((mov) => mov.fk_id_item === itemId)
+      .sort((a, b) => new Date(b.movido_em).getTime() - new Date(a.movido_em).getTime());
+
+    // If there are movements, return the destination of the most recent one
+    if (itemMovements.length > 0) {
+      return itemMovements[0].fk_id_local_destino;
+    }
+
+    // If no movements, the item is still at its origin location
+    const item = items.find((i) => i.id_item === itemId);
+    return item ? item.fk_id_local_origem : null;
+  };
+
+  // Get items currently in the room based on movements
   const getItemsInRoom = (roomId: number): IItemFindAll[] => {
-    // TODO: Implement with movimento/leitura data to show current location
-    return getItemsOwnedByRoom(roomId);
+    return items.filter((item) => {
+      const currentLocation = getCurrentLocationOfItem(item.id_item);
+      return currentLocation === roomId;
+    });
   };
 
   if (loading) {
@@ -98,10 +139,10 @@ export default function OverviewAppView() {
     <Container maxWidth={settings.themeStretch ? false : 'xl'}>
       <Box sx={{ mb: 4 }}>
         <Typography variant="h4" sx={{ mb: 1 }}>
-          Dashboard de Salas
+          Dashboard de Localizações
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Visualize e gerencie todas as salas e seus itens
+          Visualize e gerencie todas as localizações e seus itens
         </Typography>
       </Box>
 
