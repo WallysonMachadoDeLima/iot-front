@@ -38,14 +38,14 @@ export function LocalizacaoEditView() {
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <CustomBreadcrumbs
-        heading="Editar Localização"
+        heading="Editar Local"
         links={[
           {
             name: 'Painel',
             href: paths.dashboard.root,
           },
           {
-            name: 'Localização',
+            name: 'Locais',
             href: paths.dashboard.localizacao.list,
           },
           { name: currentData?.nome },

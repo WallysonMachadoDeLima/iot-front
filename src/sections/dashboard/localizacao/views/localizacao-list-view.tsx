@@ -62,18 +62,18 @@ export function LocalizacaoListView() {
     localizacaoService
       .findAll()
       .then((response: any[]) => setValue('dataTable', response))
-      .catch((error: any) => handleError(error, 'Serviço de Localização indisponível'));
+      .catch((error: any) => handleError(error, 'Serviço de Locais indisponível'));
   }, []);
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <RHFFormProvider methods={methods}>
         <CustomBreadcrumbs
-          heading="Listagem de Localização"
+          heading="Listagem de Locais"
           links={[
             { name: 'Painel', href: paths.dashboard.root },
             {
-              name: 'Localização',
+              name: 'Locais',
               href: paths.dashboard.localizacao.list,
             },
             { name: 'Lista' },
@@ -81,7 +81,7 @@ export function LocalizacaoListView() {
           actionRouter={{
             type: 'create',
             route: paths.dashboard.localizacao.create,
-            label: 'Nova Localização',
+            label: 'Novo Local',
           }}
         />
         <Card>

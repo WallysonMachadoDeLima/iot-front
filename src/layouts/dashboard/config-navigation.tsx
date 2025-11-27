@@ -65,10 +65,10 @@ export function useNavData() {
         ],
       },
       {
-        subheader: t('locais'),
+        subheader: t('Localizações'),
         items: [
           {
-            title: t('localização'),
+            title: t('locais'),
             path: paths.dashboard.localizacao.list,
             icon: ICONS.localizacao,
           },

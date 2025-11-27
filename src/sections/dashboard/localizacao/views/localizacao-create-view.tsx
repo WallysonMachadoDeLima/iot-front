@@ -14,17 +14,17 @@ export function LocalizacaoCreateView() {
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
       <CustomBreadcrumbs
-        heading="Cadastrar Localização"
+        heading="Cadastrar Local"
         links={[
           {
             name: 'Painel',
             href: paths.dashboard.root,
           },
           {
-            name: 'Localização',
+            name: 'Locais',
             href: paths.dashboard.localizacao.list,
           },
-          { name: 'Novo Localização' },
+          { name: 'Novo Local' },
         ]}
       />
       <LocalizacaoCreateEditForm />

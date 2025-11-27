@@ -27,8 +27,8 @@ interface FormValues {
 }
 
 const TIPOS_RELATORIO = [
-    { value: 'resumo-sala-atual', label: 'Resumo por Sala (Situação Atual)' },
-    { value: 'itens-por-sala', label: 'Itens Atuais por Sala' },
+    { value: 'resumo-sala-atual', label: 'Resumo por Local (Situação Atual)' },
+    { value: 'itens-por-sala', label: 'Itens por Sala' },
     { value: 'movimentacao-itens', label: 'Movimentação por Itens' },
 ];
 
