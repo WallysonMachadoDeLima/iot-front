@@ -4,6 +4,7 @@
 DROP DATABASE IF EXISTS GestaoPatrimonio;
 CREATE DATABASE GestaoPatrimonio;
 USE GestaoPatrimonio;
+show tables;
 
 -- =========================================================
 -- TABELAS
@@ -98,72 +99,29 @@ DELIMITER $$
 CREATE TRIGGER trg_leitura_movimento_ai
 AFTER INSERT ON Leitura
 FOR EACH ROW
-trg: BEGIN
+BEGIN
   DECLARE v_item_id INT;
   DECLARE v_local_atual INT;
   DECLARE v_local_anterior INT;
-  DECLARE v_local_origem_inicial INT;
-  DECLARE v_local_corredor INT;
 
-  -- Descobre o item e a origem cadastral dele
-  SELECT id_item, fk_id_local_origem INTO v_item_id, v_local_origem_inicial 
-  FROM Item
-  WHERE tag_codigo = NEW.tag_codigo
+  SELECT id_item INTO v_item_id FROM Item WHERE tag_codigo=NEW.tag_codigo LIMIT 1;
+  SELECT fk_id_local INTO v_local_atual FROM Dispositivo WHERE id_dispositivo=NEW.fk_id_dispositivo LIMIT 1;
+
+  SELECT d.fk_id_local INTO v_local_anterior
+  FROM Leitura l
+  JOIN Dispositivo d ON d.id_dispositivo=l.fk_id_dispositivo
+  WHERE l.tag_codigo=NEW.tag_codigo
+    AND (l.lido_em<NEW.lido_em OR (l.lido_em=NEW.lido_em AND l.id_leitura<NEW.id_leitura))
+  ORDER BY l.lido_em DESC,l.id_leitura DESC
   LIMIT 1;
 
-  -- Se a tag não estiver vinculada a nenhum item, não faz nada
-  IF v_item_id IS NULL THEN
-    LEAVE trg;
-  END IF;
-
-  -- Local do dispositivo que acabou de ler (porta da Sala A, Sala B, etc.)
-  SELECT fk_id_local INTO v_local_atual
-  FROM Dispositivo
-  WHERE id_dispositivo = NEW.fk_id_dispositivo
-  LIMIT 1;
-
-  -- Local "corredor" (você pode ajustar o critério se tiver mais de um)
-  SELECT loc.id_local INTO v_local_corredor
-  FROM Localizacao loc
-  JOIN TipoLocal tl ON tl.id_tipolocal = loc.fk_id_tipolocal
-  WHERE tl.descricao = 'CORREDOR'
-  LIMIT 1;
-
-  -- Último local conhecido do item = destino do último movimento
-  SELECT m.fk_id_local_destino INTO v_local_anterior
-  FROM Movimento m
-  WHERE m.fk_id_item = v_item_id
-  ORDER BY m.movido_em DESC, m.id_movimento DESC
-  LIMIT 1;
-
-  -- Se nunca teve movimento, considera a origem cadastrada do item
-  IF v_local_anterior IS NULL THEN
-    SET v_local_anterior = v_local_origem_inicial;
-  END IF;
-
-  -- =============================
-  -- REGRAS DE TRANSIÇÃO DE ESTADO
-  -- =============================
-
-  -- 1) Estava DENTRO da sala e passou no sensor da própria sala -> sai para o CORREDOR
-  IF v_local_anterior = v_local_atual AND v_local_corredor IS NOT NULL THEN
-    INSERT INTO Movimento(fk_id_item, fk_id_local_origem, fk_id_local_destino, fk_id_dispositivo, movido_em)
-    VALUES (v_item_id, v_local_anterior, v_local_corredor, NEW.fk_id_dispositivo, NEW.lido_em);
-
-  -- 2) Estava no CORREDOR e passou em um sensor de sala -> entra na SALA
-  ELSEIF v_local_anterior = v_local_corredor AND v_local_atual <> v_local_corredor THEN
-    INSERT INTO Movimento(fk_id_item, fk_id_local_origem, fk_id_local_destino, fk_id_dispositivo, movido_em)
-    VALUES (v_item_id, v_local_corredor, v_local_atual, NEW.fk_id_dispositivo, NEW.lido_em);
-
-  -- 3) Caso geral: mudou de um local para outro diferente (ex.: EXTERNO -> Sala A)
-  ELSEIF v_local_anterior <> v_local_atual THEN
-	INSERT INTO Movimento(fk_id_item, fk_id_local_origem, fk_id_local_destino, fk_id_dispositivo, movido_em)
-	VALUES (v_item_id, v_local_anterior, v_local_atual, NEW.fk_id_dispositivo, NEW.lido_em);
+  IF v_item_id IS NOT NULL AND (v_local_anterior IS NULL OR v_local_anterior<>v_local_atual) THEN
+    INSERT INTO Movimento(fk_id_item,fk_id_local_origem,fk_id_local_destino,fk_id_dispositivo,movido_em)
+    VALUES (v_item_id,v_local_anterior,v_local_atual,NEW.fk_id_dispositivo,NEW.lido_em);
   END IF;
 END$$
 
 DELIMITER ;
-
 
 -- =========================================================
 -- LEITURAS (GERAM REGISTROS NA TABELA MOVIMENTO PELO TRIGGER)
@@ -189,6 +147,14 @@ INSERT INTO Leitura(fk_id_dispositivo,tag_codigo,lido_em) VALUES
 -- =========================================================
 -- VIEWs
 -- =========================================================
+DROP VIEW IF EXISTS v_movimentacao_por_itens;
+DROP VIEW IF EXISTS v_movimentacao_por_sala;
+DROP VIEW IF EXISTS v_saidas_de_salas;
+DROP VIEW IF EXISTS v_entradas_em_salas;
+DROP VIEW IF EXISTS v_itens_atuais_por_sala;
+DROP VIEW IF EXISTS v_resumo_atual_por_sala;
+DROP VIEW IF EXISTS v_status_atual_de_cada_item;
+
 -- ------------------------------------------------------------------
 -- BASE: Status atual de cada item (última leitura)
 -- ------------------------------------------------------------------
@@ -199,52 +165,68 @@ SELECT
   i.tag_codigo,
   loc_origem.id_local AS id_local_origem,
   loc_origem.nome AS local_origem,
+  tl_atual.descricao AS tipo_local_atual,
   loc_atual.id_local AS id_local_atual,
   loc_atual.nome AS local_atual,
-  tl_atual.descricao AS tipo_local_atual,
-  COALESCE(ult.movido_em, i.criado_em) AS referencia_em
+  l.lido_em
 FROM Item i
-JOIN Localizacao loc_origem ON loc_origem.id_local = i.fk_id_local_origem
-LEFT JOIN (
-  -- Último movimento de cada item
-  SELECT m1.*
-  FROM Movimento m1
-  JOIN (SELECT fk_id_item, MAX(movido_em) AS movido_em, MAX(id_movimento) AS id_movimento FROM Movimento GROUP BY fk_id_item ) 
-  ult ON ult.fk_id_item = m1.fk_id_item AND ult.movido_em = m1.movido_em AND ult.id_movimento = m1.id_movimento
-) ult ON ult.fk_id_item = i.id_item
-LEFT JOIN Localizacao loc_atual ON loc_atual.id_local = COALESCE(ult.fk_id_local_destino, i.fk_id_local_origem)
-LEFT JOIN TipoLocal tl_atual ON tl_atual.id_tipolocal = loc_atual.fk_id_tipolocal;
+JOIN Localizacao loc_origem
+  ON loc_origem.id_local = i.fk_id_local_origem
+JOIN (
+  SELECT
+    tag_codigo,
+    MAX(lido_em) AS lido_em
+  FROM Leitura
+  GROUP BY tag_codigo
+) u
+  ON u.tag_codigo = i.tag_codigo
+JOIN Leitura l
+  ON l.tag_codigo = u.tag_codigo
+ AND l.lido_em   = u.lido_em
+JOIN Dispositivo d
+  ON d.id_dispositivo = l.fk_id_dispositivo
+JOIN Localizacao loc_atual
+  ON loc_atual.id_local = d.fk_id_local
+JOIN TipoLocal tl_atual
+  ON tl_atual.id_tipolocal = loc_atual.fk_id_tipolocal;
 
 -- ------------------------------------------------------------------
--- 1) RESUMO POR SALA (situação atual)
---    Quantidade de itens atualmente em cada sala
+-- 1) RESUMO POR SALA (situação atual) — INCLUINDO SALAS COM 0 ITENS
 -- ------------------------------------------------------------------
 CREATE OR REPLACE VIEW v_resumo_atual_por_sala AS
 SELECT
   loc.id_local AS id_sala,
-  loc.nome AS sala,
-  COUNT(*) AS quantidade_itens
-FROM v_status_atual_de_cada_item v
-JOIN Localizacao loc ON loc.id_local=v.id_local_atual
-JOIN TipoLocal tl ON tl.id_tipolocal=loc.fk_id_tipolocal
-WHERE tl.descricao='SALA'
-GROUP BY loc.id_local,loc.nome
-ORDER BY loc.nome;
+  loc.nome     AS sala,
+  COUNT(v.id_item) AS quantidade_itens
+FROM Localizacao loc
+JOIN TipoLocal tl
+  ON tl.id_tipolocal = loc.fk_id_tipolocal
+LEFT JOIN v_status_atual_de_cada_item v
+  ON v.id_local_atual = loc.id_local
+GROUP BY
+  loc.id_local,
+  loc.nome
+ORDER BY
+  loc.nome;
 
 -- Itens atualmente em cada sala (listagem detalhada)
 CREATE OR REPLACE VIEW v_itens_atuais_por_sala AS
 SELECT
   loc.id_local AS id_sala,
-  loc.nome AS sala,
+  loc.nome    AS sala,
   v.id_item,
   v.item,
   v.tag_codigo,
-  v.referencia_em AS ultima_leitura
+  v.lido_em   AS ultima_leitura
 FROM v_status_atual_de_cada_item v
-JOIN Localizacao loc ON loc.id_local=v.id_local_atual
-JOIN TipoLocal tl ON tl.id_tipolocal=loc.fk_id_tipolocal
-WHERE tl.descricao='SALA'
-ORDER BY loc.nome,v.item;
+JOIN Localizacao loc
+  ON loc.id_local = v.id_local_atual
+JOIN TipoLocal tl
+  ON tl.id_tipolocal = loc.fk_id_tipolocal
+WHERE tl.descricao = 'SALA'
+ORDER BY
+  loc.nome,
+  v.item;
 
 -- ------------------------------------------------------------------
 -- 2) MOVIMENTAÇÃO POR SALA
@@ -253,37 +235,47 @@ ORDER BY loc.nome,v.item;
 CREATE OR REPLACE VIEW v_entradas_em_salas AS
 SELECT
   ld.id_local AS id_sala_destino,
-  ld.nome AS sala_destino,
+  ld.nome    AS sala_destino,
   i.id_item,
-  i.nome AS item,
+  i.nome     AS item,
   i.tag_codigo,
   COALESCE(lo.nome,'(sem origem)') AS local_origem,
   m.movido_em
 FROM Movimento m
-LEFT JOIN Localizacao lo ON lo.id_local=m.fk_id_local_origem
-JOIN Localizacao ld ON ld.id_local=m.fk_id_local_destino
-JOIN TipoLocal tld ON tld.id_tipolocal=ld.fk_id_tipolocal
-JOIN Item i ON i.id_item=m.fk_id_item
-WHERE tld.descricao='SALA'
-ORDER BY m.movido_em DESC;
+LEFT JOIN Localizacao lo
+  ON lo.id_local = m.fk_id_local_origem
+JOIN Localizacao ld
+  ON ld.id_local = m.fk_id_local_destino
+JOIN TipoLocal tld
+  ON tld.id_tipolocal = ld.fk_id_tipolocal
+JOIN Item i
+  ON i.id_item = m.fk_id_item
+WHERE tld.descricao = 'SALA'
+ORDER BY
+  m.movido_em DESC;
 
 --    Saídas de salas (origem é SALA)
 CREATE OR REPLACE VIEW v_saidas_de_salas AS
 SELECT
   lo.id_local AS id_sala_origem,
-  lo.nome AS sala_origem,
+  lo.nome    AS sala_origem,
   i.id_item,
-  i.nome AS item,
+  i.nome     AS item,
   i.tag_codigo,
-  ld.nome AS local_destino,
+  ld.nome    AS local_destino,
   m.movido_em
 FROM Movimento m
-JOIN Localizacao lo ON lo.id_local=m.fk_id_local_origem
-JOIN TipoLocal tlo ON tlo.id_tipolocal=lo.fk_id_tipolocal
-JOIN Localizacao ld ON ld.id_local=m.fk_id_local_destino
-JOIN Item i ON i.id_item=m.fk_id_item
-WHERE tlo.descricao='SALA'
-ORDER BY m.movido_em DESC;
+JOIN Localizacao lo
+  ON lo.id_local = m.fk_id_local_origem
+JOIN TipoLocal tlo
+  ON tlo.id_tipolocal = lo.fk_id_tipolocal
+JOIN Localizacao ld
+  ON ld.id_local = m.fk_id_local_destino
+JOIN Item i
+  ON i.id_item = m.fk_id_item
+WHERE tlo.descricao = 'SALA'
+ORDER BY
+  m.movido_em DESC;
 
 --    Movimentação envolvendo salas (qualquer movimento que entra ou sai de uma sala)
 CREATE OR REPLACE VIEW v_movimentacao_por_sala AS
@@ -294,16 +286,28 @@ SELECT
   COALESCE(lo.nome,'(sem origem)') AS origem,
   ld.nome AS destino,
   m.movido_em,
-  CASE WHEN tld.descricao='SALA' THEN ld.nome END AS sala_envolvida_destino,
-  CASE WHEN tlo.descricao='SALA' THEN lo.nome END AS sala_envolvida_origem
+  CASE
+    WHEN tld.descricao = 'SALA' THEN ld.nome
+  END AS sala_envolvida_destino,
+  CASE
+    WHEN tlo.descricao = 'SALA' THEN lo.nome
+  END AS sala_envolvida_origem
 FROM Movimento m
-LEFT JOIN Localizacao lo ON lo.id_local=m.fk_id_local_origem
-LEFT JOIN TipoLocal tlo ON tlo.id_tipolocal=lo.fk_id_tipolocal
-JOIN Localizacao ld ON ld.id_local=m.fk_id_local_destino
-JOIN TipoLocal tld ON tld.id_tipolocal=ld.fk_id_tipolocal
-JOIN Item i ON i.id_item=m.fk_id_item
-WHERE (tlo.descricao='SALA' OR tld.descricao='SALA')
-ORDER BY i.nome,m.movido_em DESC;
+LEFT JOIN Localizacao lo
+  ON lo.id_local = m.fk_id_local_origem
+LEFT JOIN TipoLocal tlo
+  ON tlo.id_tipolocal = lo.fk_id_tipolocal
+JOIN Localizacao ld
+  ON ld.id_local = m.fk_id_local_destino
+JOIN TipoLocal tld
+  ON tld.id_tipolocal = ld.fk_id_tipolocal
+JOIN Item i
+  ON i.id_item = m.fk_id_item
+WHERE
+  (tlo.descricao = 'SALA' OR tld.descricao = 'SALA')
+ORDER BY
+  i.nome,
+  m.movido_em DESC;
 
 -- ------------------------------------------------------------------
 -- 3) MOVIMENTAÇÃO POR ITENS (linha do tempo)
@@ -319,32 +323,40 @@ SELECT
   tld.descricao AS tipo_destino,
   m.movido_em
 FROM Movimento m
-LEFT JOIN Localizacao lo ON lo.id_local=m.fk_id_local_origem
-LEFT JOIN TipoLocal tlo ON tlo.id_tipolocal=lo.fk_id_tipolocal
-JOIN Localizacao ld ON ld.id_local=m.fk_id_local_destino
-JOIN TipoLocal tld ON tld.id_tipolocal=ld.fk_id_tipolocal
-JOIN Item i ON i.id_item=m.fk_id_item
-ORDER BY i.nome desc;
+LEFT JOIN Localizacao lo
+  ON lo.id_local = m.fk_id_local_origem
+LEFT JOIN TipoLocal tlo
+  ON tlo.id_tipolocal = lo.fk_id_tipolocal
+JOIN Localizacao ld
+  ON ld.id_local = m.fk_id_local_destino
+JOIN TipoLocal tld
+  ON tld.id_tipolocal = ld.fk_id_tipolocal
+JOIN Item i
+  ON i.id_item = m.fk_id_item
+ORDER BY
+  i.nome,
+  m.movido_em DESC;
 
 -- Resumo por sala (situação atual)
 SELECT * FROM v_resumo_atual_por_sala;
 
 -- Itens atuais da "Sala A"
-SELECT * FROM v_itens_atuais_por_sala WHERE sala='Sala A';
+SELECT * FROM v_itens_atuais_por_sala
+WHERE sala = 'Sala A';
 
 -- Entradas em salas no período
 SELECT * FROM v_entradas_em_salas
 WHERE movido_em BETWEEN '2025-09-01 00:00:00' AND '2025-09-30 23:59:59'
-  AND sala_destino='Sala A';
+  AND sala_destino = 'Sala A';
 
 -- Saídas de salas no período
 SELECT * FROM v_saidas_de_salas
 WHERE movido_em BETWEEN '2025-09-01 00:00:00' AND '2025-09-30 23:59:59'
-  AND sala_origem='Sala A';
+  AND sala_origem = 'Sala A';
 
 -- Movimentação envolvendo uma sala (entra/saí dela)
 SELECT * FROM v_movimentacao_por_sala
-WHERE (sala_envolvida_destino='Sala A' OR sala_envolvida_origem='Sala A')
+WHERE (sala_envolvida_destino = 'Sala A' OR sala_envolvida_origem = 'Sala A')
   AND movido_em BETWEEN '2025-09-01 00:00:00' AND '2025-09-30 23:59:59';
 
 -- Movimentação por itens (todos) no período
@@ -353,5 +365,5 @@ WHERE movido_em BETWEEN '2025-09-01 00:00:00' AND '2025-09-30 23:59:59';
 
 -- Linha do tempo de um item específico (por tag)
 SELECT * FROM v_movimentacao_por_itens
-WHERE tag_codigo='TAG-ITEM2'
+WHERE tag_codigo = 'TAG-ITEM2'
 ORDER BY movido_em DESC;
