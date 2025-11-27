@@ -3,7 +3,7 @@
 import { useSettingsContext } from '@/components/settings';
 import { useSnackbar } from '@/components/snackbar';
 import { IDispositivoFindAll, IItemFindAll, ILocalizacaoFindAll } from '@/models';
-import { dispositivoService, itemService, localizacaoService } from '@/services/dashboard';
+import { dispositivoService, itemService, localizacaoService } from '@/services';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';

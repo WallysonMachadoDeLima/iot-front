@@ -26,7 +26,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useEffect, useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { MdOutlineNoteAlt } from "react-icons/md";
 
 import { movimentoService } from '@/services';
@@ -83,7 +83,7 @@ export function MovimentoListView() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [loadMovimentos]);
+  }, []);
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
@@ -116,7 +116,9 @@ export function MovimentoListView() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {dataTableFilter?.map((item) => {
+                  {dataTableFilter.sort(
+                    (a, b) => b.id_movimento - a.id_movimento
+                  )?.map((item) => {
                     return (
                       <TableRow hover key={item.id_movimento}>
                         <TableCell align="center">{item.id_movimento}</TableCell>
