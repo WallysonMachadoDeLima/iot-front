@@ -6,7 +6,7 @@ import Iconify from '@/components/iconify';
 import { useSettingsContext } from '@/components/settings';
 import { useSnackbar } from '@/components/snackbar';
 import { paths } from '@/routes';
-import { relatorioService } from '@/services';
+
 import {
     Box,
     Button,
@@ -17,13 +17,16 @@ import {
     Stack,
     Typography,
 } from '@mui/material';
-import { pdf } from '@react-pdf/renderer';
-import { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
-import { ResumoSalaPDF } from '../components/resumo-sala-pdf';
+import { FiltrosMovimentacao } from '../components';
+import { useRelatorio } from '../hooks';
 
 interface FormValues {
     tipoRelatorio: string;
+    dataInicio?: Date;
+    dataFim?: Date;
+    tagCodigo?: string;
 }
 
 const TIPOS_RELATORIO = [
@@ -34,12 +37,14 @@ const TIPOS_RELATORIO = [
 
 export function RelatorioCreateView() {
     const settings = useSettingsContext();
-    const { enqueueSnackbar } = useSnackbar();
-    const [loading, setLoading] = useState(false);
+    const { loading, gerarResumoSalaAtual, gerarItensporSala, gerarMovimentacaoItens } = useRelatorio();
 
     const methods = useForm<FormValues>({
         defaultValues: {
             tipoRelatorio: '',
+            dataInicio: undefined,
+            dataFim: undefined,
+            tagCodigo: '',
         },
     });
 
@@ -47,53 +52,24 @@ export function RelatorioCreateView() {
     const tipoRelatorio = watch('tipoRelatorio');
 
     const onSubmit = async (data: FormValues) => {
-        try {
-            setLoading(true);
-
-            switch (data.tipoRelatorio) {
-                case 'resumo-sala-atual':
-                    await gerarResumoSalaAtual();
-                    break;
-                case 'itens-por-sala':
-                    enqueueSnackbar('Relatório em desenvolvimento', { variant: 'info' });
-                    break;
-                case 'movimentacao-itens':
-                    enqueueSnackbar('Relatório em desenvolvimento', { variant: 'info' });
-                    break;
-                default:
-                    enqueueSnackbar('Selecione um tipo de relatório', { variant: 'warning' });
-            }
-        } catch (error) {
-            console.error('Erro ao gerar relatório:', error);
-            enqueueSnackbar('Erro ao gerar relatório', { variant: 'error' });
-        } finally {
-            setLoading(false);
+        switch (data.tipoRelatorio) {
+            case 'resumo-sala-atual':
+                await gerarResumoSalaAtual();
+                break;
+            case 'itens-por-sala':
+                await gerarItensporSala();
+                break;
+            case 'movimentacao-itens':
+                await gerarMovimentacaoItens({
+                    dataInicio: data.dataInicio,
+                    dataFim: data.dataFim,
+                    tagCodigo: data.tagCodigo,
+                });
+                break;
         }
     };
 
-    const gerarResumoSalaAtual = async () => {
-        try {
-            const dados = await relatorioService.getResumoAtualPorSala();
 
-            if (dados.length === 0) {
-                enqueueSnackbar('Nenhum dado encontrado para o relatório', { variant: 'warning' });
-                return;
-            }
-
-            // Gerar PDF
-            const blob = await pdf(<ResumoSalaPDF dados={dados} />).toBlob();
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `relatorio-resumo-salas-${new Date().getTime()}.pdf`;
-            link.click();
-            URL.revokeObjectURL(url);
-
-            enqueueSnackbar('Relatório gerado com sucesso!', { variant: 'success' });
-        } catch (error) {
-            throw error;
-        }
-    };
 
     return (
         <Container maxWidth={settings.themeStretch ? false : 'lg'}>
@@ -154,6 +130,9 @@ export function RelatorioCreateView() {
                                 </Typography>
                             </Box>
                         )}
+
+                        {/* Filtros para Movimentação */}
+                        <FiltrosMovimentacao showFiltros={tipoRelatorio === 'movimentacao-itens'} />
 
                         <Stack direction="row" spacing={2} justifyContent="flex-end">
                             <Button
