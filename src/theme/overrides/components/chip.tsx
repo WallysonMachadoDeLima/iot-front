@@ -27,9 +27,11 @@ export function chip(theme: Theme) {
     const softVariant = ownerState.variant === 'soft';
 
     const defaultStyle = {
+      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
       [`& .${chipClasses.deleteIcon}`]: {
-        opacity: 0.48,
+        opacity: 0.6,
         color: 'currentColor',
+        transition: 'opacity 0.2s',
         '&:hover': {
           opacity: 1,
           color: 'currentColor',
@@ -46,6 +48,7 @@ export function chip(theme: Theme) {
           backgroundColor: theme.palette.text.primary,
           '&:hover': {
             backgroundColor: lightMode ? theme.palette.grey[700] : theme.palette.grey[100],
+            transform: 'translateY(-1px)',
           },
           [`& .${chipClasses.icon}`]: {
             color: lightMode ? theme.palette.common.white : theme.palette.grey[800],
@@ -53,14 +56,14 @@ export function chip(theme: Theme) {
         }),
         // OUTLINED
         ...(outlinedVariant && {
-          border: `solid 1px ${alpha(theme.palette.grey[500], 0.32)}`,
+          border: `solid 1.5px ${alpha(theme.palette.grey[500], 0.24)}`,
         }),
         // SOFT
         ...(softVariant && {
           color: theme.palette.text.primary,
-          backgroundColor: alpha(theme.palette.grey[500], 0.16),
+          backgroundColor: alpha(theme.palette.grey[500], 0.12),
           '&:hover': {
-            backgroundColor: alpha(theme.palette.grey[500], 0.32),
+            backgroundColor: alpha(theme.palette.grey[500], 0.20),
           },
         }),
       }),
@@ -75,9 +78,9 @@ export function chip(theme: Theme) {
         // SOFT
         ...(softVariant && {
           color: theme.palette[color][lightMode ? 'dark' : 'light'],
-          backgroundColor: alpha(theme.palette[color].main, 0.16),
+          backgroundColor: alpha(theme.palette[color].main, 0.12),
           '&:hover': {
-            backgroundColor: alpha(theme.palette[color].main, 0.32),
+            backgroundColor: alpha(theme.palette[color].main, 0.20),
           },
         }),
       }),
@@ -115,7 +118,7 @@ export function chip(theme: Theme) {
       disabledState,
       {
         fontWeight: 500,
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: theme.shape.borderRadius * 1.5,
       },
     ];
   };

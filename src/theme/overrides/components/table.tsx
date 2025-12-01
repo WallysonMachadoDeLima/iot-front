@@ -10,16 +10,21 @@ export function table(theme: Theme) {
       styleOverrides: {
         root: {
           position: 'relative',
+          borderRadius: theme.shape.borderRadius,
         },
       },
     },
     MuiTableRow: {
       styleOverrides: {
         root: {
+          transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          '&:hover': {
+            backgroundColor: alpha(theme.palette.primary.main, 0.04),
+          },
           [`&.${tableRowClasses.selected}`]: {
-            backgroundColor: alpha(theme.palette.primary.dark, 0.04),
+            backgroundColor: alpha(theme.palette.primary.main, 0.08),
             '&:hover': {
-              backgroundColor: alpha(theme.palette.primary.dark, 0.08),
+              backgroundColor: alpha(theme.palette.primary.main, 0.12),
             },
           },
           '&:last-of-type': {
@@ -33,17 +38,21 @@ export function table(theme: Theme) {
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottomStyle: 'dashed',
+          borderBottomStyle: 'solid',
+          borderBottomWidth: '1px',
+          borderBottomColor: alpha(theme.palette.grey[500], 0.08),
         },
         head: {
-          fontSize: 14,
+          fontSize: 13,
           color: theme.palette.text.secondary,
-          fontWeight: theme.typography.fontWeightSemiBold,
-          backgroundColor: theme.palette.background.neutral,
+          fontWeight: 600,
+          backgroundColor: alpha(theme.palette.grey[500], 0.04),
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em',
         },
         stickyHeader: {
           backgroundColor: theme.palette.background.paper,
-          backgroundImage: `linear-gradient(to bottom, ${theme.palette.background.neutral} 0%, ${theme.palette.background.neutral} 100%)`,
+          backgroundImage: `linear-gradient(to bottom, ${alpha(theme.palette.grey[500], 0.04)} 0%, ${alpha(theme.palette.grey[500], 0.04)} 100%)`,
         },
         paddingCheckbox: {
           paddingLeft: theme.spacing(1),
@@ -54,6 +63,7 @@ export function table(theme: Theme) {
       styleOverrides: {
         root: {
           width: '100%',
+          borderTop: `1px solid ${alpha(theme.palette.grey[500], 0.08)}`,
         },
         toolbar: {
           height: 64,

@@ -35,26 +35,32 @@ export function button(theme: Theme) {
     const largeSize = ownerState.size === 'large';
 
     const defaultStyle = {
+      borderRadius: '10px',
+      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
       ...(inheritColor && {
         // CONTAINED
         ...(containedVariant && {
           color: lightMode ? theme.palette.common.white : theme.palette.grey[800],
           backgroundColor: lightMode ? theme.palette.grey[800] : theme.palette.common.white,
           '&:hover': {
-            backgroundColor: lightMode ? theme.palette.grey[700] : theme.palette.grey[400],
+            backgroundColor: lightMode ? theme.palette.grey[700] : theme.palette.grey[300],
+            transform: 'translateY(-1px)',
+            boxShadow: theme.customShadows.z8,
           },
         }),
         // OUTLINED
         ...(outlinedVariant && {
-          borderColor: alpha(theme.palette.grey[500], 0.32),
+          borderColor: alpha(theme.palette.grey[500], 0.24),
+          borderWidth: '1.5px',
           '&:hover': {
-            backgroundColor: theme.palette.action.hover,
+            backgroundColor: alpha(theme.palette.grey[500], 0.08),
+            borderColor: theme.palette.grey[700],
           },
         }),
         // TEXT
         ...(textVariant && {
           '&:hover': {
-            backgroundColor: theme.palette.action.hover,
+            backgroundColor: alpha(theme.palette.grey[500], 0.08),
           },
         }),
         // SOFT
@@ -62,14 +68,13 @@ export function button(theme: Theme) {
           color: theme.palette.text.primary,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
           '&:hover': {
-            backgroundColor: alpha(theme.palette.grey[500], 0.24),
+            backgroundColor: alpha(theme.palette.grey[500], 0.16),
           },
         }),
       }),
       ...(outlinedVariant && {
         '&:hover': {
-          borderColor: 'currentColor',
-          boxShadow: '0 0 0 0.5px currentColor',
+          borderWidth: '1.5px',
         },
       }),
     };
@@ -80,14 +85,18 @@ export function button(theme: Theme) {
         ...(containedVariant && {
           '&:hover': {
             boxShadow: theme.customShadows[color],
+            transform: 'translateY(-2px)',
+          },
+          '&:active': {
+            transform: 'translateY(0)',
           },
         }),
         // SOFT
         ...(softVariant && {
           color: theme.palette[color][lightMode ? 'dark' : 'light'],
-          backgroundColor: alpha(theme.palette[color].main, 0.16),
+          backgroundColor: alpha(theme.palette[color].main, 0.12),
           '&:hover': {
-            backgroundColor: alpha(theme.palette[color].main, 0.32),
+            backgroundColor: alpha(theme.palette[color].main, 0.24),
           },
         }),
       }),

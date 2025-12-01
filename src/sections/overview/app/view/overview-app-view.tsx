@@ -64,7 +64,7 @@ export default function OverviewAppView() {
       setItems(itemsData);
       setDevices(devicesData);
       setMovements(movementsData);
-    }, 1000);
+    }, 3000);
 
     // Cleanup interval on unmount
     return () => clearInterval(interval);

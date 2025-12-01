@@ -21,6 +21,10 @@ export function badge(theme: Theme) {
         dot: {
           borderRadius: '50%',
         },
+        badge: {
+          fontWeight: 600,
+          fontSize: '0.75rem',
+        },
         root: ({ ownerState }: { ownerState: BadgeProps }) => {
           const alway = ownerState.variant === 'alway';
 
@@ -41,6 +45,7 @@ export function badge(theme: Theme) {
             padding: 0,
             height: 10,
             minWidth: 'auto',
+            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:before, &:after': {
               content: "''",
               borderRadius: 1,
@@ -53,12 +58,14 @@ export function badge(theme: Theme) {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
                 backgroundColor: theme.palette.success.main,
+                boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
               },
             }),
             ...(busy && {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
                 backgroundColor: theme.palette.error.main,
+                boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
                 '&:before': { width: 6, height: 2 },
               },
             }),
@@ -66,6 +73,7 @@ export function badge(theme: Theme) {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
                 backgroundColor: theme.palette.text.disabled,
+                boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
                 '&:before': {
                   width: 6,
                   height: 6,
@@ -77,6 +85,7 @@ export function badge(theme: Theme) {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
                 backgroundColor: theme.palette.warning.main,
+                boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
                 '&:before': {
                   width: 2,
                   height: 4,

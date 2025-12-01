@@ -18,8 +18,9 @@ export function switches(theme: Theme) {
     [`& .${switchClasses.thumb}`]: {
       width: 14,
       height: 14,
-      boxShadow: 'none',
+      boxShadow: theme.customShadows.z4,
       color: theme.palette.common.white,
+      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
       ...(ownerState.size === 'small' && {
         width: 10,
         height: 10,
@@ -28,18 +29,24 @@ export function switches(theme: Theme) {
     [`& .${switchClasses.track}`]: {
       opacity: 1,
       borderRadius: 14,
-      backgroundColor: alpha(theme.palette.grey[500], 0.48),
+      backgroundColor: alpha(theme.palette.grey[500], 0.32),
+      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     },
     [`& .${switchClasses.switchBase}`]: {
       left: 3,
       padding: 12,
+      transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
       ...(ownerState.size === 'small' && {
         padding: 7,
       }),
       [`&.${switchClasses.checked}`]: {
         transform: 'translateX(13px)',
+        [`& .${switchClasses.thumb}`]: {
+          boxShadow: theme.customShadows.primary,
+        },
         [`&+.${switchClasses.track}`]: {
           opacity: 1,
+          backgroundColor: theme.palette.primary.main,
         },
         ...(ownerState.size === 'small' && {
           transform: 'translateX(9px)',
@@ -50,7 +57,7 @@ export function switches(theme: Theme) {
           opacity: lightMode ? 1 : 0.48,
         },
         [`&+.${switchClasses.track}`]: {
-          opacity: 0.48,
+          opacity: 0.32,
         },
       },
     },

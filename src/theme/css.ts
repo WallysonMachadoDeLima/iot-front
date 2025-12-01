@@ -41,16 +41,21 @@ export const paper = ({
 
 export const menuItem = (theme: Theme) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(0.75, 1),
+  padding: theme.spacing(1, 1.5),
   borderRadius: theme.shape.borderRadius * 0.75,
+  transition: 'background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:not(:last-of-type)': {
     marginBottom: 4,
   },
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.primary.main, 0.08),
+  },
   [`&.${menuItemClasses.selected}`]: {
-    fontWeight: theme.typography.fontWeightSemiBold,
-    backgroundColor: theme.palette.action.selected,
+    fontWeight: 600,
+    backgroundColor: alpha(theme.palette.primary.main, 0.12),
+    color: theme.palette.primary.main,
     '&:hover': {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: alpha(theme.palette.primary.main, 0.16),
     },
   },
   [`& .${checkboxClasses.root}`]: {
@@ -59,9 +64,9 @@ export const menuItem = (theme: Theme) => ({
     marginRight: theme.spacing(0.5),
   },
   [`&.${autocompleteClasses.option}[aria-selected="true"]`]: {
-    backgroundColor: theme.palette.action.selected,
+    backgroundColor: alpha(theme.palette.primary.main, 0.12),
     '&:hover': {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: alpha(theme.palette.primary.main, 0.16),
     },
   },
   [`&+.${dividerClasses.root}`]: {

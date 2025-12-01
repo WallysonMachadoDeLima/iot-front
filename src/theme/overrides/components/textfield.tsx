@@ -93,9 +93,12 @@ export function textField(theme: Theme) {
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
+          borderRadius: '10px',
+          transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
           [`&.${outlinedInputClasses.focused}`]: {
             [`& .${outlinedInputClasses.notchedOutline}`]: {
               borderColor: color.focused,
+              borderWidth: '2px',
             },
           },
           [`&.${outlinedInputClasses.error}`]: {
@@ -108,11 +111,17 @@ export function textField(theme: Theme) {
               borderColor: theme.palette.action.disabledBackground,
             },
           },
+          '&:hover': {
+            [`& .${outlinedInputClasses.notchedOutline}`]: {
+              borderColor: alpha(theme.palette.grey[500], 0.32),
+            },
+          },
         },
         notchedOutline: {
-          borderColor: alpha(theme.palette.grey[500], 0.2),
-          transition: theme.transitions.create(['border-color'], {
-            duration: theme.transitions.duration.shortest,
+          borderColor: alpha(theme.palette.grey[500], 0.16),
+          borderWidth: '1.5px',
+          transition: theme.transitions.create(['border-color', 'border-width'], {
+            duration: theme.transitions.duration.shorter,
           }),
         },
       },

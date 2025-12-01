@@ -1,16 +1,13 @@
 import AppBar from '@mui/material/AppBar';
-import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 
-import Logo from '@/components/logo';
 import { useOffSetTop } from '@/hooks/use-off-set-top';
 // theme
 import { bgBlur } from '@/theme/css';
 
 import { HEADER } from '../config-layout';
 import HeaderShadow from './header-shadow';
-import SettingsButton from './settings-button';
 
 
 
@@ -42,21 +39,6 @@ export default function HeaderSimple() {
           }),
         }}
       >
-        <Logo />
-
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <SettingsButton />
-          {/*
-          <Link
-            href={paths.faqs}
-            component={RouterLink}
-            color="inherit"
-            sx={{ typography: 'subtitle2' }}
-          >
-            Need help?
-          </Link> 
-          */}
-        </Stack>
       </Toolbar>
 
       {offsetTop && <HeaderShadow />}

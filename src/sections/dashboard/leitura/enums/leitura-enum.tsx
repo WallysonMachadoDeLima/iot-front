@@ -13,7 +13,6 @@ const tableHeader = [
     { label: 'Tag', sx: { width: '12%' }, align: 'center' },
     { label: 'Item', sx: { width: '15%' }, align: 'center' },
     { label: 'Dispositivo', sx: { width: '15%' }, align: 'center' },
-    { label: 'RSSI', sx: { width: '8%' }, align: 'center' },
     { label: 'Data/Hora', sx: { width: '12%' }, align: 'center' },
     { label: 'Ações', sx: { width: '5%' } },
 ];

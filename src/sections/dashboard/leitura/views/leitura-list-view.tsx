@@ -124,10 +124,6 @@ export function LeituraListView() {
                                                     <TableCell align="center">{item.dispositivo || '-'}</TableCell>
 
                                                     <TableCell align="center">
-                                                        {item.rssi ? `${item.rssi} dBm` : '-'}
-                                                    </TableCell>
-
-                                                    <TableCell align="center">
                                                         {item.lido_em ? fDateTime(item.lido_em) : '-'}
                                                     </TableCell>
 

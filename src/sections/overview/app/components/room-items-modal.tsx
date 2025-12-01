@@ -2,7 +2,6 @@
 
 import Iconify from '@/components/iconify';
 import { IItemFindAll } from '@/models';
-import { fDate } from '@/utils/format-time';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import Dialog from '@mui/material/Dialog';
@@ -109,7 +108,6 @@ export function RoomItemsModal({
                         <TableRow>
                             <TableCell>Tag</TableCell>
                             <TableCell>Nome</TableCell>
-                            <TableCell>Descrição</TableCell>
                             <TableCell>Localização Origem</TableCell>
                             <TableCell>Status</TableCell>
                             <TableCell>Data Criação</TableCell>
@@ -137,11 +135,6 @@ export function RoomItemsModal({
                                     <Typography variant="subtitle2">{item.nome}</Typography>
                                 </TableCell>
                                 <TableCell>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {item.descricao || '-'}
-                                    </Typography>
-                                </TableCell>
-                                <TableCell>
                                     <Typography variant="body2">
                                         {item.local_origem?.nome || '-'}
                                     </Typography>
@@ -155,7 +148,13 @@ export function RoomItemsModal({
                                 </TableCell>
                                 <TableCell>
                                     <Typography variant="body2" color="text.secondary">
-                                        {fDate(item.criado_em)}
+                                        {new Date(item.criado_em).toLocaleDateString('pt-BR', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}
                                     </Typography>
                                 </TableCell>
                             </TableRow>

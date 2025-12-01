@@ -10,6 +10,8 @@ export function dialog(theme: Theme) {
         paper: ({ ownerState }: { ownerState: DialogProps }) => ({
           boxShadow: theme.customShadows.dialog,
           borderRadius: theme.shape.borderRadius * 2,
+          border: `1px solid ${theme.palette.divider}`,
+          backdropFilter: 'blur(8px)',
           ...(!ownerState.fullScreen && {
             margin: theme.spacing(2),
           }),
@@ -23,6 +25,7 @@ export function dialog(theme: Theme) {
       styleOverrides: {
         root: {
           padding: theme.spacing(3),
+          fontWeight: 600,
         },
       },
     },
@@ -42,8 +45,9 @@ export function dialog(theme: Theme) {
       styleOverrides: {
         root: {
           padding: theme.spacing(3),
+          gap: theme.spacing(1.5),
           '& > :not(:first-of-type)': {
-            marginLeft: theme.spacing(1.5),
+            marginLeft: 0,
           },
         },
       },

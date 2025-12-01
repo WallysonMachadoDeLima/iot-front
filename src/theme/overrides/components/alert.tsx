@@ -22,7 +22,8 @@ export function alert(theme: Theme) {
         // STANDARD
         ...(standardVariant && {
           color: theme.palette[color][lightMode ? 'darker' : 'lighter'],
-          backgroundColor: theme.palette[color][lightMode ? 'lighter' : 'darker'],
+          backgroundColor: alpha(theme.palette[color].main, 0.12),
+          border: `1px solid ${alpha(theme.palette[color].main, 0.2)}`,
           [`& .${alertClasses.icon}`]: {
             color: theme.palette[color][lightMode ? 'main' : 'light'],
           },
@@ -36,7 +37,7 @@ export function alert(theme: Theme) {
         ...(outlinedVariant && {
           backgroundColor: alpha(theme.palette[color].main, 0.08),
           color: theme.palette[color][lightMode ? 'dark' : 'light'],
-          border: `solid 1px ${alpha(theme.palette[color].main, 0.16)}`,
+          border: `solid 1.5px ${alpha(theme.palette[color].main, 0.24)}`,
           [`& .${alertClasses.icon}`]: {
             color: theme.palette[color].main,
           },
@@ -50,7 +51,11 @@ export function alert(theme: Theme) {
   return {
     MuiAlert: {
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: AlertProps }) => rootStyles(ownerState),
+        root: ({ ownerState }: { ownerState: AlertProps }) => ({
+          ...rootStyles(ownerState),
+          borderRadius: theme.shape.borderRadius * 1.5,
+          padding: theme.spacing(1.5, 2),
+        }),
         icon: {
           opacity: 1,
         },
@@ -60,7 +65,7 @@ export function alert(theme: Theme) {
       styleOverrides: {
         root: {
           marginBottom: theme.spacing(0.5),
-          fontWeight: theme.typography.fontWeightSemiBold,
+          fontWeight: 600,
         },
       },
     },
