@@ -1,7 +1,7 @@
 import { useSnackbar } from '@/components/snackbar';
 import { relatorioService } from '@/services';
 import { pdf } from '@react-pdf/renderer';
-import { createElement, useState } from 'react';
+import { useState } from 'react';
 import { ItensSalaPDF, MovimentacaoItensPDF, ResumoSalaPDF } from '../components';
 
 interface UseRelatorioParams {
@@ -33,7 +33,7 @@ export function useRelatorio() {
                 return;
             }
 
-            const blob = await pdf(createElement(ResumoSalaPDF, { dados })).toBlob();
+            const blob = await pdf(ResumoSalaPDF({ dados })).toBlob();
             downloadPDF(blob, `relatorio-resumo-salas-${new Date().getTime()}.pdf`);
             enqueueSnackbar('Relatório gerado com sucesso!', { variant: 'success' });
         } catch (error) {
@@ -55,7 +55,7 @@ export function useRelatorio() {
                 return;
             }
 
-            const blob = await pdf(createElement(ItensSalaPDF, { dados })).toBlob();
+            const blob = await pdf(ItensSalaPDF({ dados })).toBlob();
             downloadPDF(blob, `relatorio-itens-por-sala-${new Date().getTime()}.pdf`);
             enqueueSnackbar('Relatório de itens gerado com sucesso!', { variant: 'success' });
         } catch (error) {
@@ -86,7 +86,7 @@ export function useRelatorio() {
             }
 
             const blob = await pdf(
-                createElement(MovimentacaoItensPDF, { dados, filtros })
+                MovimentacaoItensPDF({ dados, filtros })
             ).toBlob();
             downloadPDF(blob, `relatorio-movimentacao-itens-${new Date().getTime()}.pdf`);
             enqueueSnackbar('Relatório de movimentação gerado com sucesso!', { variant: 'success' });
