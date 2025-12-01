@@ -22,7 +22,7 @@ async function findAll(): Promise<IDispositivoFindAll[]> {
 
 async function findOne(id: number): Promise<IDispositivoFindAll | undefined> {
     const rows = await query<IDispositivoFindAll>(
-        `SELECT D.*, L.nome AS localizacao 
+        `SELECT D.*, L.nome AS localizacao, L.fk_id_tipolocal 
          FROM ${TABLE} D 
          LEFT JOIN Localizacao L ON D.fk_id_local = L.id_local 
          WHERE id_dispositivo = ?`,

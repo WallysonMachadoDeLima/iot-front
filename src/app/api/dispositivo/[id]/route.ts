@@ -1,17 +1,23 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { dispositivoSql } from '@/db/sql';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextRequest) {
+export async function GET(
+    req: NextRequest,
+    { params }: { params: { id: string } }
+) {
     try {
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get('id');
+        const id = params.id;
 
-        if (id) {
-            const result = await dispositivoSql.findOne(Number(id));
-            return NextResponse.json(result);
+        if (!id) {
+            return NextResponse.json({ error: 'ID não informado' }, { status: 400 });
         }
 
-        const result = await dispositivoSql.findAll();
+        const result = await dispositivoSql.findOne(Number(id));
+
+        if (!result) {
+            return NextResponse.json({ error: 'Dispositivo não encontrado' }, { status: 404 });
+        }
+
         return NextResponse.json(result);
     } catch (error: any) {
         console.error('[DISPOSITIVO_GET]', error);
@@ -19,7 +25,10 @@ export async function GET(req: NextRequest) {
     }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(
+    req: NextRequest,
+    { params }: { params: { id: string } }
+) {
     try {
         const body = await req.json();
         const result = await dispositivoSql.create(body);
@@ -30,10 +39,12 @@ export async function POST(req: NextRequest) {
     }
 }
 
-export async function PUT(req: NextRequest) {
+export async function PUT(
+    req: NextRequest,
+    { params }: { params: { id: string } }
+) {
     try {
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get('id');
+        const id = params.id;
 
         if (!id) {
             return NextResponse.json({ error: 'ID não informado' }, { status: 400 });
@@ -48,10 +59,12 @@ export async function PUT(req: NextRequest) {
     }
 }
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(
+    req: NextRequest,
+    { params }: { params: { id: string } }
+) {
     try {
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get('id');
+        const id = params.id;
 
         if (!id) {
             return NextResponse.json({ error: 'ID não informado' }, { status: 400 });

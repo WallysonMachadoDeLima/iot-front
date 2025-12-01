@@ -13,7 +13,19 @@ async function create(data: ILeituraCreateEdit) {
 
 async function findAll() {
     return query(
-        `SELECT * FROM ${TABLE} ORDER BY id_leitura DESC`
+        `SELECT 
+            L.id_leitura,
+            L.tag_codigo,
+            L.lido_em,
+            L.rssi,
+            L.payload_json,
+            L.fk_id_dispositivo,
+            D.identificador AS dispositivo,
+            I.nome AS item
+         FROM ${TABLE} L
+         LEFT JOIN Dispositivo D ON L.fk_id_dispositivo = D.id_dispositivo
+         LEFT JOIN Item I ON L.tag_codigo = I.tag_codigo
+         ORDER BY L.id_leitura DESC`
     );
 }
 
